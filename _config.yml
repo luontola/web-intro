@@ -5,4 +5,4 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://web-intro.luontola.fi" # the base hostname & protocol for your site
 
 # Build settings
-markdown: kramdown
+markdown: redcarpet
