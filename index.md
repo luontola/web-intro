@@ -7,6 +7,7 @@ This tutorial will teach the basics of making web applications. Before starting,
 
 * [Chapter 1: HTML](/html/)
 * [Chapter 2: CSS](/css/)
+* [Chapter 3: Templating](/templating/)
 
 
 ```
