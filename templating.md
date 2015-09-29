@@ -290,6 +290,8 @@ Most of the time when you notice some repetition in your code, you can extract t
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/79f3e1113d08a209db91570f1362ba85ccbfbbc9)
 
+<a class="next-chapter" href="/databases/">Proceed to the next chapter</a>
+
 
 [html-img]: https://developer.mozilla.org/en/docs/Web/HTML/Element/img
 [dry]: http://programmer.97things.oreilly.com/wiki/index.php/Don't_Repeat_Yourself

@@ -41,6 +41,9 @@ Edit the page you just created to say a few things about yourself. Create a head
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/e34cc4d65dafa0cbc5738cf48b21f254f820a482)
 
+<a class="next-chapter" href="/css/">Proceed to the next chapter</a>
+
+
 [html]: https://developer.mozilla.org/en-US/docs/Web/HTML
 [html-elements]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element
 [html-attributes]: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes
