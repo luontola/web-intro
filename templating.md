@@ -67,6 +67,8 @@ You should make sure that people can visit your web site through its front page,
 
 The idea of a templating system is to dynamically generate the HTML that will be shown to the user. To make sure that we understand how to generate pages dynamically with Sinatra, add the following code for a [parameterized route][sinatra-routes] to your application and then visit <http://localhost:4567/my-page> (Note: no `.html` at the end of the URL because else Sinatra would just serve the static file directly)
 
+[//]: # (TODO: introduce parameterized routes and IO.read separately)
+
 ```ruby
 get '/:page' do |page|
   "stuff before" + IO.read('public/' + page + '.html') + "stuff after"
