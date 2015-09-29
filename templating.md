@@ -130,7 +130,7 @@ After restarting your application, check that all the pages still look the same 
 
 [//]: # (TODO: consider moving this to the end of this chapter, together with generating the navigation menu)
 
-Before moving on to the next topic, let's clean up our code a little bit. The front page of a site should be at the root path (`/`) and there is a convention to call it the *index* page. Rename `my-page.erb` to `index.erb` and change your routes to render it at the root:
+Before moving on to the next topic, let's clean up our code a little bit. The front page of a site should be at the root path (`/`) and there is a convention to call it the *index* page. Rename `my-page.erb` to `index.erb` and change your routes to render it at the root instead of doing a page redirect:
 
 ```ruby
 get '/' do
@@ -140,11 +140,155 @@ end
 
 You will notice that your navigation links won't work anymore. How to make links to the index page when its file name is not shown on the URL? We could use an absolute URL `<a href="http://localhost:4567/">`, but that wouldn't work when we move our site to another domain.
 
-The recommended solution is to URLs relative to the root of the site, i.e. `<a href="/">` and `<a href="/pictures.html">`. Relative URLs which don't start with `/` are relative to the current directory, so our old navigation menu might stop working if we organize the site into subdirectories. Go change all the URLs in your templates to be relative to the root.
+The recommended solution is to URLs relative to the root of the site, i.e. `<a href="/">` and `<a href="/pictures.html">`. Relative URLs which don't start with `/` are relative to the current directory, a navigation menu which uses them would not work if the site is organized into subdirectories. Go change all the URLs in your templates to be relative to the root.
 
 ![Front page at the root](/screenshots/templating-index.png)
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/9fb70ea83b984888bb39e66e0e8fd22e227a6de6)
+
+
+## Parameterize the template with a list of pictures
+
+The main benefit of a templating system is that we can parameterize it with dynamically generated data. Let's take advantage of that to avoid repeating ourselves in the pictures page.
+
+First create a route for `/pictures.html` which stores the URLs of all your pictures in a list and gives it as a parameter the template. Note that this route must be before the `/:page.html` route, because Sinatra will use the first route that matches the requested path.
+
+```ruby
+get '/pictures.html' do
+  picture_urls = [
+    "http://www.publicdomainpictures.net/pictures/50000/t2/cat-looking-up.jpg",
+    "http://www.publicdomainpictures.net/pictures/30000/t2/cat-in-the-city-5.jpg",
+    "http://www.publicdomainpictures.net/pictures/30000/t2/annoyed-cat.jpg",
+    ...
+  ]
+  erb :pictures, :locals => {:picture_urls => picture_urls}
+end
+```
+
+Then change `pictures.erb` to use the *local variable* `picture_urls` which the above route gave the template. This is a *for loop* which repeats the contained HTML for every element in the `picture_urls` list, so that on every iteration the `url` variable has a different element of the list.
+
+```html
+<% for url in picture_urls %>
+<img class="album-photo" src="<%= url %>">
+<% end %>
+```
+
+Now check that the pictures page still looks the same as before. Also try adding a couple more pictures to make sure that the template works how it should.
+
+[View solution](https://github.com/orfjackal/web-intro-project/commit/aa454fcbe2d49f9bd5c2c06631adddf651bfce58)
+
+
+## Show all pictures from a directory
+
+There is still some work involved in adding the picture URLs by hand to the list in the route. We can simplify that by making our application generate the list automatically based on what pictures there are in a directory.
+
+Create a directory for the pictures under the `public` directory and save there all the pictures in your list.
+
+To find out how to do something in a particular programming language, google for "[name of the language] [what you want to do]", which in this case would be "ruby list files in directory". But even if you find some snippet of code on the Internet, you should understand what it does, for example by checking the official reference documentation, before using it. Or if you know the language and its standard library already a bit, you can probably start from the reference documentation and find what you need.
+
+In this case you can get a list of files in the `public/pictures` directory using the following code. Have a look at the documentation for the methods [glob][ruby-glob], [map][ruby-map] and [sub][ruby-sub] to understand what each of them does individually, and then try to understand this code as a whole.
+
+```ruby
+picture_urls = Dir.glob('public/pictures/**').map { |path| path.sub('public', '') }
+```
+
+Check that the pictures page still works. Try adding a couple more pictures - much easier now, isn't it?
+
+[View solution](https://github.com/orfjackal/web-intro-project/commit/4d21a58ecc1f5d00b9115188bac32d8c3f4ab92b)
+
+
+## Parameterizing the page title
+
+Earlier when we started using templates, our web site didn't anymore have unique titles for every page. Now that we know how to parameterize templates, we can get those page titles back.
+
+Change the `<title>` in your `layout.erb` to get the title from a local variable `title`:
+
+```html
+<title><%= title %></title>
+```
+
+Then change every route to pass a title as parameter to the template, for example:
+
+```ruby
+erb :pictures, :locals => {:picture_urls => picture_urls, :title => "Lovely Pictures"}
+```
+
+![Parameterized page title](/screenshots/templating-parameterized-title.png)
+
+[View solution](https://github.com/orfjackal/web-intro-project/commit/5edefe49b3a8d9ec92fa5627f87024afaed9c6fd)
+
+
+## Sitemap for titles
+
+Add one more page to your web site, for example a page about your life story. It will contain just plain HTML, so it will use the `/:page.html` route. Now we have a problem - multiple pages can be rendered by the `/:page.html` route, so how can it decide what to make the page title?
+
+One solution is to store a list of all the pages and their titles in a [hash][ruby-hash] (also known as a dictionary or map). Add the following code to your application, outside all the routes, after which you can refer its contents using the keys of the hash: `PAGES[:pictures]`
+
+```ruby
+PAGES = {
+  :index => "I'm Ruby",
+  :pictures => "Lovely Pictures",
+  :story => "My Story",
+}
+```
+
+With this it will be easy to parameterize also the title of pages which don't have custom routes.
+
+```ruby
+get '/:page.html' do |page|
+  erb page.to_sym, :locals => {:title => PAGES[page.to_sym]}
+end
+```
+
+[View solution](https://github.com/orfjackal/web-intro-project/commit/f63a6cc1c01afe211d9f755ba0c86f69a5ae1e09)
+
+
+## Sitemap for navigation
+
+Now that we have a sitemap of all the pages, we can use it to also generate our navigation menu, so that we can avoid having to update the layout template whenever we add more pages. Pass in the `PAGES` hash to the templates as a local variable `pages` and update your navigation menu to be generated dynamically like this:
+
+```html
+<nav class="navigation">
+    <ul>
+<% for page, title in pages %>
+        <li><a href="<%= (page == :index ? '/' : "/#{page}.html") %>"><%= title %></a></li>
+<% end %>
+    </ul>
+</nav>
+```
+
+Check that the navigation menu and all of its links still work.
+
+[View solution](https://github.com/orfjackal/web-intro-project/commit/bd1811425811bcd45db76c8d57482b7f47cb4851)
+
+
+## Helper method for rendering templates
+
+Have a look at your code. All the lines which render a template with `erb` have quite much repetition, because every template needs to be parameterized with `title` and `pages`. To avoid this duplicated code, which violates the DRY principle, we can create a helper method which takes care of all the common code.
+
+```ruby
+def render_page(page, locals={})
+  locals = locals.merge({:title => PAGES[page], :pages => PAGES})
+  erb page, :locals => locals
+end
+```
+
+With this helper method the rest of the code becomes much simpler.
+
+```ruby
+get '/pictures.html' do
+  picture_urls = Dir.glob('public/pictures/**').map { |path| path.sub('public', '') }
+  render_page :pictures, {:picture_urls => picture_urls}
+end
+
+get '/:page.html' do |page|
+  render_page page.to_sym
+end
+```
+
+Most of the time when you notice some repetition in your code, you can extract the common code into its own method, which makes the code easier to understand and change.
+
+[View solution](https://github.com/orfjackal/web-intro-project/commit/79f3e1113d08a209db91570f1362ba85ccbfbbc9)
 
 
 [html-img]: https://developer.mozilla.org/en/docs/Web/HTML/Element/img
@@ -157,3 +301,7 @@ The recommended solution is to URLs relative to the root of the site, i.e. `<a h
 [sinatra-routes]: http://www.sinatrarb.com/intro.html#Routes
 [sinatra-templates]: http://www.sinatrarb.com/intro.html#Views%20/%20Templates
 [erb]: http://www.stuartellis.eu/articles/erb/
+[ruby-glob]: http://docs.ruby-lang.org/en/2.0.0/Dir.html#method-c-glob
+[ruby-map]: http://docs.ruby-lang.org/en/2.0.0/Enumerable.html#method-i-map
+[ruby-sub]: http://docs.ruby-lang.org/en/2.0.0/String.html#method-i-sub
+[ruby-hash]: http://docs.ruby-lang.org/en/2.0.0/Hash.html
