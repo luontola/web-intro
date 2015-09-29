@@ -6,4 +6,4 @@ permalink: /databases/
 
 TODO
 
-<a class="next-chapter" href="/">That's all folks!</a>
+<a class="next-chapter" href="/the-end/">Proceed to the next chapter</a>
