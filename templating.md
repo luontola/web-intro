@@ -27,7 +27,7 @@ In programming we have a principle called [Don't Repeat Yourself (DRY)][dry] whi
 Our little web site is already breaking the DRY principle. Both of our pages are repeating the HTML for the layout and navigation; adding another page would require changing the navigation on every page. Additionally the pictures page has lots of similar `<img>` tags with just the URL changing. To solve this problem, we will introduce *templating*, so that all the common HTML will be in one place.
 
 
-## Running a Web Server
+## Running a web server
 
 This far we have created our site with just static HTML pages, but in order to use templates, we must create a web server which will generate the HTML that will be shown to the user.
 
@@ -40,12 +40,12 @@ We will use the [Ruby][ruby] programming language to create the web server. If y
 [View solution](https://github.com/orfjackal/web-intro-project/commit/8254bc27671ac4a3236a381878bc3dcb8d3f70d5)
 
 
-### Making File Changes Visible
+### Making file changes visible
 
 Always when you change your application, you will need to stop and restart the web server. To stop the web server running in your terminal, press `Ctrl+C`. To start it again without having to type the command, press `Up` and then `Enter`. Try it a couple of times by changing the text that the server shows. If you get tired of doing that, Sinatra's FAQ contains instructions on [how to reload the application automatically][sinatra-reloading] when a file is changed.
 
 
-## Your Site On a Web Server
+## Your site on a web server
 
 As a first step towards serving our web site through Sinatra, find out how Sinatra can [serve static files][sinatra-static] and use it to serve our existing HTML and CSS files as they are. Then visit <http://localhost:4567/pictures.html> in your web browser and make sure that your site looks the same as before.
 
@@ -54,7 +54,7 @@ As a first step towards serving our web site through Sinatra, find out how Sinat
 [View solution](https://github.com/orfjackal/web-intro-project/commit/542566800ca115323affd8e25f548e23e7c67008)
 
 
-## Fixing the Front Page
+## Fixing the front page
 
 You should make sure that people can visit your web site through its front page, instead of having to know one of its sub pages. Tell Sinatra to [redirect][sinatra-redirect] the path `/` to `/my-page.html` and then visit <http://localhost:4567/> to see if it will show your web site's front page.
 
@@ -63,7 +63,7 @@ You should make sure that people can visit your web site through its front page,
 [View solution](https://github.com/orfjackal/web-intro-project/commit/60c9efb2b60ef39ee901edbf293cb76d23c79f41)
 
 
-## Generating a Page Dynamically
+## Generating a page dynamically
 
 The idea of a templating system is to dynamically generate the HTML that will be shown to the user. To make sure that we understand how to generate pages dynamically with Sinatra, add the following code for a [parameterized route][sinatra-routes] to your application and then visit <http://localhost:4567/my-page> (Note: no `.html` at the end of the URL because else Sinatra would just serve the static file directly)
 
@@ -82,7 +82,7 @@ Check the source code of the page in your web browser to make sure that it shows
 [View solution](https://github.com/orfjackal/web-intro-project/commit/a9b6ff30ae8ee5fc247a0609542489878ee327dd)
 
 
-## A Bare Bones Templating System
+## Bare bones templating system
 
 Now that we have a proof-of-concept for dynamically generating HTML and for reading existing HTML files, we can use that to create a very basic templating system. Create a directly `views` and move all your HTML files from the `public` directory there (`views` is Sinatra's default directory for templates, though that doesn't matter yet). Create empty files `layout-top.html` and `layout-bottom.html` there as well.
 
@@ -103,7 +103,9 @@ Now you can move the top and bottom parts of the code from your individual HTML 
 Now you have managed to apply the DRY principle and in the future it will be enough to change just one place when you change the layout or add pages to the navigation menu. You also understand the basic idea of how templating works. Next let's use a proper templating system.
 
 
-## A Proper Templating System
+## Proper templating system
+
+[//]: # (TODO: consider using .html.erb extension for the templates, will need to change the route as well)
 
 If we would create our own templating system for every project, we would get no real work done. Thankfully other programmers have solved the templating problem already many times in the past, so we can avoid reinventing the weel and just reuse the code that they have written.
 
@@ -124,7 +126,9 @@ After restarting your application, check that all the pages still look the same 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/480bf7c0cea7183fb26a42c9ac6f9f186b9d0e3b)
 
 
-## Relative and Absolute URLs
+## Relative and absolute URLs
+
+[//]: # (TODO: consider moving this to the end of this chapter, together with generating the navigation menu)
 
 Before moving on to the next topic, let's clean up our code a little bit. The front page of a site should be at the root path (`/`) and there is a convention to call it the *index* page. Rename `my-page.erb` to `index.erb` and change your routes to render it at the root:
 

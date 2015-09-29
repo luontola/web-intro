@@ -7,11 +7,14 @@ permalink: /css/
 [CSS][css] is a markup language for describing the visuals of web pages. It contains numerous [properties][css-properties] for changing how the HTML elements look like; colors, fonts, layouts etc.
 
 
-### Basics
+## Prettier defaults
 
 At first let's make the default text look a bit nicer by using the [Pure](http://purecss.io/) CSS library. See its web site for the correct `<link rel="stylesheet">` code and add it inside your HTML page's `<head>`.
 
 ![Pure](/screenshots/css-pure.png)
+
+
+## Custom styles
 
 To have a place where to add our own CSS, create a file `style.css` with the following content and add into your `<head>` a stylesheet link which points to it.
 
@@ -32,7 +35,7 @@ This CSS defines what `<h1>` elements and any elements with the attribute `class
 ![Pure](/screenshots/css-basics.png)
 
 
-### Layout
+## Prepare for layout fiddling
 
 Most web sites contain a navigation menu for moving between pages. Let's create a navigation menu that will be on the left side of the page content and also limit the width of the page content to look nicer on wide screen.
 
@@ -62,6 +65,9 @@ To get ready for fiddling with CSS layouts, let's make the edges of the `.naviga
 
 ![Layout elements highlighted](/screenshots/css-layout-blocks-before.png)
 
+
+## Get the layout right
+
 Now experiment with the CSS properties [position][css-position], [left][css-left], [right][css-right], [top][css-top], [bottom][css-bottom], [width][css-width] and [height][css-height] to get the boxes to look like shown below. Also try to make the page look good whether the page has very little or lots of content; the CSS property [min-height][css-min-height] can be handy.
 
 ![Layout elements where we want them](/screenshots/css-layout-blocks-after.png)
@@ -69,7 +75,7 @@ Now experiment with the CSS properties [position][css-position], [left][css-left
 [View solution](https://github.com/orfjackal/web-intro-project/commit/a87bf9eb64be3a6b840251f2431400d5bd1fff12)
 
 
-### Make it pretty
+## Make it pretty
 
 After the boxes are where you want them to be, remove those placeholder borders and move on to styling the layout elements properly. You can change their [background][css-background], add some [margin][css-margin] between the edges and the page content and create nicer [borders][css-border].
 

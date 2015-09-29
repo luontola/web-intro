@@ -6,6 +6,9 @@ permalink: /html/
 
 [HTML][html] is a markup language for describing the structure of web pages. HTML is made out of [elements][html-elements] which are marked using a start tag (`<title>`) and end tag (`</title>`). The start tags may contain [attributes][html-attributes] (`<meta charset="UTF-8>`). Between the start and end tags you can put text and other elements. For some elements the end tag is optional.
 
+
+## Minimal HTML page
+
 The following code shows the minimal structure of a HTML page. Save it in a file called `my-page.html` and open it in your web browser.
 
 ```html
@@ -30,7 +33,7 @@ It should look like this:
 [View solution](https://github.com/orfjackal/web-intro-project/commit/389109b2739774161919054e5de7818029d7cac6)
 
 
-### Basic HTML Elements
+## Basic HTML elements
 
 Edit the page you just created to say a few things about yourself. Create a heading with [`<h1>`][html-h1], one or more paragraphs with [`<p>`][html-p] and a picture using [`<img>`][html-img]. Also change the title.
 
