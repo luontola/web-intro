@@ -12,3 +12,16 @@ a.next-chapter {
   font-size: 150%;
   text-align: center;
 }
+
+.fork-me img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 0;
+}
+
+@media screen and (max-width: 42em) {
+  .fork-me {
+    display: none;
+  }
+}
