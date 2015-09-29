@@ -14,8 +14,6 @@ a {
   text-decoration: none; }
   a:hover {
     text-decoration: underline; }
-a code {
-  color: #1e6bb8 !important; }
 
 .btn {
   display: inline-block;
