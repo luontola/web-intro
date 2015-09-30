@@ -1,0 +1,11 @@
+---
+layout: default
+---
+
+<h1>{{ page.title }}</h1>
+
+{{ content }}
+
+{% if page.next %}
+<a class="next-chapter" href="{{ page.next }}">Proceed to the next chapter</a>
+{% endif %}

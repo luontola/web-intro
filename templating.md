@@ -1,7 +1,8 @@
 ---
-layout: page
+layout: chapter
 title: Templating
 permalink: /templating/
+next: /databases/
 ---
 
 Last time we created a navigation menu with a link to the `pictures.html` page, but that page doesn't yet exist. Create a copy of `my-page.html`, name it `pictures.html`, and change its title and heading. Find about a dozen images which you like from [Public Domain Pictures](http://www.publicdomainpictures.net/) and add their thumbnails as images on your `pictures.html` using the [`<img>`][html-img] tag.
@@ -291,8 +292,6 @@ end
 Most of the time when you notice some repetition in your code, you can extract the common code into its own method, which makes the code easier to understand and change.
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/79f3e1113d08a209db91570f1362ba85ccbfbbc9)
-
-<a class="next-chapter" href="/databases/">Proceed to the next chapter</a>
 
 
 [html-img]: https://developer.mozilla.org/en/docs/Web/HTML/Element/img

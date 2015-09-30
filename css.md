@@ -1,7 +1,8 @@
 ---
-layout: page
+layout: chapter
 title: CSS
 permalink: /css/
+next: /templating/
 ---
 
 [CSS][css] is a markup language for describing the visuals of web pages. It contains numerous [properties][css-properties] for changing how the HTML elements look like; colors, fonts, layouts etc.
@@ -95,8 +96,6 @@ Google for "css vertical navigation bar" to find out how to make it look nicer; 
 ![Finished layout styling](/screenshots/css-layout-done.png)
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/42e94566c051ec08df4ed6e633993b44f57af07d)
-
-<a class="next-chapter" href="/templating/">Proceed to the next chapter</a>
 
 
 [css]: https://developer.mozilla.org/en-US/docs/Web/CSS

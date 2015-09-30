@@ -1,7 +1,8 @@
 ---
-layout: page
+layout: chapter
 title: HTML
 permalink: /html/
+next: /css/
 ---
 
 [HTML][html] is a markup language for describing the structure of web pages. HTML is made out of [elements][html-elements] which are marked using a start tag (`<title>`) and end tag (`</title>`). The start tags may contain [attributes][html-attributes] (`<meta charset="UTF-8>`). Between the start and end tags you can put text and other elements. For some elements the end tag is optional.
@@ -40,8 +41,6 @@ Edit the page you just created to say a few things about yourself. Create a head
 ![Basic HTML Elements](/screenshots/html-basics.png)
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/e34cc4d65dafa0cbc5738cf48b21f254f820a482)
-
-<a class="next-chapter" href="/css/">Proceed to the next chapter</a>
 
 
 [html]: https://developer.mozilla.org/en-US/docs/Web/HTML

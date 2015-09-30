@@ -1,9 +1,8 @@
 ---
-layout: page
+layout: chapter
 title: Databases
 permalink: /databases/
+next: /the-end/
 ---
 
 TODO
-
-<a class="next-chapter" href="/the-end/">Proceed to the next chapter</a>
