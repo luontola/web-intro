@@ -304,7 +304,7 @@ Most of the time when you notice some repetition in your code, you can extract t
 [sinatra-routes]: http://www.sinatrarb.com/intro.html#Routes
 [sinatra-templates]: http://www.sinatrarb.com/intro.html#Views%20/%20Templates
 [erb]: http://www.stuartellis.eu/articles/erb/
-[ruby-glob]: http://docs.ruby-lang.org/en/2.0.0/Dir.html#method-c-glob
-[ruby-map]: http://docs.ruby-lang.org/en/2.0.0/Enumerable.html#method-i-map
-[ruby-sub]: http://docs.ruby-lang.org/en/2.0.0/String.html#method-i-sub
-[ruby-hash]: http://docs.ruby-lang.org/en/2.0.0/Hash.html
+[ruby-glob]: http://docs.ruby-lang.org/en/2.2.0/Dir.html#method-c-glob
+[ruby-map]: http://docs.ruby-lang.org/en/2.2.0/Enumerable.html#method-i-map
+[ruby-sub]: http://docs.ruby-lang.org/en/2.2.0/String.html#method-i-sub
+[ruby-hash]: http://docs.ruby-lang.org/en/2.2.0/Hash.html
