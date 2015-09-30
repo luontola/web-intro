@@ -68,7 +68,7 @@ You should make sure that people can visit your web site through its front page,
 
 The idea of a templating system is to dynamically generate the HTML that will be shown to the user. To make sure that we understand how to generate pages dynamically with Sinatra, add the following code for a [parameterized route][sinatra-routes] to your application and then visit <http://localhost:4567/my-page> (Note: no `.html` at the end of the URL because else Sinatra would just serve the static file directly)
 
-[//]: # (TODO: introduce parameterized routes and IO.read separately)
+TODO: introduce parameterized routes and IO.read separately
 
 ```ruby
 get '/:page' do |page|
@@ -108,7 +108,7 @@ Now you have managed to apply the DRY principle and in the future it will be eno
 
 ## Proper templating system
 
-[//]: # (TODO: consider using .html.erb extension for the templates, will need to change the route as well)
+TODO: consider using .html.erb extension for the templates, will need to change the route as well
 
 If we would create our own templating system for every project, we would get no real work done. Thankfully other programmers have solved the templating problem already many times in the past, so we can avoid reinventing the weel and just reuse the code that they have written.
 
@@ -131,7 +131,7 @@ After restarting your application, check that all the pages still look the same 
 
 ## Front page at the root
 
-[//]: # (TODO: consider moving this to the end of this chapter, together with generating the navigation menu)
+TODO: consider moving this to the end of this chapter, together with generating the navigation menu
 
 Before moving on to the next topic, let's clean up our code a little bit. The front page of a site should be at the root path (`/`) and there is a convention to call it the *index* page. Rename `my-page.erb` to `index.erb` and change your routes to render it at the root instead of doing a page redirect:
 

@@ -14,6 +14,8 @@ At first let's make the default text look a bit nicer by using the [Pure](http:/
 
 ![Pure](/screenshots/css-pure.png)
 
+TODO: link to solution
+
 
 ## Custom styles
 
@@ -34,6 +36,8 @@ h1 {
 This CSS defines what `<h1>` elements and any elements with the attribute `class="profile-picture"` should look like. Add the `profile-picture` class to your image and it will be positioned on the right side of elements that follow it (move it above your heading and paragraphs).
 
 ![Pure](/screenshots/css-basics.png)
+
+TODO: link to solution
 
 
 ## Prepare for layout fiddling
@@ -65,6 +69,8 @@ To get ready for fiddling with CSS layouts, let's make the edges of the `.naviga
 ```
 
 ![Layout elements highlighted](/screenshots/css-layout-blocks-before.png)
+
+TODO: link to solution
 
 
 ## Get the layout right
