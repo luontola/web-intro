@@ -25,3 +25,12 @@ a.next-chapter {
     display: none;
   }
 }
+
+.social > div {
+  display: inline;
+  margin-right: 12px;
+}
+.social > .facebook {
+  position: relative;
+  top: -7px;
+}
