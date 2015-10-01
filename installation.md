@@ -2,7 +2,6 @@
 layout: chapter
 title: Installation
 permalink: /installation/
-next: /templating/
 ---
 
 
