@@ -34,7 +34,7 @@ This far we have created our site with just static HTML pages, but in order to u
 
 We will use the [Ruby][ruby] programming language to create the web server. If you haven't yet installed Ruby, you should do it now.
 
-[Sinatra][sinatra] is a framework for making web applications in Ruby. Follow the [instructions][sinatra] on Sinatra's web site to install Sinatra, create a minimal web application and then run it. It should start a web server on your own machine in port 4567. To view it, visit <http://localhost:4567/hi> in your web browser.
+[Sinatra][sinatra] is a framework for making web applications in Ruby. Follow the [instructions](/installation) to install the Ruby language and Sinatra, create a minimal web application and then run it. It should start a web server on your own machine in port 4567. To view it, visit <http://localhost:4567/hi> in your web browser.
 
 ![Your first web server is working](/screenshots/sinatra-hello-world.png)
 
