@@ -2,7 +2,7 @@
 layout: chapter
 title: Databases
 permalink: /databases/
-next: /the-end/
+next: /security/
 ---
 
 TODO: explain what databases are
@@ -44,6 +44,8 @@ comments = IO.read('comments.txt') if File.exist?('comments.txt')
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/1db02859480c0a2bccfcf748d9380ef66d3803a9)
 
+*Note: The example solution has a security vulnerability, but we'll address that in a [later chapter](/security/).*
+
 - render comments using templates, will need set the [layout option][sinatra-templates] to `false` because otherwise Sinatra will try to wrap the template in `layout.rb`
 - [DateTime][ruby-datetime] can be rendered as text using [strftime][ruby-strftime], for example `date.strftime('%Y-%m-%d %H:%M')`
 
@@ -58,6 +60,8 @@ comment = erb :comment, :layout => false, :locals => {
 ![Comments rendered using templates](/screenshots/comments-html.png)
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/0098815dfb61eae146992e1dd33e45b552ad9255)
+
+*Note: The example solution has a security vulnerability, but we'll address that in a [later chapter](/security/).*
 
 - now cannot easily edit or remove comments, or change the representation of old comments
 - switch to using in-memory data structure; doesn't persist between restarts, but lets us create the templates and interfaces
@@ -84,6 +88,8 @@ $comments << {
 - try restarting the server to see that the comments are lost when you restart it; a database is needed now
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/243a1734f0b048eea92efc702a56767d88263034)
+
+*Note: The example solution has a security vulnerability, but we'll address that in a [later chapter](/security/).*
 
 TODO: install SQLite
 

@@ -124,6 +124,8 @@ get '/:page.html' do |page|
 end
 ```
 
+*Note: The above code has a security vulnerability, but we'll address that in a [later chapter](/security/).*
+
 After restarting your application, check that all the pages still look the same before. This time it's being powered by the ERB templating system, so later we'll be able to take advantage of some of its useful features.
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/480bf7c0cea7183fb26a42c9ac6f9f186b9d0e3b)
