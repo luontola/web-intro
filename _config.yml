@@ -4,5 +4,17 @@ description: Tutorial for learning the basics of web development
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://web-intro.luontola.fi" # the base hostname & protocol for your site
 
+navigation:
+  - title: 1. HTML
+    url: /html/
+  - title: 2. CSS
+    url: /css/
+  - title: 3. Templating
+    url: /templating/
+  - title: 4. Databases
+    url: /databases/
+  - title: 5. Security
+    url: /security/
+
 # Build settings
 markdown: redcarpet
