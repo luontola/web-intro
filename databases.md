@@ -91,21 +91,86 @@ $comments << {
 
 *Note: The example solution has a security vulnerability, but we'll address that in a [later chapter](/security/).*
 
-TODO: install SQLite
 
-TODO: create DAO
+- (optional) download [SQLite](https://www.sqlite.org/), unpack the `sqlite3` executable somewhere on PATH, try to run command `sqlite3 test.db`
+- install [DataMapper and its dm-sqlite-adapter](http://datamapper.org/getting-started.html)
 
-TODO: initialize database (and instructions how to reset database)
+```
+gem install data_mapper dm-sqlite-adapter
+```
 
-TODO: view database in viewer
+- create the database table using DataMapper, add this code to the beginning of your app
 
-TODO: save comment to database
+```ruby
+require 'data_mapper'
 
-TODO: read commens from database
+DataMapper::Logger.new($stdout, :debug)
+DataMapper.setup(:default, 'sqlite:my-database.db')
 
-TODO: calculate total number of comments (for example for another page)
+class Comment
+  include DataMapper::Resource
+
+  property :id, Serial
+  property :author, String
+  property :message, Text
+end
+
+DataMapper.finalize
+DataMapper.auto_upgrade!
+```
+
+- start your app, check that console contains "CREATE TABLE" and that `my-database.db` file was created to the current directory
+- you can reset the database by removing `my-database.db` or by calling the method `DataMapper.auto_migrate!`
+
+[View solution](https://github.com/orfjackal/web-intro-project/commit/7ecc3c334c1638739e715723bb713d2bb1ac299f)
+
+- install [DB Browser for SQLite][sqlitebrowser]
+- open the `my-database.db` file in DB Browser, see that it contains a `comments` table with the fields we specified using DataMapper
+
+TODO: screenshot
+
+- save comment to database using the following code
+
+```ruby
+Comment.create(
+  :name => params['name'],
+  :comment => params['comment'],
+  :date => DateTime.now
+)
+```
+
+- check with DB Browser that the data was added
+
+TODO: screenshot
+
+[View solution](https://github.com/orfjackal/web-intro-project/commit/4ecec04e19f14b9aa9db4707bd6e16fccf85cf5c)
+
+
+- read comments from database using the following code
+- remove `$comments`
+
+```ruby
+Comment.all(:order => [:date.desc])
+```
+
+- see results, newest should be at top
+
+TODO: screenshot
+
+[View solution](https://github.com/orfjackal/web-intro-project/commit/58e00d040dd690349a86b1bd1e0fb84688bd1a45)
+
+- database gives some extra power in handling the data
+- calculate total number of comments (for example for another page)
+- `Comment.count` returns the number of comments
+- `Comment.count(:date.gt => Time.now - (15 * 60)` returns the number of comments which are newer than 15 minutes
+
+TODO: screenshot
+
+[View solution](https://github.com/orfjackal/web-intro-project/commit/24d24573e294081346063722869b2334abbe3157)
+
 
 [sinatra-templates]: http://www.sinatrarb.com/intro.html#Views%20/%20Templates
 [ruby-datetime]: http://docs.ruby-lang.org/en/2.2.0/DateTime.html
 [ruby-strftime]: http://docs.ruby-lang.org/en/2.2.0/DateTime.html#method-i-strftime
 [ruby-array]: http://docs.ruby-lang.org/en/2.2.0/Array.html
+[sqlitebrowser]: http://sqlitebrowser.org/
