@@ -120,7 +120,7 @@ If we would create our own templating system for every project, we would get no 
 
 ```ruby
 get '/:page.html' do |page|
-  erb page.to_sym
+  erb page
 end
 ```
 
