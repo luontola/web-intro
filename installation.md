@@ -7,7 +7,7 @@ permalink: /installation/
 # New Short Instructions
 
 1. Install a programmer's text editor such as [Atom](https://atom.io/)
-2. Install [Ruby](https://www.ruby-lang.org/)
+2. Install the Ruby programming language
   * On Windows, install [Ruby **2.1** using RubyInstaller](http://dl.bintray.com/oneclick/rubyinstaller/rubyinstaller-2.1.7.exe)
     <ul>
     <li>Select the option "Add Ruby executables to your PATH" in the installer</li>
