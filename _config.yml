@@ -5,6 +5,8 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://web-intro.luontola.fi" # the base hostname & protocol for your site
 
 navigation:
+  - title: 0. Installation
+    url: /installation/
   - title: 1. HTML
     url: /html/
   - title: 2. CSS
