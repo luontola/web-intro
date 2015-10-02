@@ -28,7 +28,7 @@ As shown above, give the images a unique class and use CSS to make them look lik
 
 ## Don't Repeat Yourself
 
-In programming we have a principle called [Don't Repeat Yourself (DRY)][dry] which says that "every piece of knowledge must have a single, unambiguous, authoritative representation within a system." If we follow that principle, our code will be easier to understand and modify.
+In programming we have a principle called [Don't Repeat Yourself (DRY)][dry] which says that *"every piece of knowledge must have a single, unambiguous, authoritative representation within a system."* If we follow that principle, our code will be easier to understand and modify.
 
 Our little web site is already breaking the DRY principle. Both of our pages are repeating the HTML for the layout and navigation; adding another page would require changing the navigation on every page. Additionally the pictures page has lots of similar `<img>` tags with just the URL changing. To solve this problem, we will introduce *templating*, so that all the common HTML will be in one place.
 
@@ -37,9 +37,19 @@ Our little web site is already breaking the DRY principle. Both of our pages are
 
 This far we have created our site with just static HTML pages, but in order to use templates, we must create a web server which will generate the HTML that will be shown to the user.
 
-We will use the [Ruby][ruby] programming language to create the web server. If you haven't yet installed Ruby, you should do it now.
+We will use the [Ruby][ruby] programming language and the [Sinatra][sinatra] web framework to create the web server. Follow the [installation instructions](/installation) to install Ruby and Sinatra if you haven't yet done so.
 
-[Sinatra][sinatra] is a framework for making web applications in Ruby. Follow the [instructions](/installation) to install the Ruby language and Sinatra, create a minimal web application and then run it. It should start a web server on your own machine in port 4567. To view it, visit <http://localhost:4567/hi> in your web browser.
+Create a file called `app.rb` and put the following code in it.
+
+```ruby
+require 'sinatra'
+
+get '/hi' do
+  "Hello World!"
+end
+```
+
+Then run the command `ruby app.rb` in your terminal. It should start a web server on your own machine in port 4567. To view it, visit <http://localhost:4567/hi> in your web browser. Finally stop the web server by pressing Ctrl+C.
 
 ![Your first web server is working](/screenshots/sinatra-hello-world.png)
 
