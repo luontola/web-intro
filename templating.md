@@ -66,21 +66,21 @@ You should make sure that people can visit your web site through its front page,
 
 ## Generating a page dynamically
 
-The idea of a templating system is to dynamically generate the HTML that will be shown to the user. To make sure that we understand how to generate pages dynamically with Sinatra, add the following code for a [parameterized route][sinatra-routes] to your application and then visit <http://localhost:4567/my-page> (Note: no `.html` at the end of the URL because else Sinatra would just serve the static file directly)
-
-TODO: introduce parameterized routes and IO.read separately
+The idea of a templating system is to dynamically generate the HTML that will be shown to the user. To make sure that we understand how to generate pages dynamically with Sinatra, add the following two routes to your application.
 
 ```ruby
-get '/:page' do |page|
-  "stuff before" + IO.read('public/' + page + '.html') + "stuff after"
+get '/foo' do
+  IO.read('public/my-page.html')
+end
+
+get '/:page' do
+  "You're on page " + params['page']
 end
 ```
 
-![Dynamically generated HTML page](/screenshots/templating-dynamic-page.png)
+When you visit <http://localhost:4567/foo>, you should see exactly the same content as on <http://localhost:4567/my-page.html>. The [`IO.read`][ruby-read] method will read a file and return it as a string.
 
-Check the source code of the page in your web browser to make sure that it shows the HTML of `my-page.html` but with some stuff added to the top and bottom of the HTML file.
-
-![Dynamically generated HTML page](/screenshots/templating-dynamic-page-source.png)
+When you visit <http://localhost:4567/bar>, you should see the text "You're on page bar". On <http://localhost:4567/gazonk> you should see "You're on page gazonk". This is an example of a [parameterized route][sinatra-routes] which can serve multiple pages. Note that the `/:page` route must be after the `/foo` route, because Sinatra will use the first route that matches the HTTP request.
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/a9b6ff30ae8ee5fc247a0609542489878ee327dd)
 
@@ -306,6 +306,7 @@ Most of the time when you notice some repetition in your code, you can extract t
 [sinatra-routes]: http://www.sinatrarb.com/intro.html#Routes
 [sinatra-templates]: http://www.sinatrarb.com/intro.html#Views%20/%20Templates
 [erb]: http://www.stuartellis.eu/articles/erb/
+[ruby-read]: http://docs.ruby-lang.org/en/2.2.0/IO.html#method-c-read
 [ruby-glob]: http://docs.ruby-lang.org/en/2.2.0/Dir.html#method-c-glob
 [ruby-map]: http://docs.ruby-lang.org/en/2.2.0/Enumerable.html#method-i-map
 [ruby-sub]: http://docs.ruby-lang.org/en/2.2.0/String.html#method-i-sub
