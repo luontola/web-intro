@@ -85,7 +85,7 @@ Change your `app.rb` to [redirect][sinatra-redirect] the path `/` to `/my-page.h
 [View solution](https://github.com/orfjackal/web-intro-project/commit/60c9efb2b60ef39ee901edbf293cb76d23c79f41)
 
 
-## Generating a page dynamically
+## Generating pages dynamically
 
 The idea of a templating system is to dynamically generate the HTML that will be shown to the user. To make sure that we understand how to generate pages dynamically with Sinatra, add the following two routes to your application.
 
@@ -101,16 +101,18 @@ end
 
 When you visit <http://localhost:4567/foo>, you should see exactly the same content as on <http://localhost:4567/my-page.html>. The [`IO.read`][ruby-read] method will read a file and return it as a string.
 
-When you visit <http://localhost:4567/bar>, you should see the text "You're on page bar". On <http://localhost:4567/gazonk> you should see "You're on page gazonk". This is an example of a [parameterized route][sinatra-routes] which can serve multiple pages. Note that the `/:page` route must be after the `/foo` route, because Sinatra will use the first route that matches the HTTP request.
+When you visit <http://localhost:4567/bar>, you should see the text "You're on page bar". On <http://localhost:4567/gazonk> you should see "You're on page gazonk". This is an example of a [parameterized route][sinatra-routes] which can serve multiple pages. Note that the `/:page` route must be after the `/foo` route, because Sinatra will use the first route that matches the path in the HTTP request.
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/a9b6ff30ae8ee5fc247a0609542489878ee327dd)
 
 
 ## Bare bones templating system
 
-Now that we have a proof-of-concept for dynamically generating HTML and for reading existing HTML files, we can use that to create a very basic templating system. Create a directly `views` and move all your HTML files from the `public` directory there (`views` is Sinatra's default directory for templates, though that doesn't matter yet). Create empty files `layout-top.html` and `layout-bottom.html` there as well.
+Now that we have a proof-of-concept for dynamically generating HTML and for reading existing HTML files, we can use that to create a very basic templating system.
 
-Then change your application to have the following route and make sure that your application still looks the same as before. The difference is that now the pages are no more served as static files, because they are no more in the `public` directory, but they are generated dynamically using this code.
+Create a `views` directory and move all your HTML files from the `public` directory there (`views` is Sinatra's default directory for templates). Don't move the CSS files. Create empty files `layout-top.html` and `layout-bottom.html` in the `views` directory.
+
+Then change your application to have the following route and make sure that your application still looks the same as before (you can remove the earlier proof-of-concept). The difference is that now the pages are no more served as static files, because they are no more in the `public` directory, but they are generated dynamically using this code.
 
 ```ruby
 get '/:page.html' do
@@ -135,7 +137,7 @@ If we would create our own templating system for every project, we would get no 
 
 * Combine `layout-top.html` and `layout-bottom.html` into a file `layout.erb`, and add the `<%= yield %>` code where the page content should be inserted
 * Rename the extension of the `.html` pages in `views` directory to `.erb`
-* Change your route to call the `erb` method:
+* Change the `/:page.html` route to call the `erb` method:
 
 ```ruby
 get '/:page.html' do
@@ -166,7 +168,7 @@ We will need to fix the navigation links which used to point to `my-page.html`. 
 
 The recommended solution is to URLs relative to the root of the site, i.e. `<a href="/">` and `<a href="/pictures.html">`. Relative URLs which don't start with `/` are relative to the current directory; a navigation menu which uses them would not work if the site is organized into subdirectories.
 
-Go change all the URLs in your templates to be relative to the root.
+Go change all the URLs in your templates to be relative to the root. Test that all the links in your navigation menu work.
 
 ![Front page at the root](/screenshots/templating-index.png)
 
@@ -191,7 +193,7 @@ get '/pictures.html' do
 end
 ```
 
-Then change `pictures.erb` to use the *local variable* `picture_urls` which the above route gave the template. This is a *for loop* which repeats the contained HTML for every element in the `picture_urls` list, so that on every iteration the `url` variable has a different element of the list.
+Then change `pictures.erb` to use the *local variable* `picture_urls` which the above route gave the template. This is a *for loop* which repeats the contained HTML for every element in the `picture_urls` list, so that on every iteration the `url` variable refers to a different element of the list.
 
 ```html
 <% for url in picture_urls %>
@@ -208,9 +210,9 @@ Now check that the pictures page still looks the same as before. Also try adding
 
 There is still some work involved in adding the picture URLs by hand to the list in the route. We can simplify that by making our application generate the list automatically based on what pictures there are in a directory.
 
-Create a directory for the pictures under the `public` directory and save there all the pictures in your list.
+Create a `pictures` directory under the `public` directory and save there all the pictures in your list.
 
-To find out how to do something in a particular programming language, google for "[name of the language] [what you want to do]", which in this case would be "ruby list files in directory". But even if you find some snippet of code on the Internet, you should understand what it does, for example by checking the official reference documentation, before using it. Or if you know the language and its standard library already a bit, you can probably start from the reference documentation and find what you need.
+To find out how to do something in a particular programming language, you can google for "[name of the language] [what you want to do]", which in this case would be "ruby list files in directory". But even if you find some snippet of code on the Internet, you should understand what it does, for example by checking the official reference documentation, before using it. Or if you know the language and its standard library already a bit, you can probably start from the reference documentation and find there what you need.
 
 In this case you can get a list of files in the `public/pictures` directory using the following code. Have a look at the documentation for the methods [glob][ruby-glob], [map][ruby-map] and [sub][ruby-sub] to understand what each of them does individually, and then try to understand this code as a whole.
 
@@ -246,9 +248,9 @@ erb :pictures, :locals => {:picture_urls => picture_urls, :title => "Lovely Pict
 
 ## Sitemap for titles
 
-Add one more page to your web site, for example a page about your life story. It will contain just plain HTML, so it will use the `/:page.html` route. Now we have a problem - multiple pages can be rendered by the `/:page.html` route, so how can it decide what to make the page title?
+Add one more page to your web site, for example a page about your life story. It will contain just plain HTML, so it will use the `/:page.html` route. Now we have a problem - multiple pages can be rendered by the `/:page.html` route, so how can it decide what to make the page title? One solution is to store a list of all the pages and their titles in a [*hash*][ruby-hash] (also known as a *dictionary* or *map*).
 
-One solution is to store a list of all the pages and their titles in a [hash][ruby-hash] (also known as a dictionary or map). Add the following code to your application, outside all the routes, after which you can refer its contents using the keys of the hash: `PAGES[:pictures]`
+Add the following code to your application, outside all the routes, after which you can refer its contents using the *keys* of the hash: `PAGES[:pictures]`
 
 ```ruby
 PAGES = {
@@ -272,7 +274,9 @@ end
 
 ## Sitemap for navigation
 
-Now that we have a sitemap of all the pages, we can use it to also generate our navigation menu, so that we can avoid having to update the layout template whenever we add more pages. Pass in the `PAGES` hash to the templates as a local variable `pages` and update your navigation menu to be generated dynamically like this:
+Now that we have a sitemap of all the pages, we can use it to also generate our navigation menu, so that we can avoid having to update the layout template whenever we add more pages.
+
+Pass in the `PAGES` hash to the templates as a local variable `pages` and update your navigation menu to be generated dynamically like this:
 
 ```html
 <nav class="navigation">
@@ -285,6 +289,8 @@ Now that we have a sitemap of all the pages, we can use it to also generate our 
 ```
 
 Check that the navigation menu and all of its links still work.
+
+TODO: screenshot, the navigation menu and page titles are now in sync
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/bd1811425811bcd45db76c8d57482b7f47cb4851)
 
@@ -303,6 +309,10 @@ end
 With this helper method the rest of the code becomes much simpler.
 
 ```ruby
+get '/' do
+  render_page :index
+end
+
 get '/pictures.html' do
   picture_urls = Dir.glob('public/pictures/**').map { |path| path.sub('public', '') }
   render_page :pictures, {:picture_urls => picture_urls}
