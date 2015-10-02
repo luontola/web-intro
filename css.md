@@ -14,7 +14,7 @@ At first let's make the default text look a bit nicer by using the [Pure](http:/
 
 ![Pure](/screenshots/css-pure.png)
 
-TODO: link to solution
+[View solution](https://github.com/orfjackal/web-intro-project/commit/e082cbebd4e5c0d286f2c54707a0bde55b71d311)
 
 
 ## Custom styles
@@ -43,7 +43,7 @@ This CSS defines what `<h1>` elements and any elements with the attribute `class
 
 ![Pure](/screenshots/css-basics.png)
 
-TODO: link to solution
+[View solution](https://github.com/orfjackal/web-intro-project/commit/e071ea21ad1602c7b66c4fc07ef0590be7ec1a6c)
 
 
 ## Prepare for layout fiddling
@@ -76,7 +76,7 @@ To get ready for fiddling with CSS layouts, let's make the edges of the `.naviga
 
 ![Layout elements highlighted](/screenshots/css-layout-blocks-before.png)
 
-TODO: link to solution
+[View solution](https://github.com/orfjackal/web-intro-project/commit/bb0619ccbebea384e1b14f97b389fa7dc16d0450)
 
 
 ## Get the layout right
@@ -85,7 +85,7 @@ Now experiment with the CSS properties [position][css-position], [left][css-left
 
 ![Layout elements where we want them](/screenshots/css-layout-blocks-after.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/a87bf9eb64be3a6b840251f2431400d5bd1fff12)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/96653030289ee58042e201007a079be71c010912)
 
 
 ## Make it pretty
@@ -107,7 +107,7 @@ Google for "css vertical navigation bar" to find out how to make it look nicer; 
 
 ![Finished layout styling](/screenshots/css-layout-done.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/42e94566c051ec08df4ed6e633993b44f57af07d)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/e94be342696b26393c63295a1a41296afca94889)
 
 
 [css]: https://developer.mozilla.org/en-US/docs/Web/CSS

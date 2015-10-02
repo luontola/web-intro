@@ -23,7 +23,7 @@ As shown above, give the images a unique class and use CSS to make them look lik
 
 ![Photo album](/screenshots/templating-album.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/42e94566c051ec08df4ed6e633993b44f57af07d)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/261d715d864c2252cc1a29f6523509cccc16e861)
 
 
 ## Don't Repeat Yourself
@@ -53,7 +53,7 @@ Then run the command `ruby app.rb` in your terminal. It should start a web serve
 
 ![Your first web server is working](/screenshots/sinatra-hello-world.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/8254bc27671ac4a3236a381878bc3dcb8d3f70d5)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/99e2f0061a1875c33dca1b0881f9c0d559b35fc4)
 
 
 ### Making file changes visible
@@ -69,7 +69,7 @@ Create a directory called `public` and move your HTML and CSS files there. Then 
 
 ![Your first web server is working](/screenshots/sinatra-static-files.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/542566800ca115323affd8e25f548e23e7c67008)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/a96758269aea70c81e8e245320ca5f0cda529c2b)
 
 
 ## Fixing the front page
@@ -82,7 +82,7 @@ Change your `app.rb` to [redirect][sinatra-redirect] the path `/` to `/my-page.h
 
 ![Front page redirect works](/screenshots/sinatra-redirect.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/60c9efb2b60ef39ee901edbf293cb76d23c79f41)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/246ac703f710ae6538c48787bae937c227e9452d)
 
 
 ## Generating pages dynamically
@@ -103,7 +103,7 @@ When you visit <http://localhost:4567/foo>, you should see exactly the same cont
 
 When you visit <http://localhost:4567/bar>, you should see the text "You're on page bar". On <http://localhost:4567/gazonk> you should see "You're on page gazonk". This is an example of a [parameterized route][sinatra-routes] which can serve multiple pages. Note that the `/:page` route must be after the `/foo` route, because Sinatra will use the first route that matches the path in the HTTP request.
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/a9b6ff30ae8ee5fc247a0609542489878ee327dd)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/d94fc393487def0e1e1421166b8b3b749774c418)
 
 
 ## Bare bones templating system
@@ -124,7 +124,7 @@ end
 
 Now you can move the top and bottom parts of the code from your individual HTML pages to the `layout-top.html` and `layout-bottom.html` files. Restart your application and check that it still looks the same as before.
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/1ed8c59fea1452a8f6b6802b5408c690318eb198)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/595a09999b3ce0165792712929937c60fc179542)
 
 Now you have managed to apply the DRY principle and in the future it will be enough to change just one place when you change the layout or add pages to the navigation menu. You also understand the basic idea of how templating works. Next let's use a proper templating system.
 
@@ -149,7 +149,7 @@ end
 
 After restarting your application, check that all the pages still look the same before. This time it's being powered by the ERB templating system, so later we'll be able to take advantage of some of its useful features.
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/480bf7c0cea7183fb26a42c9ac6f9f186b9d0e3b)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/1d27220c53c2633b79bd32ddbc8975c916b1e3c6)
 
 
 ## Front page at the root
@@ -172,7 +172,7 @@ Go change all the URLs in your templates to be relative to the root. Test that a
 
 ![Front page at the root](/screenshots/templating-index.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/9fb70ea83b984888bb39e66e0e8fd22e227a6de6)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/b31e68c559dd84094554c07f98332881d31528a3)
 
 
 ## Parameterize the template with a list of pictures
@@ -203,7 +203,7 @@ Then change `pictures.erb` to use the *local variable* `picture_urls` which the 
 
 Now check that the pictures page still looks the same as before. Also try adding a couple more pictures to make sure that the template works how it should.
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/aa454fcbe2d49f9bd5c2c06631adddf651bfce58)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/e27600012a588173841e88d9802405b58bcb0707)
 
 
 ## Show all pictures from a directory
@@ -222,7 +222,7 @@ picture_urls = Dir.glob('public/pictures/**').map { |path| path.sub('public', ''
 
 Check that the pictures page still works. Try adding a couple more pictures - much easier now, isn't it?
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/4d21a58ecc1f5d00b9115188bac32d8c3f4ab92b)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/49556157d058a5ff6b7c58c167602732a9f7ed37)
 
 
 ## Parameterizing the page title
@@ -243,7 +243,7 @@ erb :pictures, :locals => {:picture_urls => picture_urls, :title => "Lovely Pict
 
 ![Parameterized page title](/screenshots/templating-parameterized-title.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/5edefe49b3a8d9ec92fa5627f87024afaed9c6fd)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/70d2d4cc9440147ca718e3ce3a64d0d16e181cb0)
 
 
 ## Sitemap for titles
@@ -269,7 +269,7 @@ get '/:page.html' do
 end
 ```
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/f63a6cc1c01afe211d9f755ba0c86f69a5ae1e09)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/ee2a9760fbfa3dac04780c2294430a3bcebf3214)
 
 
 ## Sitemap for navigation
@@ -292,7 +292,7 @@ Check that the navigation menu and all of its links still work.
 
 TODO: screenshot, the navigation menu and page titles are now in sync
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/bd1811425811bcd45db76c8d57482b7f47cb4851)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/b81b3ce39bf919cd7b88c890f45bf212cac637c0)
 
 
 ## Helper method for rendering templates
@@ -325,7 +325,7 @@ end
 
 Most of the time when you notice some repetition in your code, you can extract the common code into its own method, which makes the code easier to understand and change.
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/79f3e1113d08a209db91570f1362ba85ccbfbbc9)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/dc60a1ea4e5e01ff83acd13d6378ba80802779a6)
 
 
 [html-img]: https://developer.mozilla.org/en/docs/Web/HTML/Element/img

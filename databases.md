@@ -31,7 +31,7 @@ Create a guestbook page with the following form.
 
 ![Form for writing comments](/screenshots/comments-form.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/796018db7c92e03d10b72a453632a95743d4e572)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/5b8b925bd57218220afcf71c9bfaaa41294e2fe0)
 
 
 ### Receiving form parameters
@@ -51,7 +51,7 @@ end
 
 Now when you submit a form, it should print to the terminal where your application is running something like `{"name"=>"Ruby", "comment"=>"This is fun!"}`.
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/b4e967b6399704cf96ad541c231ebb6b7dac2aa3)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/f69218f410146b31e507e1011f8ffc2898d82bf8)
 
 
 ## Storing comments in a text file
@@ -71,7 +71,7 @@ end
 
 Try to submit some comments to the guestbook and check that they are added to `comments.txt`.
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/93838d36bd66d22a3d6363abfb49dba0ef888498)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/10c8817bda8dddee2a973c34901450d4f8d40510)
 
 
 ### Reading from the text file
@@ -84,7 +84,7 @@ comments = IO.read('comments.txt') if File.exist?('comments.txt')
 
 ![Show comments, bare bones solution](/screenshots/comments-txt.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/1db02859480c0a2bccfcf748d9380ef66d3803a9)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/f8a760541b7673f2e25da31a7ca8d6aea8c0f54d)
 
 *Note: The example solution has a security vulnerability, but we'll address that in a [later chapter](/security/).*
 
@@ -119,7 +119,7 @@ Try adding some comments and write some CSS to make it look the way you like it.
 
 ![Comments rendered using templates](/screenshots/comments-html.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/0098815dfb61eae146992e1dd33e45b552ad9255)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/55162e260f369deeceba6926c979a948db2af2cf)
 
 
 ## Storing comments in memory
@@ -148,7 +148,7 @@ Finally update the template `guestbook.rb` to render all the comments similar to
 
 Check that adding comments works.
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/243a1734f0b048eea92efc702a56767d88263034)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/6872f8f483706fc7dd1b3184d55a51550986b72b)
 
 *Note: The example solution has a security vulnerability, but we'll address that in a [later chapter](/security/).*
 
@@ -189,7 +189,7 @@ Use [DB Browser for SQLite][sqlitebrowser] to open the `my-database.db` database
 
 ![The database structure which was created](/screenshots/database-structure.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/7ecc3c334c1638739e715723bb713d2bb1ac299f)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/11d7673c40fb7da0a39271ea69b340effda7d7e2)
 
 
 ### Writing to the database
@@ -208,7 +208,7 @@ Go add some comments to the guestbook. Then use DB Browser to browse the data in
 
 ![Some data inside the database](/screenshots/database-data.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/4ecec04e19f14b9aa9db4707bd6e16fccf85cf5c)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/9b4602dfe6f0967ac990baf8c9e18a6e8c32a11d)
 
 
 ### Reading from the database
@@ -223,7 +223,7 @@ Check what the guestbook page looks like now. It should contain all the comments
 
 ![Showing comments from the database](/screenshots/database-guestbook.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/58e00d040dd690349a86b1bd1e0fb84688bd1a45)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/19a89f7ebd45db0ea15e760cc05980fe8cce6a49)
 
 
 ## Calculating the number of comments using a database
@@ -236,7 +236,7 @@ Use `Comment.count(:date.gt => Time.now - (15 * 60))` to get the number of comme
 
 ![Showing the number of comments](/screenshots/database-counts.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/24d24573e294081346063722869b2334abbe3157)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/0b540c4b63eb562340f07a033e325f180fb1684d)
 
 
 [web-form]: https://en.wikipedia.org/wiki/Form_(HTML)

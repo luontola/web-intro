@@ -31,7 +31,7 @@ It should look like this:
 
 ![Minimal HTML page](/screenshots/html-minimal.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/389109b2739774161919054e5de7818029d7cac6)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/a44ee69891389e49eee70ede6323cd9c387425c5)
 
 
 ## Basic HTML elements
@@ -40,7 +40,7 @@ Edit the page you just created to say a few things about yourself. Create a head
 
 ![Basic HTML Elements](/screenshots/html-basics.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/e34cc4d65dafa0cbc5738cf48b21f254f820a482)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/9be6966443affc4395cb5327ee411d5251026dd9)
 
 
 [html]: https://developer.mozilla.org/en-US/docs/Web/HTML
