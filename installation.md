@@ -8,15 +8,17 @@ permalink: /installation/
 
 1. Install a programmer's text editor such as [Atom](https://atom.io/)
 2. Install [Ruby](https://www.ruby-lang.org/)
-  * On Windows, install [Ruby 2.1 using RubyInstaller](http://dl.bintray.com/oneclick/rubyinstaller/rubyinstaller-2.1.7.exe)
-    * Select the option "Add Ruby executables to your PATH" in the installer
-    * Ruby 2.2 is not yet supported by dm-sqlite-adapter (do_sqlite3-0.10.16 does not include the binary for it), so  **you must use Ruby 2.1** or earlier
+  * On Windows, install [Ruby **2.1** using RubyInstaller](http://dl.bintray.com/oneclick/rubyinstaller/rubyinstaller-2.1.7.exe)
+    <ul>
+    <li>Select the option "Add Ruby executables to your PATH" in the installer</li>
+    <li>Ruby 2.2 is not yet supported by *dm-sqlite-adapter* (because *do_sqlite3-0.10.16* does not include the binary for it), so  **you must use Ruby 2.1** or earlier</li>
+    </ul>
   * On OS X, install [Homebrew](http://brew.sh/) and then run `brew install ruby`
   * For everything else, see [Installing Ruby](https://www.ruby-lang.org/en/documentation/installation/)
 3. Install [DB Browser for SQLite](http://sqlitebrowser.org/)
 4. Run the following command in your terminal to install [Sinatra](http://www.sinatrarb.com/) and [DataMapper](http://datamapper.org/)  
   `gem install sinatra data_mapper dm-sqlite-adapter`
-5. Save [this script](/test.rb) in a file called `test.rb`, run it using `ruby test.rb` and check that it prints "Database OK" and that you can visit <http://localhost:4567/> with your web browser
+5. Save [this script](/test.rb) in a file called `test.rb`, run it using `ruby test.rb`. If it prints "Database OK" and you can visit <http://localhost:4567/> with your web browser, then you're all done!
 
 If using the database fails, it may be necessary to install [SQLite](https://www.sqlite.org/). On Windows you will need to download the [sqlite-dll package](http://www.sqlite.org/2015/sqlite-dll-win32-x86-3081101.zip) and copy the `sqlite3.dll` file to Ruby's bin directory (e.g. `C:\Ruby21\bin`) or elsewhere on PATH. For everything else, see [How to install SQLite3](http://mislav.uniqpath.com/rails/install-sqlite3/).
 
