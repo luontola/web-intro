@@ -131,9 +131,9 @@ After restarting your application, check that all the pages still look the same 
 
 ## Front page at the root
 
-TODO: consider moving this to the end of this chapter, together with generating the navigation menu
+Before moving on to the next topic, let's clean up our code a little bit. The front page of a site should be at the root path (`/`) and there is a convention to call it the *index* page.
 
-Before moving on to the next topic, let's clean up our code a little bit. The front page of a site should be at the root path (`/`) and there is a convention to call it the *index* page. Rename `my-page.erb` to `index.erb` and change your routes to render it at the root instead of doing a page redirect:
+Rename `my-page.erb` to `index.erb` and change your routes to render it at the root instead of doing a page redirect. This is easy to do now that we have templates.
 
 ```ruby
 get '/' do
@@ -141,9 +141,11 @@ get '/' do
 end
 ```
 
-You will notice that your navigation links won't work anymore because we renamed the page but did not update the navigation. How to make links to the index page when its file name is not shown on the URL? We could use an absolute URL `<a href="http://localhost:4567/">`, but that wouldn't work when we move our site to another domain.
+We will need to fix the navigation links which used to point to `my-page.html`. We could still make link to `<a href="index.html">` but that would leave the ugly `index.html` visible on the address bar. How can we avoid that? We could use an absolute URL `<a href="http://localhost:4567/">`, but that wouldn't work when we move our site to another domain.
 
-The recommended solution is to URLs relative to the root of the site, i.e. `<a href="/">` and `<a href="/pictures.html">`. Relative URLs which don't start with `/` are relative to the current directory; a navigation menu which uses them would not work if the site is organized into subdirectories. Go change all the URLs in your templates to be relative to the root.
+The recommended solution is to URLs relative to the root of the site, i.e. `<a href="/">` and `<a href="/pictures.html">`. Relative URLs which don't start with `/` are relative to the current directory; a navigation menu which uses them would not work if the site is organized into subdirectories.
+
+Go change all the URLs in your templates to be relative to the root.
 
 ![Front page at the root](/screenshots/templating-index.png)
 
