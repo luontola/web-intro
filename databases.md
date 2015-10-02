@@ -9,6 +9,9 @@ TODO: explain what databases are
 
 - we implement a commenting feature (later could be expanded to comments per picture; left as an exercise for the reader)
 
+
+## Web forms
+
 - create guestbook page and a form for adding comments
 
 ![Form for writing comments](/screenshots/comments-form.png)
@@ -23,6 +26,9 @@ TODO: explain forms and POST
 - try to submit, should print something like `{"name"=>"Ruby", "comment"=>"This is fun!"}`
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/b4e967b6399704cf96ad541c231ebb6b7dac2aa3)
+
+
+## Storing comments in a text file
 
 - append comments to a text file, check that lines are added to it when you submit the form
 
@@ -46,6 +52,9 @@ comments = IO.read('comments.txt') if File.exist?('comments.txt')
 
 *Note: The example solution has a security vulnerability, but we'll address that in a [later chapter](/security/).*
 
+
+## Rendering comments using templates
+
 - render comments using templates, will need set the [layout option][sinatra-templates] to `false` because otherwise Sinatra will try to wrap the template in `layout.rb`
 - [DateTime][ruby-datetime] can be rendered as text using [strftime][ruby-strftime], for example `date.strftime('%Y-%m-%d %H:%M')`
 
@@ -62,6 +71,9 @@ comment = erb :comment, :layout => false, :locals => {
 [View solution](https://github.com/orfjackal/web-intro-project/commit/0098815dfb61eae146992e1dd33e45b552ad9255)
 
 *Note: The example solution has a security vulnerability, but we'll address that in a [later chapter](/security/).*
+
+
+## Storing comments in memory
 
 - now cannot easily edit or remove comments, or change the representation of old comments
 - switch to using in-memory data structure; doesn't persist between restarts, but lets us create the templates and interfaces
@@ -91,6 +103,10 @@ $comments << {
 
 *Note: The example solution has a security vulnerability, but we'll address that in a [later chapter](/security/).*
 
+
+## Storing comments in a database
+
+### Creating the database
 
 - (optional) download [SQLite](https://www.sqlite.org/), unpack the `sqlite3` executable somewhere on PATH, try to run command `sqlite3 test.db`
 - install [DataMapper and its dm-sqlite-adapter](http://datamapper.org/getting-started.html)
@@ -129,6 +145,8 @@ DataMapper.auto_upgrade!
 
 TODO: screenshot
 
+### Writing to the database
+
 - save comment to database using the following code
 
 ```ruby
@@ -146,6 +164,8 @@ TODO: screenshot
 [View solution](https://github.com/orfjackal/web-intro-project/commit/4ecec04e19f14b9aa9db4707bd6e16fccf85cf5c)
 
 
+### Reading from the database
+
 - read comments from database using the following code
 - remove `$comments`
 
@@ -158,6 +178,9 @@ Comment.all(:order => [:date.desc])
 TODO: screenshot
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/58e00d040dd690349a86b1bd1e0fb84688bd1a45)
+
+
+## Calculating the number of comments using a database
 
 - database gives some extra power in handling the data
 - calculate total number of comments (for example for another page)
