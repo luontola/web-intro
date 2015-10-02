@@ -11,7 +11,7 @@ permalink: /installation/
   * On Windows, install [Ruby **2.1** using RubyInstaller](http://dl.bintray.com/oneclick/rubyinstaller/rubyinstaller-2.1.7.exe)
     <ul>
     <li>Select the option "Add Ruby executables to your PATH" in the installer</li>
-    <li>Ruby 2.2 is not yet supported by *dm-sqlite-adapter* (because *do_sqlite3-0.10.16* does not include the binary for it), so  **you must use Ruby 2.1** or earlier</li>
+    <li>Ruby 2.2 is not yet supported by *dm-sqlite-adapter* (because *do_sqlite3-0.10.16* does not include the binary for it), so **if you are using Windows you must use Ruby 2.1 or earlier**</li>
     </ul>
   * On OS X, install [Homebrew](http://brew.sh/) and then run `brew install ruby`
   * For everything else, see [Installing Ruby](https://www.ruby-lang.org/en/documentation/installation/)
