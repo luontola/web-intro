@@ -15,15 +15,13 @@ permalink: /installation/
     </ul>
   * On OS X, install [Homebrew](http://brew.sh/) and then run `brew install ruby`
   * For everything else, see [Installing Ruby](https://www.ruby-lang.org/en/documentation/installation/)
-3. Install [DB Browser for SQLite](http://sqlitebrowser.org/)
-4. Run the following command in your [terminal][terminal] (known as the [Command Prompt][winprompt] on Windows) to install [Sinatra](http://www.sinatrarb.com/) and [DataMapper](http://datamapper.org/)  
+3. On Windows, download the [sqlite-dll package](http://www.sqlite.org/2015/sqlite-dll-win32-x86-3081101.zip) and copy the `sqlite3.dll` file to Ruby's bin directory (e.g. `C:\Ruby21\bin`).
+4. Install [DB Browser for SQLite](http://sqlitebrowser.org/)
+5. Run the following command in your [terminal][terminal] (known as the [Command Prompt][winprompt] on Windows) to install [Sinatra](http://www.sinatrarb.com/) and [DataMapper](http://datamapper.org/)  
   `gem install sinatra data_mapper dm-sqlite-adapter --no-ri --no-rdoc`
-5. While the computer is in the middle of performing the command, a cursor will blink on an empty line. When the command is completed, there will be stuff in front of the blinking cursor. 
-6. Save [this test.rb file](/test.rb) in your download folder, run the command `ruby test.rb` in your [terminal][terminal], either by typing it or copy-pasting it in (ensure you have navigated into the same folder (see instructions for [Windows][winnavigation] and [Mac/Linux][macnavigation]) as where you saved the test.rb file).
-7. If the [terminal][terminal] says "`Database OK`" and you can visit <http://localhost:4567/> with your web browser (e.g. [Firefox](https://www.mozilla.org/en-US/firefox/new/), Safari, or similar) and if it says "`Web server OK`", then you're all done!
-
-If using the database fails, it may be necessary to install [SQLite](https://www.sqlite.org/). On Windows you will need to download the [sqlite-dll package](http://www.sqlite.org/2015/sqlite-dll-win32-x86-3081101.zip) and copy the `sqlite3.dll` file to Ruby's bin directory (e.g. `C:\Ruby21\bin`) or elsewhere on PATH. For everything else, see [How to install SQLite3](http://mislav.uniqpath.com/rails/install-sqlite3/).
-
+6. While the computer is in the middle of performing the command, a cursor will blink on an empty line. When the command is completed, there will be stuff in front of the blinking cursor.
+7. Save [this test.rb file](/test.rb) in your download folder, run the command `ruby test.rb` in your [terminal][terminal], either by typing it or copy-pasting it in (ensure you have navigated into the same folder (see instructions for [Windows][winnavigation] and [Mac/Linux][macnavigation]) as where you saved the test.rb file).
+8. If the [terminal][terminal] says "`Database OK`" and you can visit <http://localhost:4567/> with your web browser (e.g. [Firefox](https://www.mozilla.org/en-US/firefox/new/), Safari, or similar) and if it says "`Web server OK`", then you're all done!
 
 [terminal]: http://askubuntu.com/questions/38162/what-is-a-terminal-and-how-do-i-open-and-use-it
 [macnavigation]: http://askubuntu.com/questions/232442/how-do-i-navigate-between-directories-in-terminal
