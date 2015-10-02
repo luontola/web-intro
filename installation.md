@@ -13,7 +13,7 @@ permalink: /installation/
     <li>Select the option "Add Ruby executables to your PATH" in the installer</li>
     <li>Ruby 2.2 is not yet supported by *dm-sqlite-adapter* (because *do_sqlite3-0.10.16* does not include the binary for it), so **if you are using Windows you must use Ruby 2.1 or earlier**</li>
     </ul>
-  * On OS X, install [Homebrew](http://brew.sh/) by following the instructions on [its homepage](http://brew.sh/), and then, in your [terminal][terminal], run the command `brew install ruby`
+  * On OS X, install [Homebrew](http://brew.sh/) by following the instructions on [its homepage](http://brew.sh/), and then, in your [terminal][terminal], run the command `brew install ruby`, and **after installing Ruby, be sure to restart the terminal app**.
   <ul> <li> When it is asking for your password, write the password you use for signing in to your computer. **Note!** Typing your password will not show up as any characters in the prompt.</li></ul>
   * For everything else, see [Installing Ruby](https://www.ruby-lang.org/en/documentation/installation/)
 3. On Windows, download the [sqlite-dll package](http://www.sqlite.org/2015/sqlite-dll-win32-x86-3081101.zip) and copy the `sqlite3.dll` file to Ruby's bin directory (e.g. `C:\Ruby21\bin`).
