@@ -5,6 +5,11 @@ permalink: /templating/
 next: /databases/
 ---
 
+In this chapter you will learn how to create a web server with Ruby, and how to use templates and a bit of programming to avoid repeating yourself.
+
+
+## Pictures page
+
 Last time we created a navigation menu with a link to the `pictures.html` page, but that page doesn't yet exist. Create a copy of `my-page.html`, name it `pictures.html`, and change its title and heading. Find about a dozen images which you like from [Public Domain Pictures](http://www.publicdomainpictures.net/) and add their thumbnails as images on your `pictures.html` using the [`<img>`][html-img] tag.
 
 ```html
