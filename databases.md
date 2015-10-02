@@ -14,6 +14,9 @@ This this chapter we will implement a commenting feature. Later it could be expa
 
 Web applications can receive input from the user though [web forms][web-form]. A web form is marked by a [`<form>`][html-form] element which can contain for example [`<input>`][html-input] text fields for the user to write into and a [`<button>`][html-button] for submitting the form.
 
+
+### Guestbook page
+
 Create a guestbook page with the following form.
 
 ```html
@@ -58,7 +61,7 @@ Let's keep things simple and implement as much as we can without a database. Tha
 
 ### Writing to the text file
 
-Use the following code in your route to append the comment and the name of its author into a text file.
+Use the following code in your `/add-comment` route to append the comment and the name of its author to a text file.
 
 ```ruby
 File.open('comments.txt', 'a') do |f|
@@ -152,9 +155,9 @@ Check that adding comments works.
 
 ## Storing comments in a database
 
-The commenting feature is now working nicely and the code is easy to change, but when you restart the server (try it), all the comments will be lost. To keep the data save and the code maintainable, a database is needed.
+The commenting feature is now working nicely and the code is easy to change, but when you restart the server (try it), all the comments will be lost. To keep the data safe and the code maintainable, a database is needed.
 
-We will use the [SQLite](https://www.sqlite.org/) database, the [DataMapper](http://datamapper.org/) library for accessing SQLite in Ruby, and [DB Browser for SQLite](http://sqlitebrowser.org/) as a UI for seeing inside the database. If you haven't yet installed them, follow the [installation guide](/installation/) and come back here.
+We will use the [SQLite](https://www.sqlite.org/) database, the [DataMapper](http://datamapper.org/) library for accessing SQLite in Ruby, and [DB Browser for SQLite](http://sqlitebrowser.org/) as a UI for seeing inside the database. If you haven't yet installed them, follow the [installation guide](/installation/) and come then back here.
 
 
 ### Creating the database
@@ -171,8 +174,9 @@ class Comment
   include DataMapper::Resource
 
   property :id, Serial
-  property :author, String
-  property :message, Text
+  property :name, String
+  property :comment, Text
+  property :date, DateTime
 end
 
 DataMapper.finalize
@@ -183,7 +187,7 @@ When you restart your application after this change, it should print a "CREATE T
 
 Use [DB Browser for SQLite][sqlitebrowser] to open the `my-database.db` database. Have a look at the database structure and find the table and columns which the application created. The table doesn't yet contain any data, but we'll solve that next.
 
-TODO: screenshot
+![The database structure which was created](/screenshots/database-structure.png)
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/7ecc3c334c1638739e715723bb713d2bb1ac299f)
 
@@ -202,7 +206,7 @@ Comment.create(
 
 Go add some comments to the guestbook. Then use DB Browser to browse the data in the `comments` table and check that the comments you just wrote were added there.
 
-TODO: screenshot
+![Some data inside the database](/screenshots/database-data.png)
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/4ecec04e19f14b9aa9db4707bd6e16fccf85cf5c)
 
@@ -217,7 +221,7 @@ Comment.all(:order => [:date.desc])
 
 Check what the guestbook page looks like now. It should contain all the comments you wrote earlier, and the newest comment should be on top.
 
-TODO: screenshot
+![Showing comments from the database](/screenshots/database-guestbook.png)
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/58e00d040dd690349a86b1bd1e0fb84688bd1a45)
 
@@ -230,7 +234,7 @@ Use `Comment.count` to get the total number of comments, and show it on the gues
 
 Use `Comment.count(:date.gt => Time.now - (15 * 60))` to get the number of comments which are newer than 15 minutes, and show it on the guestbook page.
 
-TODO: screenshot
+![Showing the number of comments](/screenshots/database-counts.png)
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/24d24573e294081346063722869b2334abbe3157)
 
