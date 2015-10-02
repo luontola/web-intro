@@ -152,24 +152,14 @@ Check that adding comments works.
 
 ## Storing comments in a database
 
-TODO
+The commenting feature is now working nicely and the code is easy to change, but when you restart the server (try it), all the comments will be lost. To keep the data save and the code maintainable, a database is needed.
 
-- now it will be easy to change the templates or edit/remove old comments
-- try restarting the server to see that the comments are lost when you restart it; a database is needed now
+We will use the [SQLite](https://www.sqlite.org/) database, the [DataMapper](http://datamapper.org/) library for accessing SQLite in Ruby, and [DB Browser for SQLite](http://sqlitebrowser.org/) as a UI for seeing inside the database. If you haven't yet installed them, follow the [installation guide](/installation/) and come back here.
 
 
 ### Creating the database
 
-TODO
-
-- (optional) download [SQLite](https://www.sqlite.org/), unpack the `sqlite3` executable somewhere on PATH, try to run command `sqlite3 test.db`
-- install [DataMapper and its dm-sqlite-adapter](http://datamapper.org/getting-started.html)
-
-```
-gem install data_mapper dm-sqlite-adapter
-```
-
-- create the database table using DataMapper, add this code to the beginning of your app
+Add the following code to the beginning of your application. It will create a file `my-database.db` where all your data will be saved. In that file it will create a *table* for storing the comments as *rows*. Each row will have three *columns* (id, author and message).
 
 ```ruby
 require 'data_mapper'
@@ -189,22 +179,18 @@ DataMapper.finalize
 DataMapper.auto_upgrade!
 ```
 
-- start your app, check that console contains "CREATE TABLE" and that `my-database.db` file was created to the current directory
-- you can reset the database by removing `my-database.db` or by calling the method `DataMapper.auto_migrate!`
+When you restart your application after this change, it should print a "CREATE TABLE" line to your terminal and create a `my-database.db` file in the current directory.
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/7ecc3c334c1638739e715723bb713d2bb1ac299f)
-
-- install [DB Browser for SQLite][sqlitebrowser]
-- open the `my-database.db` file in DB Browser, see that it contains a `comments` table with the fields we specified using DataMapper
+Use [DB Browser for SQLite][sqlitebrowser] to open the `my-database.db` database. Have a look at the database structure and find the table and columns which the application created. The table doesn't yet contain any data, but we'll solve that next.
 
 TODO: screenshot
+
+[View solution](https://github.com/orfjackal/web-intro-project/commit/7ecc3c334c1638739e715723bb713d2bb1ac299f)
 
 
 ### Writing to the database
 
-TODO
-
-- save comment to database using the following code
+In the `/add-comment` route, use the following code to save the comment to the database.
 
 ```ruby
 Comment.create(
@@ -214,7 +200,7 @@ Comment.create(
 )
 ```
 
-- check with DB Browser that the data was added
+Go add some comments to the guestbook. Then use DB Browser to browse the data in the `comments` table and check that the comments you just wrote were added there.
 
 TODO: screenshot
 
@@ -223,16 +209,13 @@ TODO: screenshot
 
 ### Reading from the database
 
-TODO
-
-- read comments from database using the following code
-- remove `$comments`
+In the `/guestbook.html` route, use the following code to get a list of all the comments in the database. After switching to use that, you can remove the `$comments` variable.
 
 ```ruby
 Comment.all(:order => [:date.desc])
 ```
 
-- see results, newest should be at top
+Check what the guestbook page looks like now. It should contain all the comments you wrote earlier, and the newest comment should be on top.
 
 TODO: screenshot
 
@@ -241,12 +224,11 @@ TODO: screenshot
 
 ## Calculating the number of comments using a database
 
-TODO
+Now that all the data is in the database, we have more power at hand for querying that data. For example we can easily count how many comments there are in total and how many comments were added during the last 15 minutes. If we later implement commenting for photos, likewise we could easily find the photos with the most commenting activity.
 
-- database gives some extra power in handling the data
-- calculate total number of comments (for example for another page)
-- `Comment.count` returns the number of comments
-- `Comment.count(:date.gt => Time.now - (15 * 60)` returns the number of comments which are newer than 15 minutes
+Use `Comment.count` to get the total number of comments, and show it on the guestbook page.
+
+Use `Comment.count(:date.gt => Time.now - (15 * 60))` to get the number of comments which are newer than 15 minutes, and show it on the guestbook page.
 
 TODO: screenshot
 
