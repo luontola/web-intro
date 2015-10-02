@@ -19,7 +19,7 @@ TODO: link to solution
 
 ## Custom styles
 
-To have a place where to add our own CSS, create a file `style.css` with the following content and add into your `<head>` a stylesheet link which points to it.
+To have a place where to add our own CSS, create a file `style.css` with the following content.
 
 ```css
 h1 {
@@ -31,6 +31,12 @@ h1 {
     float: right;
     border: 1px solid #E0330C;
 }
+```
+
+Add into your `<head>` a stylesheet link which points to that CSS file.
+
+```css
+<link rel="stylesheet" href="style.css">
 ```
 
 This CSS defines what `<h1>` elements and any elements with the attribute `class="profile-picture"` should look like. Add the `profile-picture` class to your image and it will be positioned on the right side of elements that follow it (move it above your heading and paragraphs).
