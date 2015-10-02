@@ -61,9 +61,11 @@ Then run the command `ruby app.rb` in your terminal. It should start a web serve
 Always when you change your application, you will need to stop and restart the web server. To stop the web server running in your terminal, press `Ctrl+C`. To start it again without having to type the command, press `Up` and then `Enter`. Try it a couple of times by changing the text that the server shows. If you get tired of doing that, Sinatra's FAQ contains instructions on [how to reload the application automatically][sinatra-reloading] when a file is changed.
 
 
-## Your site on a web server
+## Static site on a web server
 
-As a first step towards serving our web site through Sinatra, find out how Sinatra can [serve static files][sinatra-static] and use it to serve our existing HTML and CSS files as they are. Then visit <http://localhost:4567/pictures.html> in your web browser and make sure that your site looks the same as before.
+As a first step towards serving our web site through Sinatra, we can use Sinatra's ability to [serve static files][sinatra-static] to serve our existing HTML and CSS files unmodified.
+
+Create a directory called `public` and move your HTML and CSS files there. Then start your web server with `ruby app.rb`, visit <http://localhost:4567/pictures.html> in your web browser and make sure that your site looks the same as before.
 
 ![Your first web server is working](/screenshots/sinatra-static-files.png)
 
@@ -72,7 +74,11 @@ As a first step towards serving our web site through Sinatra, find out how Sinat
 
 ## Fixing the front page
 
-You should make sure that people can visit your web site through its front page, instead of having to know one of its sub pages. Tell Sinatra to [redirect][sinatra-redirect] the path `/` to `/my-page.html` and then visit <http://localhost:4567/> to see if it will show your web site's front page.
+You should make sure that people can visit your web site through its base URL instead of having to know one of its sub pages.
+
+First try going to <http://localhost:4567/> on your current site. It should show an error message "Sinatra doesn’t know this ditty." Let's fix that.
+
+Change your `app.rb` to [redirect][sinatra-redirect] the path `/` to `/my-page.html`. Restart the web server and visit <http://localhost:4567/> to check that it redirects you to the web site's front page.
 
 ![Front page redirect works](/screenshots/sinatra-redirect.png)
 
