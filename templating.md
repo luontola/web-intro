@@ -92,9 +92,9 @@ Now that we have a proof-of-concept for dynamically generating HTML and for read
 Then change your application to have the following route and make sure that your application still looks the same as before. The difference is that now the pages are no more served as static files, because they are no more in the `public` directory, but they are generated dynamically using this code.
 
 ```ruby
-get '/:page.html' do |page|
+get '/:page.html' do
   IO.read('views/layout-top.html') +
-  IO.read('views/' + page + '.html') +
+  IO.read('views/' + params['page'] + '.html') +
   IO.read('views/layout-bottom.html')
 end
 ```
@@ -108,8 +108,6 @@ Now you have managed to apply the DRY principle and in the future it will be eno
 
 ## Proper templating system
 
-TODO: consider using .html.erb extension for the templates, will need to change the route as well
-
 If we would create our own templating system for every project, we would get no real work done. Thankfully other programmers have solved the templating problem already many times in the past, so we can avoid reinventing the weel and just reuse the code that they have written.
 
 [ERB][erb] is a templating system which comes with Ruby's standard library, so it's easy to get started with and also [Sinatra supports it][sinatra-templates]. Change your application to use ERB instead of the code we wrote earlier.
@@ -119,8 +117,8 @@ If we would create our own templating system for every project, we would get no 
 * Change your route to call the `erb` method:
 
 ```ruby
-get '/:page.html' do |page|
-  erb page.to_sym
+get '/:page.html' do
+  erb params['page'].to_sym
 end
 ```
 
@@ -240,8 +238,9 @@ PAGES = {
 With this it will be easy to parameterize also the title of pages which don't have custom routes.
 
 ```ruby
-get '/:page.html' do |page|
-  erb page.to_sym, :locals => {:title => PAGES[page.to_sym]}
+get '/:page.html' do
+  page = params['page'].to_sym
+  erb page, :locals => {:title => PAGES[page]}
 end
 ```
 
@@ -286,8 +285,8 @@ get '/pictures.html' do
   render_page :pictures, {:picture_urls => picture_urls}
 end
 
-get '/:page.html' do |page|
-  render_page page.to_sym
+get '/:page.html' do
+  render_page params['page'].to_sym
 end
 ```
 
