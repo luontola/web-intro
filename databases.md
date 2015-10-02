@@ -88,10 +88,18 @@ comments = IO.read('comments.txt') if File.exist?('comments.txt')
 
 ## Rendering comments using templates
 
-TODO
+To make the comments look better, let's render them as HTML using templates. First create a `comment.erb` template for a single comment as shown below.
 
-- render comments using templates, will need set the [layout option][sinatra-templates] to `false` because otherwise Sinatra will try to wrap the template in `layout.rb`
-- [DateTime][ruby-datetime] can be rendered as text using [strftime][ruby-strftime], for example `date.strftime('%Y-%m-%d %H:%M')`
+```html
+<p>
+  <span class="comment-author"><%= name %> wrote on <%= date.strftime('%Y-%m-%d %H:%M') %>:</span>
+  <br><span class="comment-message"><%= comment %></span>
+</p>
+```
+
+*Note: This template has a security vulnerability, but we'll address that in a [later chapter](/security/).*
+
+Then in your `/add-comment` route write the rendered HTML to the file using the following code.
 
 ```ruby
 comment = erb :comment, :layout => false, :locals => {
@@ -99,28 +107,31 @@ comment = erb :comment, :layout => false, :locals => {
   :comment => params['comment'],
   :date => DateTime.now
 }
+f.puts(comment)
 ```
+
+The [layout option][sinatra-templates] had to be set to `false` because otherwise Sinatra will try to wrap the template in `layout.rb`. [DateTime][ruby-datetime] objects can be rendered as text using [strftime][ruby-strftime] - see its documentation if you want the date to be in a different format.
+
+Try adding some comments and write some CSS to make it look the way you like it.
 
 ![Comments rendered using templates](/screenshots/comments-html.png)
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/0098815dfb61eae146992e1dd33e45b552ad9255)
 
-*Note: The example solution has a security vulnerability, but we'll address that in a [later chapter](/security/).*
-
 
 ## Storing comments in memory
 
-TODO
+Though the comments are now visible, they are very limited. For example we cannot easily edit or remove comments, or change the template for existing comments.
 
-- now cannot easily edit or remove comments, or change the representation of old comments
-- switch to using in-memory data structure; doesn't persist between restarts, but lets us create the templates and interfaces
-- create an [array][ruby-array] for comments as a *global variable* (in Ruby signified by the `$` prefix), put this code outside the routes:
+As a step towards using a database, we will store the comments in application memory. That way the comments will disappear when the application is stopped, but we'll be able do the necessary changes to our templates. After that switching to a real database will be a small step.
+
+Create an [array][ruby-array] for comments as a *global variable* (in Ruby signified by the `$` prefix) by adding the following code outside your routes.
 
 ```ruby
 $comments = []
 ```
 
-- comment hashes can be appended to the `$comments` array like this:
+Then in your `/add-comment` route, use the following code to append new comments as hashes to the `$comments` array.
 
 ```ruby
 $comments << {
@@ -130,11 +141,9 @@ $comments << {
 }
 ```
 
-- update the template `guestbook.rb` to render all the comments similar to we rendered all the pictures in `pictures.erb`
-  - will need to access the comment hash elements similar to how we accessed `PAGES`
-- check that adding comments works
-- now it will be easy to change the templates or edit/remove old comments
-- try restarting the server to see that the comments are lost when you restart it; a database is needed now
+Finally update the template `guestbook.rb` to render all the comments similar to how we rendered all the pictures in `pictures.erb`. You can access the elements of the comment hashes similar to how we accessed the elements of the `PAGES` hash.
+
+Check that adding comments works.
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/243a1734f0b048eea92efc702a56767d88263034)
 
@@ -144,6 +153,9 @@ $comments << {
 ## Storing comments in a database
 
 TODO
+
+- now it will be easy to change the templates or edit/remove old comments
+- try restarting the server to see that the comments are lost when you restart it; a database is needed now
 
 
 ### Creating the database
