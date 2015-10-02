@@ -14,11 +14,12 @@ permalink: /installation/
     <li>Ruby 2.2 is not yet supported by *dm-sqlite-adapter* (because *do_sqlite3-0.10.16* does not include the binary for it), so **if you are using Windows you must use Ruby 2.1 or earlier**</li>
     </ul>
   * On OS X, install [Homebrew](http://brew.sh/) and then run `brew install ruby`
+  <ul> <li> When it is asking for your password, write the password you use for signing in to your computer. **Note!** Typing your password will not show up as any characters in the prompt.</li></ul>
   * For everything else, see [Installing Ruby](https://www.ruby-lang.org/en/documentation/installation/)
 3. Install [DB Browser for SQLite](http://sqlitebrowser.org/)
 4. Run the following command in your [terminal][terminal] (known as the [Command Prompt][winprompt] on Windows) to install [Sinatra](http://www.sinatrarb.com/) and [DataMapper](http://datamapper.org/)  
   `gem install sinatra data_mapper dm-sqlite-adapter --no-ri --no-rdoc`
-5. While the computer is in the middle of performing the command, a cursor will blink on an empty line. When the command is completed, there will be stuff in front of the blinking cursor. 
+5. While the computer is in the middle of performing the command, a cursor will blink on an empty line. When the command is completed, there will be stuff in front of the blinking cursor.
 6. Save [this test.rb file](/test.rb) in your download folder, run the command `ruby test.rb` in your [terminal][terminal], either by typing it or copy-pasting it in (ensure you have navigated into the same folder (see instructions for [Windows][winnavigation] and [Mac/Linux][macnavigation]) as where you saved the test.rb file).
 7. If the [terminal][terminal] says "`Database OK`" and you can visit <http://localhost:4567/> with your web browser (e.g. [Firefox](https://www.mozilla.org/en-US/firefox/new/), Safari, or similar) and if it says "`Web server OK`", then you're all done!
 
