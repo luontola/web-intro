@@ -17,7 +17,7 @@ permalink: /installation/
   * For everything else, see [Installing Ruby](https://www.ruby-lang.org/en/documentation/installation/)
 3. Install [DB Browser for SQLite](http://sqlitebrowser.org/)
 4. Run the following command in your terminal to install [Sinatra](http://www.sinatrarb.com/) and [DataMapper](http://datamapper.org/)  
-  `gem install sinatra data_mapper dm-sqlite-adapter`
+  `gem install sinatra data_mapper dm-sqlite-adapter --no-ri --no-rdoc`
 5. Save [this script](/test.rb) in a file called `test.rb`, run it using `ruby test.rb`. If it prints "Database OK" and you can visit <http://localhost:4567/> with your web browser, then you're all done!
 
 If using the database fails, it may be necessary to install [SQLite](https://www.sqlite.org/). On Windows you will need to download the [sqlite-dll package](http://www.sqlite.org/2015/sqlite-dll-win32-x86-3081101.zip) and copy the `sqlite3.dll` file to Ruby's bin directory (e.g. `C:\Ruby21\bin`) or elsewhere on PATH. For everything else, see [How to install SQLite3](http://mislav.uniqpath.com/rails/install-sqlite3/).
