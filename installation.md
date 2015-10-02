@@ -4,7 +4,7 @@ title: Installation
 permalink: /installation/
 ---
 
-# New Short Instructions
+# New Short Instructions (use these)
 
 1. Install a programmer's text editor such as [Atom](https://atom.io/)
 2. Install the Ruby programming language
@@ -27,7 +27,8 @@ If using the database fails, it may be necessary to install [SQLite](https://www
 [terminal]: http://askubuntu.com/questions/38162/what-is-a-terminal-and-how-do-i-open-and-use-it
 [folder-navigation]: http://askubuntu.com/questions/232442/how-do-i-navigate-between-directories-in-terminal
 
-# Old Long Instructions
+
+# Old Long Instructions (don't use there; they are just for just in case)
 
 ## Install Ruby
 
