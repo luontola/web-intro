@@ -5,13 +5,16 @@ permalink: /installation/
 ---
 
 1. Install a programmer's text editor such as [Atom](https://atom.io/)
+  * When using OS X, Atom requires OS X version 10.8 or later – if you have an OS X version 10.6 or 10.7, try [Sublime Text](http://www.sublimetext.com/2) instead. If you have OS X 10.5 or earlier, ask help from a coach.
+  * Instructions on how to check your OS X version: [Check About this Mac](https://support.apple.com/en-us/HT201260)
 2. Install the Ruby programming language
   * On Windows, install [Ruby **2.1** using RubyInstaller](http://dl.bintray.com/oneclick/rubyinstaller/rubyinstaller-2.1.7.exe)
     <ul>
     <li>Select the option "Add Ruby executables to your PATH" in the installer</li>
     <li>Ruby 2.2 is not yet supported by *dm-sqlite-adapter* (because *do_sqlite3-0.10.16* does not include the binary for it), so **if you are using Windows you must use Ruby 2.1 or earlier**</li>
     </ul>
-  * On OS X, install [Homebrew](http://brew.sh/) and then run `brew install ruby`
+  * On OS X, install [Homebrew](http://brew.sh/) by following the instructions on [its homepage](http://brew.sh/), and then, in your [terminal][terminal], run the command `brew install ruby`
+  <ul> <li> When it is asking for your password, write the password you use for signing in to your computer. **Note!** Typing your password will not show up as any characters in the prompt.</li></ul>
   * For everything else, see [Installing Ruby](https://www.ruby-lang.org/en/documentation/installation/)
 3. On Windows, download the [sqlite-dll package](http://www.sqlite.org/2015/sqlite-dll-win32-x86-3081101.zip) and copy the `sqlite3.dll` file to Ruby's bin directory (e.g. `C:\Ruby21\bin`).
 4. Install [DB Browser for SQLite](http://sqlitebrowser.org/)
