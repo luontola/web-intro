@@ -5,32 +5,60 @@ permalink: /databases/
 next: /security/
 ---
 
-TODO: explain what databases are
+Databases are used by applications to store data in a safe place. Think of them as Excel sheets with possibly millions of rows of data, but with more powerful tools for modifying and calculating things based on the data.
 
-- we implement a commenting feature (later could be expanded to comments per picture; left as an exercise for the reader)
+This this chapter we will implement a commenting feature. Later it could be expanded to having comments for each of the pictures you have on your site, but to start simple let's first focus on just writing a guestbook where visitors can leave their messages.
 
 
 ## Web forms
 
-- create guestbook page and a form for adding comments
+Web applications can receive input from the user though [web forms][web-form]. A web form is marked by a [`<form>`][html-form] element which can contain for example [`<input>`][html-input] text fields for the user to write into and a [`<button>`][html-button] for submitting the form.
+
+Create a guestbook page with the following form.
+
+```html
+<form action="/add-comment" method="post" class="add-comment">
+    <label for="name">Name</label>
+    <br><input type="text" name="name">
+    <br><label for="comment">Comment</label>
+    <br><textarea type="text" name="comment"></textarea>
+    <br><button type="submit">Send</button>
+</form>
+```
 
 ![Form for writing comments](/screenshots/comments-form.png)
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/796018db7c92e03d10b72a453632a95743d4e572)
 
-- try to submit, see error message and suggestion from Sinatra, go add that route
 
-TODO: explain forms and POST
+### Receiving form parameters
 
-- print parameters (`puts params`) to see what it contains and redirect to the guestbook page
-- try to submit, should print something like `{"name"=>"Ruby", "comment"=>"This is fun!"}`
+Write something into the form and press the Submit button. Sinatra should give you an error page because the necessary route is missing. Go add that route to your application and try to submit the form again. It should now work.
+
+Did you notice that the `<form>` element had a `method="post"` attribute and that the route declaration also mentioned `post`? This refers to the [HTTP request methods][http-methods] of which the most common ones are GET and POST. GET is meant for reading pages and it should not change the application's state, so you can safely do multiple GET request to a page. POST is used for sending data to the page and it may be used to change the application's state.
+
+To see the parameters which you typed into the form, change your `post '/add-comment'` route to be as shown below. The `puts` will print the parameters and then it will redirect the visitor back to the guestbook.
+
+```ruby
+post '/add-comment' do
+  puts params
+  redirect '/guestbook.html'
+end
+```
+
+Now when you submit a form, it should print to the terminal where your application is running something like `{"name"=>"Ruby", "comment"=>"This is fun!"}`.
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/b4e967b6399704cf96ad541c231ebb6b7dac2aa3)
 
 
 ## Storing comments in a text file
 
-- append comments to a text file, check that lines are added to it when you submit the form
+Let's keep things simple and implement as much as we can without a database. That way you will also see how a database makes many things better. At first we'll just save the comments into a text file.
+
+
+### Writing to the text file
+
+Use the following code in your route to append the comment and the name of its author into a text file.
 
 ```ruby
 File.open('comments.txt', 'a') do |f|
@@ -38,9 +66,14 @@ File.open('comments.txt', 'a') do |f|
 end
 ```
 
+Try to submit some comments to the guestbook and check that they are added to `comments.txt`.
+
 [View solution](https://github.com/orfjackal/web-intro-project/commit/93838d36bd66d22a3d6363abfb49dba0ef888498)
 
-- show comments on page; the following code can be used to read the contents of the file, so that it works also when the file doesn't yet exist
+
+### Reading from the text file
+
+Now let's show the comments on the guestbook page. Use the following code to read the contents of the text file (it takes into consideration the case that the text file doesn't yet exist). Then give it as a local variable to the guestbook template and show it there.
 
 ```ruby
 comments = IO.read('comments.txt') if File.exist?('comments.txt')
@@ -54,6 +87,8 @@ comments = IO.read('comments.txt') if File.exist?('comments.txt')
 
 
 ## Rendering comments using templates
+
+TODO
 
 - render comments using templates, will need set the [layout option][sinatra-templates] to `false` because otherwise Sinatra will try to wrap the template in `layout.rb`
 - [DateTime][ruby-datetime] can be rendered as text using [strftime][ruby-strftime], for example `date.strftime('%Y-%m-%d %H:%M')`
@@ -74,6 +109,8 @@ comment = erb :comment, :layout => false, :locals => {
 
 
 ## Storing comments in memory
+
+TODO
 
 - now cannot easily edit or remove comments, or change the representation of old comments
 - switch to using in-memory data structure; doesn't persist between restarts, but lets us create the templates and interfaces
@@ -106,7 +143,12 @@ $comments << {
 
 ## Storing comments in a database
 
+TODO
+
+
 ### Creating the database
+
+TODO
 
 - (optional) download [SQLite](https://www.sqlite.org/), unpack the `sqlite3` executable somewhere on PATH, try to run command `sqlite3 test.db`
 - install [DataMapper and its dm-sqlite-adapter](http://datamapper.org/getting-started.html)
@@ -145,7 +187,10 @@ DataMapper.auto_upgrade!
 
 TODO: screenshot
 
+
 ### Writing to the database
+
+TODO
 
 - save comment to database using the following code
 
@@ -166,6 +211,8 @@ TODO: screenshot
 
 ### Reading from the database
 
+TODO
+
 - read comments from database using the following code
 - remove `$comments`
 
@@ -182,6 +229,8 @@ TODO: screenshot
 
 ## Calculating the number of comments using a database
 
+TODO
+
 - database gives some extra power in handling the data
 - calculate total number of comments (for example for another page)
 - `Comment.count` returns the number of comments
@@ -192,6 +241,11 @@ TODO: screenshot
 [View solution](https://github.com/orfjackal/web-intro-project/commit/24d24573e294081346063722869b2334abbe3157)
 
 
+[web-form]: https://en.wikipedia.org/wiki/Form_(HTML)
+[html-form]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form
+[html-input]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input
+[html-button]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button
+[http-methods]: https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods
 [sinatra-templates]: http://www.sinatrarb.com/intro.html#Views%20/%20Templates
 [ruby-datetime]: http://docs.ruby-lang.org/en/2.2.0/DateTime.html
 [ruby-strftime]: http://docs.ruby-lang.org/en/2.2.0/DateTime.html#method-i-strftime
