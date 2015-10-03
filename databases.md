@@ -183,7 +183,7 @@ DataMapper.finalize
 DataMapper.auto_upgrade!
 ```
 
-When you restart your application after this change, it should print a "CREATE TABLE" line to your terminal and create a `my-database.db` file in the current directory.
+When you restart your application after this change, it should print a "CREATE TABLE" line to your terminal and create a `my-database.db` file in your project folder.
 
 Use [DB Browser for SQLite][sqlitebrowser] to open the `my-database.db` database. Have a look at the database structure and find the table and columns which the application created. The table doesn't yet contain any data, but we'll solve that next.
 

@@ -32,7 +32,7 @@ Install the Ruby programming language
 
 ## 3. SQLite
 
-* On Windows, download the [sqlite-dll package](http://www.sqlite.org/2015/sqlite-dll-win32-x86-3081101.zip) and copy the `sqlite3.dll` file to Ruby's bin directory (`C:\Ruby21\bin`)
+* On Windows, download the [sqlite-dll package](http://www.sqlite.org/2015/sqlite-dll-win32-x86-3081101.zip) and copy the `sqlite3.dll` file to Ruby's bin folder (`C:\Ruby21\bin`)
 
 
 ## 4. DB Browser for SQLite

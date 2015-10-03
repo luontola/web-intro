@@ -65,7 +65,9 @@ Always when you change your application, you will need to stop and restart the w
 
 As a first step towards serving our web site through Sinatra, we can use Sinatra's ability to [serve static files][sinatra-static] to serve our existing HTML and CSS files unmodified.
 
-In the same directory as `app.rb`, create a sub directory called `public` and move your HTML and CSS files and pictures there. Then start your web server with `ruby app.rb`, visit <http://localhost:4567/pictures.html> in your web browser and make sure that your site looks the same as before.
+In the same folder as `app.rb`, create a new folder called `public` and move your HTML and CSS files and pictures there. Then start your web server with `ruby app.rb`, visit <http://localhost:4567/pictures.html> in your web browser and make sure that your site looks the same as before.
+
+* TODO: avoid åöä in path
 
 ![Your first web server is working](/screenshots/sinatra-static-files.png)
 
@@ -110,9 +112,9 @@ When you visit <http://localhost:4567/bar>, you should see the text "You're on p
 
 Now that we have a proof-of-concept for dynamically generating HTML and for reading existing HTML files, we can use that to create a very basic templating system.
 
-Create a `views` directory and move all your HTML files from the `public` directory there (`views` is Sinatra's default directory for templates). Don't move the CSS files. Create empty files `layout-top.html` and `layout-bottom.html` in the `views` directory.
+Create a `views` folder and move all your HTML files from the `public` folder there (`views` is Sinatra's default folder for templates). Don't move the CSS files. Create empty files `layout-top.html` and `layout-bottom.html` in the `views` folder.
 
-Add the following route to your application. Remove the old `/foo` and `/:page` routes.  Make sure that your application still looks the same as before. The difference is that now the pages are no more served as static files, because they are no more in the `public` directory, but they are generated dynamically using this code.
+Add the following route to your application. Remove the old `/foo` and `/:page` routes.  Make sure that your application still looks the same as before. The difference is that now the pages are no more served as static files, because they are no more in the `public` folder, but they are generated dynamically using this code.
 
 ```ruby
 get '/:page.html' do
@@ -136,7 +138,7 @@ If we would create our own templating system for every project, we would get no 
 [ERB][erb] is a templating system which comes with Ruby's standard library, so it's easy to get started with and also [Sinatra supports it][sinatra-templates]. Change your application to use ERB instead of the code we wrote earlier.
 
 * Combine `layout-top.html` and `layout-bottom.html` into a file `layout.erb`, and add the `<%= yield %>` code where the page content should be inserted
-* Rename the extension of the `.html` pages in `views` directory to `.erb`
+* Rename the file extension of the `.html` pages in the `views` folder to `.erb`
 * Change the `/:page.html` route to call the `erb` method:
 
 ```ruby
@@ -204,15 +206,15 @@ Now check that the pictures page still looks the same as before. Also try adding
 [View solution](https://github.com/orfjackal/web-intro-project/commit/e27600012a588173841e88d9802405b58bcb0707)
 
 
-## Show all pictures from a directory
+## Show all pictures from a folder
 
-There is still some work involved in adding the picture URLs by hand to the list in the route. We can simplify that by making our application generate the list automatically based on what pictures there are in a directory.
+There is still some work involved in adding the picture URLs by hand to the list in the route. We can simplify that by making our application generate the list automatically based on what pictures there are in a folder.
 
-Create a `pictures` directory under the `public` directory and save there all the pictures in your list.
+Create a `pictures` folder under the `public` folder and save there all the pictures in your list.
 
-To find out how to do something in a particular programming language, you can google for "[name of the language] [what you want to do]", which in this case would be "ruby list files in directory". But even if you find some snippet of code on the Internet, you should understand what it does, for example by checking the official reference documentation, before using it. Or if you know the language and its standard library already a bit, you can probably start from the reference documentation and find there what you need.
+To find out how to do something in a particular programming language, you can google for "[name of the language] [what you want to do]", which in this case would be "ruby list files in a folder". But even if you find some snippet of code on the Internet, you should understand what it does, for example by checking the official reference documentation, before using it. Or if you know the language and its standard library already a bit, you can probably start from the reference documentation and find there what you need.
 
-In this case you can get a list of files in the `public/pictures` directory using the following code. Have a look at the documentation for the methods [glob][ruby-glob], [map][ruby-map] and [sub][ruby-sub] to understand what each of them does individually, and then try to understand this code as a whole.
+In this case you can get a list of files in the `public/pictures` folder using the following code. Have a look at the documentation for the methods [glob][ruby-glob], [map][ruby-map] and [sub][ruby-sub] to understand what each of them does individually, and then try to understand this code as a whole.
 
 ```ruby
 picture_urls = Dir.glob('public/pictures/**').map { |path| path.sub('public', '') }
