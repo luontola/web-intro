@@ -64,8 +64,11 @@ Let's keep things simple and implement as much as we can without a database. Tha
 Use the following code in your `/add-comment` route to append the comment and the name of its author to a text file.
 
 ```ruby
-File.open('comments.txt', 'a') do |f|
-  f.puts(params['name'] + ': ' + params['comment'])
+post '/add-comment' do
+  File.open('comments.txt', 'a') do |f|
+    f.puts(params['name'] + ': ' + params['comment'])
+  end
+  redirect '/guestbook.html'
 end
 ```
 
@@ -76,10 +79,21 @@ Try to submit some comments to the guestbook and check that they are added to `c
 
 ### Reading from the text file
 
-Now let's show the comments on the guestbook page. Use the following code to read the contents of the text file (it takes into consideration the case that the text file doesn't yet exist). Then give it as a local variable to the guestbook template and show it there.
+Now let's show the comments on the guestbook page.
+
+Use the following code to read the contents of the text file and give it as a parameter to the guestbook template. The `if File.exist?` avoids the program crashing when the text file doesn't yet exist.
 
 ```ruby
-comments = IO.read('comments.txt') if File.exist?('comments.txt')
+get '/guestbook.html' do
+  comments = IO.read('comments.txt') if File.exist?('comments.txt')
+  render_page :guestbook, {:comments => comments}
+end
+```
+
+Then in `guestbook.erb` add the following code to show the comments.
+
+```html
+<p><%= comments %></p>
 ```
 
 ![Show comments, bare bones solution](/screenshots/comments-txt.png)
@@ -102,20 +116,25 @@ To make the comments look better, let's render them as HTML using templates. Fir
 
 *Note: This template has a security vulnerability, but we'll address that in a [later chapter](/security/).*
 
-Then in your `/add-comment` route write the rendered HTML to the file using the following code.
+Then in your `/add-comment` route use `erb` to rendered HTML using the `comment.erb` template and append the result to the `comments.txt` file.
 
 ```ruby
-comment = erb :comment, :layout => false, :locals => {
-  :name => params['name'],
-  :comment => params['comment'],
-  :date => DateTime.now
-}
-f.puts(comment)
+post '/add-comment' do
+  File.open('comments.txt', 'a') do |f|
+    comment = erb :comment, :layout => false, :locals => {
+      :name => params['name'],
+      :comment => params['comment'],
+      :date => DateTime.now
+    }
+    f.puts(comment)
+  end
+  redirect '/guestbook.html'
+end
 ```
 
-The [layout option][sinatra-templates] had to be set to `false` because otherwise Sinatra will try to wrap the template in `layout.rb`. [DateTime][ruby-datetime] objects can be rendered as text using [strftime][ruby-strftime] - see its documentation if you want the date to be in a different format.
+The [layout option][sinatra-templates] had to be set to `false` because otherwise Sinatra will try to wrap the template in `layout.rb`.
 
-Try adding some comments and write some CSS to make it look the way you like it.
+Try adding some comments and write some CSS to make it look the way you like it. If you want the template to render the [DateTime][ruby-datetime] in a different format, see the documentation for [strftime][ruby-strftime].
 
 ![Comments rendered using templates](/screenshots/comments-html.png)
 
@@ -128,23 +147,35 @@ Though the comments are now visible, they are very limited. For example we canno
 
 As a step towards using a database, we will store the comments in application memory. That way the comments will disappear when the application is stopped, but we'll be able do the necessary changes to our templates. After that switching to a real database will be a small step.
 
-Create an [array][ruby-array] for comments as a *global variable* (in Ruby signified by the `$` prefix) by adding the following code outside your routes.
+Create an empty [array][ruby-array] (`[]`) when the program starts and store it in the `$comments` variable. In the `/add-comment` route append new comments to `$comments`. In the `/guestbook.html` route read the comments from `$comments` and give them to the guestbook template.
 
 ```ruby
 $comments = []
+
+get '/guestbook.html' do
+  render_page :guestbook, {:comments => $comments}
+end
+
+post '/add-comment' do
+  $comments << {
+    :name => params['name'],
+    :comment => params['comment'],
+    :date => DateTime.now
+  }
+  redirect '/guestbook.html'
+end
 ```
 
-Then in your `/add-comment` route, use the following code to append new comments as hashes to the `$comments` array.
+Finally update the template `guestbook.rb` to render all the comments similar to how we rendered all the pictures in `pictures.erb`.
 
-```ruby
-$comments << {
-  :name => params['name'],
-  :comment => params['comment'],
-  :date => DateTime.now
-}
+```html
+<% for comment in comments %>
+<p>
+  <span class="comment-author"><%= comment[:name] %> wrote on <%= comment[:date].strftime('%Y-%m-%d %H:%M') %>:</span>
+  <br><span class="comment-message"><%= comment[:comment] %></span>
+</p>
+<% end %>
 ```
-
-Finally update the template `guestbook.rb` to render all the comments similar to how we rendered all the pictures in `pictures.erb`. You can access the elements of the comment hashes similar to how we accessed the elements of the `PAGES` hash.
 
 Check that adding comments works.
 
