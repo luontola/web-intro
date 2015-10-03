@@ -40,7 +40,11 @@ It should look like this:
 
 ## Basic HTML elements
 
-Edit the page you just created to say a few things about yourself. Create a heading with [`<h1>`][html-h1], one or more paragraphs with [`<p>`][html-p] and a picture using [`<img>`][html-img] (all visible elements like these will go between `<body>` and `</body>`). Also change the title.
+Edit the page you just created to say a few things about yourself.
+
+Create a heading with `<h1>some text</h1>`, one or more paragraphs with `<p>some text</p>` and a picture using `<img src="picture.jpg" alt="alternative text">` (if you don't have a picture of yourself, you can use [this one](http://railsgirls.com/images/ruby-100.png)). All visible elements like these will go between `<body>` and `</body>`. Also change the page title.
+
+You can find out more information about the [`<h1>`][html-h1], [`<p>`][html-p], [`<img>`][html-img] and all other possible HTML elements in the [HTML element reference][html-elements].
 
 ![Basic HTML Elements](/screenshots/html-basics.png)
 
