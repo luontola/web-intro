@@ -10,7 +10,9 @@ next: /css/
 
 ## Minimal HTML page
 
-The following code shows the minimal structure of a HTML page. Save it in a file called `my-page.html` and open it in your web browser.
+The following code shows the minimal structure of a HTML page.
+
+Create a folder on your computer where to put all the files in this project. Copy the following HTML code into your text editor and save it as `my-page.html` into your project folder. Then open the file in your web browser.
 
 ```html
 <!DOCTYPE html>
