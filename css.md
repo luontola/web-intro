@@ -43,7 +43,7 @@ h1 {
 
 Add into your `<head>` a stylesheet link which points to that CSS file.
 
-```css
+```html
 <link rel="stylesheet" href="style.css">
 ```
 
@@ -70,7 +70,7 @@ Add the following elements to your page's `<body>` and put the page content you 
 </section>
 ```
 
-To get ready for fiddling with CSS layouts, let's make the edges of the `.navigation` and `.content` elements visible:
+To get ready for fiddling with CSS layouts, make the edges of the `.navigation` and `.content` elements visible by adding the following CSS code to your `style.css` file.
 
 ```css
 .content {
@@ -89,7 +89,11 @@ To get ready for fiddling with CSS layouts, let's make the edges of the `.naviga
 
 ## Get the layout right
 
-Now experiment with the CSS properties [position][css-position], [left][css-left], [right][css-right], [top][css-top], [bottom][css-bottom], [width][css-width] and [height][css-height] to get the boxes to look like shown below. Also try to make the page look good whether the page has very little or lots of content; the CSS property [min-height][css-min-height] can be handy.
+First add the `position: absolute;` CSS property to the style definitions of `.content` and `.navigation`.
+
+Then start experimenting with different values for the CSS properties [left][css-left], [top][css-top], [width][css-width] and [min-height][css-min-height] to get the boxes to look like shown below.
+
+It's also good to try how the layout stretches when the page has many or few paragraphs of text, or when the browser window is wide or narrow.
 
 ![Layout elements where we want them](/screenshots/css-layout-blocks-after.png)
 
@@ -122,11 +126,8 @@ Google for "css vertical navigation bar" to find out how to make it look nicer; 
 [css-properties]: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference
 [css-position]: https://developer.mozilla.org/en-US/docs/Web/CSS/position
 [css-left]: https://developer.mozilla.org/en-US/docs/Web/CSS/left
-[css-right]: https://developer.mozilla.org/en-US/docs/Web/CSS/right
 [css-top]: https://developer.mozilla.org/en-US/docs/Web/CSS/top
-[css-bottom]: https://developer.mozilla.org/en-US/docs/Web/CSS/bottom
 [css-width]: https://developer.mozilla.org/en-US/docs/Web/CSS/width
-[css-height]: https://developer.mozilla.org/en-US/docs/Web/CSS/height
 [css-min-height]: https://developer.mozilla.org/en-US/docs/Web/CSS/min-height
 [css-background]: https://developer.mozilla.org/en-US/docs/Web/CSS/background
 [css-margin]: https://developer.mozilla.org/en-US/docs/Web/CSS/margin
