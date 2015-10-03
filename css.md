@@ -10,7 +10,15 @@ next: /templating/
 
 ## Prettier defaults
 
-At first let's make the default text look a bit nicer by using the [Pure](http://purecss.io/) CSS library. See its web site for the correct `<link rel="stylesheet">` code and add it inside your HTML page's `<head>`.
+At first let's make the default text look a bit nicer by using the [Pure](http://purecss.io/) CSS library.
+
+Add the following code inside your HTML page's `<head>` section.
+
+```HTML
+<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+```
+
+*Note: The `<meta charset="UTF-8">` element must be in the beginning of `<head>`, but otherwise the order of elements doesn't matter.*
 
 ![Pure](/screenshots/css-pure.png)
 
