@@ -115,7 +115,7 @@ For the navigation menu, create an *unordered list* (`<ul>`) which contains *lis
 </nav>
 ```
 
-Google for "css vertical navigation bar" to find out how to make it look nicer; you'll probably want to remove those black bullet in front of every `<li>`.
+You'll probably want to remove those black bullet points in front of every `<li>`. Google for "css vertical navigation bar" to find out how to make it look nicer, or just copy the example solution from the link below. This kind of CSS tricks are hard to make yourself; everybody just copies them from someone else. ;-)
 
 ![Finished layout styling](/screenshots/css-layout-done.png)
 
