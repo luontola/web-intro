@@ -269,6 +269,8 @@ get '/:page.html' do
 end
 ```
 
+Change all the routes to use the title from the `PAGES` hash. Test that all your pages still work.
+
 [View solution](https://github.com/orfjackal/web-intro-project/commit/ee2a9760fbfa3dac04780c2294430a3bcebf3214)
 
 
