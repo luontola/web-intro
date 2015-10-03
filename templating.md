@@ -101,7 +101,7 @@ get '/:page' do
 end
 ```
 
-When you visit <http://localhost:4567/foo>, you should see exactly the same content as on <http://localhost:4567/my-page.html>. The [`IO.read`][ruby-read] method will read a file and return it as a string.
+When you visit <http://localhost:4567/foo>, you should see exactly the same content as on <http://localhost:4567/my-page.html>. The [`IO.read`][ruby-read] method reads a file and gives you its contents.
 
 When you visit <http://localhost:4567/bar>, you should see the text "You're on page bar". On <http://localhost:4567/gazonk> you should see "You're on page gazonk". This is an example of a [parameterized route][sinatra-routes] which can serve multiple pages. Note that the `/:page` route must be after the `/foo` route, because Sinatra will use the first route that matches the path in the HTTP request.
 
