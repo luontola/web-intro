@@ -37,7 +37,7 @@ Our little web site is already breaking the DRY principle. Both of our pages are
 
 This far we have created our site with just static HTML pages, but in order to use templates, we must create a web server which will generate the HTML that will be shown to the user.
 
-We will use the [Ruby][ruby] programming language and the [Sinatra][sinatra] web framework to create the web server. Follow the [installation instructions](/installation) to install Ruby and Sinatra if you haven't yet done so.
+We will use the [Ruby][ruby] programming language and the [Sinatra][sinatra] web framework to create the web server. Follow the [installation guide](/installation) to install Ruby and Sinatra if you haven't yet done so.
 
 Create a file called `app.rb` and put the following code in it.
 
