@@ -164,11 +164,9 @@ get '/' do
 end
 ```
 
-We will need to fix the navigation links which used to point to `my-page.html`. We could still make link to `<a href="index.html">` but that would leave the ugly `index.html` visible on the address bar. How can we avoid that? We could use an absolute URL `<a href="http://localhost:4567/">`, but that wouldn't work when we move our site to another domain.
+Also change the link in your navigation menu from `<a href="my-page.html">` to `<a href="/">`. The `/` path refers to the base URL of your web site.
 
-The recommended solution is to URLs relative to the root of the site, i.e. `<a href="/">` and `<a href="/pictures.html">`. Relative URLs which don't start with `/` are relative to the current directory; a navigation menu which uses them would not work if the site is organized into subdirectories.
-
-Go change all the URLs in your templates to be relative to the root. Test that all the links in your navigation menu work.
+In the layout it's a good practice to have all the links prefixed with `/`, because that way they will work the same way regardless of the page where the user is currently. You can read more about this in [Absolute vs. Relative Paths/Links][absolute-vs-relative-paths].
 
 ![Front page at the root](/screenshots/templating-index.png)
 
@@ -337,6 +335,7 @@ Most of the time when you notice some repetition in your code, you can extract t
 [sinatra-redirect]: http://www.sinatrarb.com/intro.html#Browser%20Redirect
 [sinatra-routes]: http://www.sinatrarb.com/intro.html#Routes
 [sinatra-templates]: http://www.sinatrarb.com/intro.html#Views%20/%20Templates
+[absolute-vs-relative-paths]: http://www.coffeecup.com/help/articles/absolute-vs-relative-pathslinks/
 [erb]: http://www.stuartellis.eu/articles/erb/
 [ruby-read]: http://docs.ruby-lang.org/en/2.2.0/IO.html#method-c-read
 [ruby-glob]: http://docs.ruby-lang.org/en/2.2.0/Dir.html#method-c-glob
