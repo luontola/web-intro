@@ -112,7 +112,7 @@ Now that we have a proof-of-concept for dynamically generating HTML and for read
 
 Create a `views` directory and move all your HTML files from the `public` directory there (`views` is Sinatra's default directory for templates). Don't move the CSS files. Create empty files `layout-top.html` and `layout-bottom.html` in the `views` directory.
 
-Then change your application to have the following route and make sure that your application still looks the same as before (you can remove the earlier proof-of-concept). The difference is that now the pages are no more served as static files, because they are no more in the `public` directory, but they are generated dynamically using this code.
+Add the following route to your application. Remove the old `/foo` and `/:page` routes.  Make sure that your application still looks the same as before. The difference is that now the pages are no more served as static files, because they are no more in the `public` directory, but they are generated dynamically using this code.
 
 ```ruby
 get '/:page.html' do
@@ -238,6 +238,8 @@ Then change every route to pass a title as parameter to the template, for exampl
 ```ruby
 erb :pictures, :locals => {:picture_urls => picture_urls, :title => "Lovely Pictures"}
 ```
+
+Visit every page on your site to make sure that they still work and that they have the correct page title.
 
 ![Parameterized page title](/screenshots/templating-parameterized-title.png)
 
