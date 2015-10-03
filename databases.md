@@ -193,7 +193,7 @@ We will use the [SQLite](https://www.sqlite.org/) database, the [DataMapper](htt
 
 ### Creating the database
 
-Add the following code to the beginning of your application. It will create a file `my-database.db` where all your data will be saved. In that file it will create a *table* for storing the comments as *rows*. Each row will have three *columns* (id, author and message).
+Add the following code to the beginning of your application. It will create a `my-database.db` file where all your data will be saved. In that file it will create a *table* for storing the comments as *rows*. The table will have four *columns* (id, name, comment and date).
 
 ```ruby
 require 'data_mapper'
