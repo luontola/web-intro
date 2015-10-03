@@ -225,7 +225,7 @@ Use [DB Browser for SQLite][sqlitebrowser] to open the `my-database.db` database
 
 ### Writing to the database
 
-In the `/add-comment` route, use the following code to save the comment to the database.
+In the `/add-comment` route, where you already append the comment to `$comments`, add the following code to save the comment also to the database.
 
 ```ruby
 Comment.create(
@@ -244,7 +244,7 @@ Go add some comments to the guestbook. Then use DB Browser to browse the data in
 
 ### Reading from the database
 
-In the `/guestbook.html` route, use the following code to get a list of all the comments in the database. After switching to use that, you can remove the `$comments` variable.
+In the `/guestbook.html` route, replace `$comments` with the following code which will read all comments from the database (ordered newest first). After that change, you can remove the `$comments` variable and all code that still uses it.
 
 ```ruby
 Comment.all(:order => [:date.desc])
