@@ -38,7 +38,7 @@ It should look like this:
 
 ## Basic HTML elements
 
-Edit the page you just created to say a few things about yourself. Create a heading with [`<h1>`][html-h1], one or more paragraphs with [`<p>`][html-p] and a picture using [`<img>`][html-img]. Also change the title.
+Edit the page you just created to say a few things about yourself. Create a heading with [`<h1>`][html-h1], one or more paragraphs with [`<p>`][html-p] and a picture using [`<img>`][html-img] (all visible elements like these will go between `<body>` and `</body>`). Also change the title.
 
 ![Basic HTML Elements](/screenshots/html-basics.png)
 
