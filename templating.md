@@ -65,7 +65,7 @@ Always when you change your application, you will need to stop and restart the w
 
 As a first step towards serving our web site through Sinatra, we can use Sinatra's ability to [serve static files][sinatra-static] to serve our existing HTML and CSS files unmodified.
 
-Create a directory called `public` and move your HTML and CSS files there. Then start your web server with `ruby app.rb`, visit <http://localhost:4567/pictures.html> in your web browser and make sure that your site looks the same as before.
+In the same directory as `app.rb`, create a sub directory called `public` and move your HTML and CSS files and pictures there. Then start your web server with `ruby app.rb`, visit <http://localhost:4567/pictures.html> in your web browser and make sure that your site looks the same as before.
 
 ![Your first web server is working](/screenshots/sinatra-static-files.png)
 
