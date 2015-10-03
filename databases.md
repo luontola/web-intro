@@ -40,7 +40,7 @@ Write something into the form and press the Submit button. Sinatra should give y
 
 Did you notice that the `<form>` element had a `method="post"` attribute and that the route declaration also mentioned `post`? This refers to the [HTTP request methods][http-methods] of which the most common ones are GET and POST. GET is meant for reading pages and it should not change the application's state, so you can safely do multiple GET request to a page. POST is used for sending data to the page and it may be used to change the application's state.
 
-To see the parameters which you typed into the form, change your `post '/add-comment'` route to be as shown below. The `puts` will print the parameters and then it will redirect the visitor back to the guestbook.
+To see the parameters which you typed into the form, change your `post '/add-comment'` route to be as shown below. The `puts` will print the parameters and then it will send the visitor back to the guestbook page.
 
 ```ruby
 post '/add-comment' do

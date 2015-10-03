@@ -80,7 +80,7 @@ You should make sure that people can visit your web site through its base URL in
 
 First try going to <http://localhost:4567/> on your current site. It should show an error message "Sinatra doesn’t know this ditty." Let's fix that.
 
-Change your `app.rb` to [redirect][sinatra-redirect] the path `/` to `/my-page.html`. Restart the web server and visit <http://localhost:4567/> to check that it redirects you to the web site's front page.
+Change your `app.rb` to [redirect][sinatra-redirect] the path `/` to `/my-page.html`. Restart the web server and check that when you visit <http://localhost:4567/>, it will send your web browser to the <http://localhost:4567/my-page.html> address.
 
 ![Front page redirect works](/screenshots/sinatra-redirect.png)
 
