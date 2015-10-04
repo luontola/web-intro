@@ -20,7 +20,7 @@ Add the following code inside your HTML page's `<head>` section.
 
 *Note: The `<meta charset="UTF-8">` element must be in the beginning of `<head>`, but otherwise the order of elements doesn't matter.*
 
-![Pure](/screenshots/css-pure.png)
+![Pure CSS](pure.png)
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/e082cbebd4e5c0d286f2c54707a0bde55b71d311)
 
@@ -49,7 +49,7 @@ Add into your `<head>` a stylesheet link which points to that CSS file.
 
 This CSS defines what `<h1>` elements and any elements with the attribute `class="profile-picture"` should look like. Add the `profile-picture` class to your image and it will be positioned on the right side of elements that follow it (move it above your heading and paragraphs).
 
-![Pure](/screenshots/css-basics.png)
+![Custom styles](custom.png)
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/e071ea21ad1602c7b66c4fc07ef0590be7ec1a6c)
 
@@ -82,7 +82,7 @@ To get ready for fiddling with CSS layouts, make the edges of the `.navigation` 
 }
 ```
 
-![Layout elements highlighted](/screenshots/css-layout-blocks-before.png)
+![Layout elements highlighted](layout-blocks-before.png)
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/bb0619ccbebea384e1b14f97b389fa7dc16d0450)
 
@@ -95,7 +95,7 @@ Then start experimenting with different values for the CSS properties [left][css
 
 It's also good to try how the layout stretches when the page has many or few paragraphs of text, or when the browser window is wide or narrow.
 
-![Layout elements where we want them](/screenshots/css-layout-blocks-after.png)
+![Layout elements where we want them](layout-blocks-after.png)
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/96653030289ee58042e201007a079be71c010912)
 
@@ -117,7 +117,7 @@ For the navigation menu, create an *unordered list* (`<ul>`) which contains *lis
 
 You'll probably want to remove those black bullet points in front of every `<li>`. Google for "css vertical navigation bar" to find out how to make it look nicer, or just copy the example solution from the link below. This kind of CSS tricks are hard to make yourself; everybody just copies them from someone else. ;-)
 
-![Finished layout styling](/screenshots/css-layout-done.png)
+![Finished layout styling](pretty-layout.png)
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/e94be342696b26393c63295a1a41296afca94889)
 

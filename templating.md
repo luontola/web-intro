@@ -21,7 +21,7 @@ Last time we created a navigation menu with a link to the `pictures.html` page, 
 
 As shown above, give the images a unique class and use CSS to make them look like a photo album.
 
-![Photo album](/screenshots/templating-album.png)
+![Photo album](photo-album.png)
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/261d715d864c2252cc1a29f6523509cccc16e861)
 
@@ -51,7 +51,7 @@ end
 
 Then run the command `ruby app.rb` in your terminal. It should start a web server on your own machine in port 4567. To view it, visit <http://localhost:4567/hi> in your web browser. Finally stop the web server by pressing Ctrl+C.
 
-![Your first web server is working](/screenshots/sinatra-hello-world.png)
+![Your first web server is working](sinatra-hello-world.png)
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/99e2f0061a1875c33dca1b0881f9c0d559b35fc4)
 
@@ -69,7 +69,7 @@ In the same folder as `app.rb`, create a new folder called `public` and move you
 
 * TODO: avoid åöä in path
 
-![Your first web server is working](/screenshots/sinatra-static-files.png)
+![Your first web server is working](sinatra-static-site.png)
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/a96758269aea70c81e8e245320ca5f0cda529c2b)
 
@@ -82,7 +82,7 @@ First try going to <http://localhost:4567/> on your current site. It should show
 
 Change your `app.rb` to [redirect][sinatra-redirect] the path `/` to `/my-page.html`. Restart the web server and check that when you visit <http://localhost:4567/>, it will send your web browser to the <http://localhost:4567/my-page.html> address.
 
-![Front page redirect works](/screenshots/sinatra-redirect.png)
+![Front page redirect works](front-page-redirect.png)
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/246ac703f710ae6538c48787bae937c227e9452d)
 
@@ -170,7 +170,7 @@ Also change the link in your navigation menu from `<a href="my-page.html">` to `
 
 In the layout it's a good practice to have all the links prefixed with `/`, because that way they will work the same way regardless of the page where the user is currently. You can read more about this in [Absolute vs. Relative Paths/Links][absolute-vs-relative-paths].
 
-![Front page at the root](/screenshots/templating-index.png)
+![Front page at the root](front-page-root.png)
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/b31e68c559dd84094554c07f98332881d31528a3)
 
@@ -243,7 +243,7 @@ erb :pictures, :locals => {:picture_urls => picture_urls, :title => "Lovely Pict
 
 Visit every page on your site to make sure that they still work and that they have the correct page title.
 
-![Parameterized page title](/screenshots/templating-parameterized-title.png)
+![Parameterized page title](parameterized-title.png)
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/70d2d4cc9440147ca718e3ce3a64d0d16e181cb0)
 

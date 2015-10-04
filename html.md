@@ -33,7 +33,7 @@ Copy the following HTML code into your text editor and save it as `my-page.html`
 
 It should look like this:
 
-![Minimal HTML page](/screenshots/html-minimal.png)
+![Minimal HTML page](minimal-page.png)
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/a44ee69891389e49eee70ede6323cd9c387425c5)
 
@@ -46,7 +46,7 @@ Create a heading with `<h1>some text</h1>`, one or more paragraphs with `<p>some
 
 You can find out more information about the [`<h1>`][html-h1], [`<p>`][html-p], [`<img>`][html-img] and all other possible HTML elements in the [HTML element reference][html-elements].
 
-![Basic HTML Elements](/screenshots/html-basics.png)
+![Basic HTML Elements](basic-elements.png)
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/9be6966443affc4395cb5327ee411d5251026dd9)
 

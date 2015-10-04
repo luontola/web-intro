@@ -29,7 +29,7 @@ Create a guestbook page with the following form.
 </form>
 ```
 
-![Form for writing comments](/screenshots/comments-form.png)
+![Form for writing comments](comments-form.png)
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/5b8b925bd57218220afcf71c9bfaaa41294e2fe0)
 
@@ -96,7 +96,7 @@ Then in `guestbook.erb` add the following code to show the comments.
 <p><%= comments %></p>
 ```
 
-![Show comments, bare bones solution](/screenshots/comments-txt.png)
+![Show comments, bare bones solution](comments-txt.png)
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/f8a760541b7673f2e25da31a7ca8d6aea8c0f54d)
 
@@ -136,7 +136,7 @@ The [layout option][sinatra-templates] had to be set to `false` because otherwis
 
 Try adding some comments and write some CSS to make it look the way you like it. If you want the template to render the [DateTime][ruby-datetime] in a different format, see the documentation for [strftime][ruby-strftime].
 
-![Comments rendered using templates](/screenshots/comments-html.png)
+![Comments rendered using templates](comments-html.png)
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/55162e260f369deeceba6926c979a948db2af2cf)
 
@@ -218,7 +218,7 @@ When you restart your application after this change, it should print a "CREATE T
 
 Use [DB Browser for SQLite][sqlitebrowser] to open the `my-database.db` database. Have a look at the database structure and find the table and columns which the application created. The table doesn't yet contain any data, but we'll solve that next.
 
-![The database structure which was created](/screenshots/database-structure.png)
+![The database structure which was created](database-structure.png)
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/11d7673c40fb7da0a39271ea69b340effda7d7e2)
 
@@ -237,7 +237,7 @@ Comment.create(
 
 Go add some comments to the guestbook. Then use DB Browser to browse the data in the `comments` table and check that the comments you just wrote were added there.
 
-![Some data inside the database](/screenshots/database-data.png)
+![Some data inside the database](database-data.png)
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/9b4602dfe6f0967ac990baf8c9e18a6e8c32a11d)
 
@@ -252,7 +252,7 @@ Comment.all(:order => [:date.desc])
 
 Check what the guestbook page looks like now. It should contain all the comments you wrote earlier, and the newest comment should be on top.
 
-![Showing comments from the database](/screenshots/database-guestbook.png)
+![Showing comments from the database](comments-database.png)
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/19a89f7ebd45db0ea15e760cc05980fe8cce6a49)
 
@@ -265,7 +265,7 @@ Use `Comment.count` to get the total number of comments, and show it on the gues
 
 Use `Comment.count(:date.gt => Time.now - (15 * 60))` to get the number of comments which are newer than 15 minutes, and show it on the guestbook page.
 
-![Showing the number of comments](/screenshots/database-counts.png)
+![Showing the number of comments](comments-counts.png)
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/0b540c4b63eb562340f07a033e325f180fb1684d)
 
