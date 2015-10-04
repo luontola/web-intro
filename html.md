@@ -5,7 +5,7 @@ permalink: /html/
 next: /css/
 ---
 
-[HTML][html] is a markup language for describing the structure of web pages. HTML is made out of [elements][html-elements] which are marked using a start tag (`<title>`) and end tag (`</title>`). The start tags may contain [attributes][html-attributes] (`<meta charset="UTF-8>`). Between the start and end tags you can put text and other elements. For some elements the end tag is optional.
+[HTML][html] is a markup language for describing the structure of web pages. HTML is made out of [elements][html-elements] which are marked using a start tag (`<title>`) and end tag (`</title>`). Between the start and end tags you can put text and other elements. The start tags may contain [attributes][html-attributes] (`<img src="picture.jpg">`). For some elements the end tag is not needed.
 
 
 ## Minimal HTML page
