@@ -2,7 +2,7 @@
 layout: chapter
 title: CSS
 permalink: /css/
-next: /templating/
+next: /templates/
 ---
 
 [CSS][css] is a markup language for describing the visuals of web pages. It contains numerous [properties][css-properties] for changing how the HTML elements look like; colors, fonts, layouts etc.

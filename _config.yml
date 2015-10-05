@@ -11,8 +11,8 @@ navigation:
     url: /html/
   - title: 2. CSS
     url: /css/
-  - title: 3. Templating
-    url: /templating/
+  - title: 3. Templates
+    url: /templates/
   - title: 4. Databases
     url: /databases/
   - title: 5. Security

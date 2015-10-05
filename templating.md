@@ -1,7 +1,7 @@
 ---
 layout: chapter
-title: Templating
-permalink: /templating/
+title: Templates
+permalink: /templates/
 next: /databases/
 ---
 
@@ -30,7 +30,7 @@ As shown above, give the images a unique class and use CSS to make them look lik
 
 In programming we have a principle called [Don't Repeat Yourself (DRY)][dry] which says that *"every piece of knowledge must have a single, unambiguous, authoritative representation within a system."* If we follow that principle, our code will be easier to understand and modify.
 
-Our little web site is already breaking the DRY principle. Both of our pages are repeating the HTML for the layout and navigation; adding another page would require changing the navigation on every page. Additionally the pictures page has lots of similar `<img>` tags with just the URL changing. To solve this problem, we will introduce *templating*, so that all the common HTML will be in one place.
+Our little web site is already breaking the DRY principle. Both of our pages are repeating the HTML for the layout and navigation; adding another page would require changing the navigation on every page. Additionally the pictures page has lots of similar `<img>` tags with just the URL changing. To solve this problem, we will introduce *templates*, so that all the common HTML will be in one place.
 
 
 ## Running a web server
@@ -128,7 +128,7 @@ Now you can move the top and bottom parts of the code from your individual HTML 
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/595a09999b3ce0165792712929937c60fc179542)
 
-Now you have managed to apply the DRY principle and in the future it will be enough to change just one place when you change the layout or add pages to the navigation menu. You also understand the basic idea of how templating works. Next let's use a proper templating system.
+Now you have managed to apply the DRY principle and in the future it will be enough to change just one place when you change the layout or add pages to the navigation menu. You also understand the basic idea of how templates work. Next let's use a proper templating system.
 
 
 ## Proper templating system
