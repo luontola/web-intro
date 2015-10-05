@@ -1,7 +1,7 @@
 ---
 layout: chapter
-title: Installation
-permalink: /installation/
+title: Installation Guide
+permalink: /install/
 ---
 
 ## 1. Text editor
