@@ -15,7 +15,9 @@ This this chapter we will implement a commenting feature. Later it could be expa
 Web applications can receive input from the user though [web forms][web-form]. A web form is marked by a [`<form>`][html-form] element which can contain for example [`<input>`][html-input] text fields for the user to write into and a [`<button>`][html-button] for submitting the form.
 
 
-### Guestbook page
+### Comment form
+
+TODO: rewrite this section
 
 Create a guestbook page with the following form.
 
@@ -31,10 +33,10 @@ Create a guestbook page with the following form.
 
 ![Form for writing comments](comments-form.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/5b8b925bd57218220afcf71c9bfaaa41294e2fe0)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/792421d12596b9ee5cbb3b1b9817b135aa912cb4)
 
 
-### Receiving form parameters
+### Receive form parameters
 
 Write something into the form and press the Submit button. Sinatra should give you an error page because the necessary route is missing. Go add that route to your application and try to submit the form again. It should now work.
 
@@ -51,15 +53,15 @@ end
 
 Now when you submit a form, it should print to the terminal where your application is running something like `{"name"=>"Ruby", "comment"=>"This is fun!"}`.
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/f69218f410146b31e507e1011f8ffc2898d82bf8)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/ef1d973ce1752aaa54e52c7595ec57253e84b7b9)
 
 
-## Storing comments in a text file
+## Keep comments in a text file
 
 Let's keep things simple and implement as much as we can without a database. That way you will also see how a database makes many things better. At first we'll just save the comments into a text file.
 
 
-### Writing to the text file
+### Write comments to text file
 
 Use the following code in your `/add-comment` route to append the comment and the name of its author to a text file.
 
@@ -74,10 +76,10 @@ end
 
 Try to submit some comments to the guestbook and check that they are added to `comments.txt`.
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/10c8817bda8dddee2a973c34901450d4f8d40510)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/d75f43d80b9d5fa09c7c82d6618722dce08c7493)
 
 
-### Reading from the text file
+### Read comments from text file
 
 Now let's show the comments on the guestbook page.
 
@@ -98,50 +100,14 @@ Then in `guestbook.erb` add the following code to show the comments.
 
 ![Show comments, bare bones solution](comments-txt.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/f8a760541b7673f2e25da31a7ca8d6aea8c0f54d)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/fe7f495e4a86ce92deae71170f6ced09307c2936)
 
 *Note: The example solution has a security vulnerability, but we'll address that in a [later chapter](/security/).*
 
 
-## Rendering comments using templates
+## Keep comments in memory
 
-To make the comments look better, let's render them as HTML using templates. First create a `comment.erb` template for a single comment as shown below.
-
-```html
-<p>
-  <span class="comment-author"><%= name %> wrote on <%= date.strftime('%Y-%m-%d %H:%M') %>:</span>
-  <br><span class="comment-message"><%= comment %></span>
-</p>
-```
-
-*Note: This template has a security vulnerability, but we'll address that in a [later chapter](/security/).*
-
-Then in your `/add-comment` route use `erb` to rendered HTML using the `comment.erb` template and append the result to the `comments.txt` file.
-
-```ruby
-post '/add-comment' do
-  File.open('comments.txt', 'a') do |f|
-    comment = erb :comment, :layout => false, :locals => {
-      :name => params['name'],
-      :comment => params['comment'],
-      :date => DateTime.now
-    }
-    f.puts(comment)
-  end
-  redirect '/guestbook.html'
-end
-```
-
-The [layout option][sinatra-templates] had to be set to `false` because otherwise Sinatra will try to wrap the template in `layout.rb`.
-
-Try adding some comments and write some CSS to make it look the way you like it. If you want the template to render the [DateTime][ruby-datetime] in a different format, see the documentation for [strftime][ruby-strftime].
-
-![Comments rendered using templates](comments-html.png)
-
-[View solution](https://github.com/orfjackal/web-intro-project/commit/55162e260f369deeceba6926c979a948db2af2cf)
-
-
-## Storing comments in memory
+TODO: rewrite this section
 
 Though the comments are now visible, they are very limited. For example we cannot easily edit or remove comments, or change the template for existing comments.
 
@@ -179,19 +145,59 @@ Finally update the template `guestbook.rb` to render all the comments similar to
 
 Check that adding comments works.
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/6872f8f483706fc7dd1b3184d55a51550986b72b)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/a1cf1ba00f63c424c0938a52f3bf4c2d345dc022)
 
 *Note: The example solution has a security vulnerability, but we'll address that in a [later chapter](/security/).*
 
 
-## Storing comments in a database
+## Comment template
+
+TODO: rewrite this section
+
+To make the comments look better, let's render them as HTML using templates. First create a `comment.erb` template for a single comment as shown below.
+
+```html
+<p>
+  <span class="comment-author"><%= name %> wrote on <%= date.strftime('%Y-%m-%d %H:%M') %>:</span>
+  <br><span class="comment-message"><%= comment %></span>
+</p>
+```
+
+*Note: This template has a security vulnerability, but we'll address that in a [later chapter](/security/).*
+
+Then in your `/add-comment` route use `erb` to rendered HTML using the `comment.erb` template and append the result to the `comments.txt` file.
+
+```ruby
+post '/add-comment' do
+  File.open('comments.txt', 'a') do |f|
+    comment = erb :comment, :layout => false, :locals => {
+      :name => params['name'],
+      :comment => params['comment'],
+      :date => DateTime.now
+    }
+    f.puts(comment)
+  end
+  redirect '/guestbook.html'
+end
+```
+
+The [layout option][sinatra-templates] had to be set to `false` because otherwise Sinatra will try to wrap the template in `layout.rb`.
+
+Try adding some comments and write some CSS to make it look the way you like it. If you want the template to render the [DateTime][ruby-datetime] in a different format, see the documentation for [strftime][ruby-strftime].
+
+![Comments rendered using templates](comments-html.png)
+
+[View solution](https://github.com/orfjackal/web-intro-project/commit/0d8152da3c54ad0eb26acf8e8b418c766b084183)
+
+
+## Keep comments in a database
 
 The commenting feature is now working nicely and the code is easy to change, but when you restart the server (try it), all the comments will be lost. To keep the data safe and the code maintainable, a database is needed.
 
 We will use the [SQLite](https://www.sqlite.org/) database, the [DataMapper](http://datamapper.org/) library for accessing SQLite in Ruby, and [DB Browser for SQLite](http://sqlitebrowser.org/) as a UI for seeing inside the database. If you haven't yet installed them, go through the [installation guide](/install/) and then come then back here.
 
 
-### Creating the database
+### Create a database for comments
 
 Add the following code to the beginning of your application. It will create a `my-database.db` file where all your data will be saved. In that file it will create a *table* for storing the comments as *rows*. The table will have four *columns* (id, name, comment and date).
 
@@ -220,10 +226,10 @@ Use [DB Browser for SQLite][sqlitebrowser] to open the `my-database.db` database
 
 ![The database structure which was created](database-structure.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/11d7673c40fb7da0a39271ea69b340effda7d7e2)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/8f3ddb5dc9299228d77ea993b0db8d9abafcfffa)
 
 
-### Writing to the database
+### Write comments to database
 
 In the `/add-comment` route, where you already append the comment to `$comments`, add the following code to save the comment also to the database.
 
@@ -239,10 +245,10 @@ Go add some comments to the guestbook. Then use DB Browser to browse the data in
 
 ![Some data inside the database](database-data.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/9b4602dfe6f0967ac990baf8c9e18a6e8c32a11d)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/341d2be9c1503cd268992755b8d6cdd2d2638f00)
 
 
-### Reading from the database
+### Read comments from database
 
 In the `/guestbook.html` route, replace `$comments` with the following code which will read all comments from the database (ordered newest first). After that change, you can remove the `$comments` variable and all code that still uses it.
 
@@ -254,10 +260,12 @@ Check what the guestbook page looks like now. It should contain all the comments
 
 ![Showing comments from the database](comments-database.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/19a89f7ebd45db0ea15e760cc05980fe8cce6a49)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/3fbf2743e41e240f768872f99df318c8201fcf51)
 
 
 ## Calculating the number of comments using a database
+
+TODO: rewrite this section
 
 Now that all the data is in the database, we have more power at hand for querying that data. For example we can easily count how many comments there are in total and how many comments were added during the last 15 minutes. If we later implement commenting for photos, likewise we could easily find the photos with the most commenting activity.
 
@@ -267,7 +275,19 @@ Use `Comment.count(:date.gt => Time.now - (15 * 60))` to get the number of comme
 
 ![Showing the number of comments](comments-counts.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/0b540c4b63eb562340f07a033e325f180fb1684d)
+
+### Comment count styles
+
+TODO
+
+[View solution](https://github.com/orfjackal/web-intro-project/commit/fdc2eb9ce33bbb42ff1b10611dc4e938cc67867c)
+
+
+### Comment counts
+
+TODO
+
+[View solution](https://github.com/orfjackal/web-intro-project/commit/9fcd6dd2b26e04f978e9fab658d1dada018c2768)
 
 
 [web-form]: https://en.wikipedia.org/wiki/Form_(HTML)

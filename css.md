@@ -22,7 +22,7 @@ Add the following code inside your HTML page's `<head>` section.
 
 ![Pure CSS](pure.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/e082cbebd4e5c0d286f2c54707a0bde55b71d311)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/a6be40bb4f6f5a511ad4bb060efebd81ab961939)
 
 
 ## Custom styles
@@ -51,7 +51,7 @@ This CSS defines what `<h1>` elements and any elements with the attribute `class
 
 ![Custom styles](custom.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/e071ea21ad1602c7b66c4fc07ef0590be7ec1a6c)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/fdeae81320dcc3d9fcf7a1ec8d8af6fabe196cfa)
 
 
 ## Prepare for layout fiddling
@@ -84,7 +84,7 @@ To get ready for fiddling with CSS layouts, make the edges of the `.navigation` 
 
 ![Layout elements highlighted](layout-blocks-before.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/bb0619ccbebea384e1b14f97b389fa7dc16d0450)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/07fbf94b53f888e010c61a2c31b1fdf861684ef6)
 
 
 ## Get the layout right
@@ -97,7 +97,7 @@ It's also good to try how the layout stretches when the page has many or few par
 
 ![Layout elements where we want them](layout-blocks-after.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/96653030289ee58042e201007a079be71c010912)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/d460ff730c7e4ccb55c1821a6fe7e8fe9fc14b9b)
 
 
 ## Make it pretty
@@ -119,7 +119,7 @@ You'll probably want to remove those black bullet points in front of every `<li>
 
 ![Finished layout styling](pretty-layout.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/e94be342696b26393c63295a1a41296afca94889)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/e7e4aa852afe598bf7aa609a4a6a22775992d773)
 
 
 [css]: https://developer.mozilla.org/en-US/docs/Web/CSS

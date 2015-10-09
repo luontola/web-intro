@@ -35,7 +35,7 @@ It should look like this:
 
 ![Minimal HTML page](minimal-page.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/a44ee69891389e49eee70ede6323cd9c387425c5)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/b3d748e2abd28e96267318d8c483dd301970a4f0)
 
 
 ## Basic HTML elements
@@ -48,7 +48,7 @@ You can find out more information about the [`<h1>`][html-h1], [`<p>`][html-p], 
 
 ![Basic HTML Elements](basic-elements.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/9be6966443affc4395cb5327ee411d5251026dd9)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/2836c57c048ff823eb7b194d8a6b470bd41eb891)
 
 
 [html]: https://developer.mozilla.org/en-US/docs/Web/HTML
