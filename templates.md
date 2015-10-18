@@ -5,12 +5,14 @@ permalink: /templates/
 next: /databases/
 ---
 
-In this chapter you will learn how to create a web server with Ruby, and how to use templates and a bit of programming to avoid repeating yourself.
+In this chapter you will learn how to create a web server with Ruby, and how to use templates and a bit of programming to avoid repeating yourself. You will also get a taste of creating dynamic content, i.e. the page content is not always the same when somebody visits it.
 
 
 ## Pictures page
 
-Last time we created a navigation menu with a link to the `pictures.html` page, but that page doesn't yet exist. Create a copy of `my-page.html`, name it `pictures.html`, and change its title and heading. Find about a dozen images which you like from [Public Domain Pictures](http://www.publicdomainpictures.net/) and add their thumbnails as images on your `pictures.html` using the [`<img>`][html-img] tag.
+Last time we created a navigation menu with a link to the `pictures.html` page, but that page doesn't yet exist. Let's create it now.
+
+Make a copy of `about.html`, name it `pictures.html`, and change its title and heading. Find about a dozen images which you like from [Public Domain Pictures](http://www.publicdomainpictures.net/) and add their thumbnails as images on your `pictures.html` using the [`<img>`][html-img] tag.
 
 ```html
 <img class="album-photo" src="http://www.publicdomainpictures.net/pictures/50000/t2/cat-looking-up.jpg">
@@ -19,7 +21,9 @@ Last time we created a navigation menu with a link to the `pictures.html` page, 
 ...
 ```
 
-As shown above, give the images a unique class and use CSS to make them look like a photo album.
+As shown above, give the images a unique class and use CSS to make them look like a photo album. In case the pictures are of different size, you can set their [height][css-height]; the web browser will set their width automatically to maintain the picture's aspect ratio.
+
+The following example uses the CSS properties [border][css-border], [background-color][css-background-color], [margin][css-margin], [padding][css-padding] and [box-shadow][css-box-shadow].
 
 ![Photo album](photo-album.png)
 
@@ -30,7 +34,7 @@ As shown above, give the images a unique class and use CSS to make them look lik
 
 In programming we have a principle called [Don't Repeat Yourself (DRY)][dry] which says that *"every piece of knowledge must have a single, unambiguous, authoritative representation within a system."* If we follow that principle, our code will be easier to understand and modify.
 
-Our little web site is already breaking the DRY principle. Both of our pages are repeating the HTML for the layout and navigation; adding another page would require changing the navigation on every page. Additionally the pictures page has lots of similar `<img>` tags with just the URL changing. To solve this problem, we will introduce *templates*, so that all the common HTML will be in one place.
+Our little web site is already breaking the DRY principle. Both of our pages are repeating the HTML for the layout and navigation. If we would add another page, we would have to change the navigation menu in many different HTML files. Additionally the pictures page has lots of similar `<img>` tags with just the URL changing. To solve this problem, we will introduce *templates*, so that all HTML code will be written once and only once.
 
 
 ## Run a web server
@@ -386,6 +390,12 @@ TODO
 
 
 [html-img]: https://developer.mozilla.org/en/docs/Web/HTML/Element/img
+[css-height]: https://developer.mozilla.org/en-US/docs/Web/CSS/height
+[css-background-color]: https://developer.mozilla.org/en-US/docs/Web/CSS/background-color
+[css-margin]: https://developer.mozilla.org/en-US/docs/Web/CSS/margin
+[css-padding]: https://developer.mozilla.org/en-US/docs/Web/CSS/padding
+[css-border]: https://developer.mozilla.org/en-US/docs/Web/CSS/border
+[css-box-shadow]: https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow
 [dry]: http://programmer.97things.oreilly.com/wiki/index.php/Don't_Repeat_Yourself
 [ruby]: https://www.ruby-lang.org/
 [sinatra]: http://www.sinatrarb.com/
