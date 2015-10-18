@@ -14,7 +14,7 @@ The following code shows the minimal structure of a HTML page.
 
 Create a folder called `MyAwesomeSite` on your computer's desktop. This will be your project folder where to put all the files you create in this tutorial.
 
-Copy the following HTML code into your text editor and save it as `my-page.html` into your project folder. Then open the file in your web browser.
+Copy the following HTML code into your text editor and save it as `about.html` into your project folder. Then open the file in your web browser.
 
 ```html
 <!DOCTYPE html>
