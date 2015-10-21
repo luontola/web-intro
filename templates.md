@@ -39,11 +39,11 @@ Our little web site is already breaking the DRY principle. Both of our pages are
 
 ## Run a web server
 
-This far we have created our site with just static HTML pages, but in order to use templates, we must create a web server which will generate the HTML that will be shown to the user.
+This far we have created our site with just static HTML pages, but in order to use templates, we must create a *web server* which will dynamically generate HTML pages. Your web browser will communicate with the web server and show the HTML pages which the web server generates.
 
 We will use the [Ruby][ruby] programming language and the [Sinatra][sinatra] web framework to create the web server. Follow the [installation guide](/install/) to install Ruby and Sinatra if you haven't yet done so.
 
-Create a file called `app.rb` and put the following code in it.
+Create a file called `app.rb` and put the following code in it. This minimal web application contains a single *route* for the *path* `/hi` which will just generate a page with the text *Hello World!*
 
 ```ruby
 require 'sinatra'
@@ -53,16 +53,24 @@ get '/hi' do
 end
 ```
 
-Then run the command `ruby app.rb` in your terminal. It should start a web server on your own machine in port 4567. To view it, visit <http://localhost:4567/hi> in your web browser. Finally stop the web server by pressing Ctrl+C.
+Then run the command `ruby app.rb` in your terminal. It should start a web server on your own machine in port 4567. To view it, visit <http://localhost:4567/hi> in your web browser. It should show the *Hello World!* text.
 
 ![Your first web server is working](sinatra-hello-world.png)
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/d89cf7c04e9840963a2f21778eb7b4a5cc18c102)
 
+Finally stop the web server by pressing `Ctrl+C` in your terminal. Try refreshing the page in your web browser. It should now show an error message because there is no more a web server to connect to.
+
 
 ### Making file changes visible
 
-Always when you change your application, you will need to stop and restart the web server. To stop the web server running in your terminal, press `Ctrl+C`. To start it again without having to type the command, press `Up` and then `Enter`. Try it a couple of times by changing the text that the server shows. If you get tired of doing that, Sinatra's FAQ contains instructions on [how to reload the application automatically][sinatra-reloading] when a file is changed.
+Always when you change your application, you will need to stop and restart the web server. To stop the web server running in your terminal, press `Ctrl+C`. To start it again without having to type the command, press `Up` and then `Enter`.
+
+Change the text that the `/hi` route returns and check in your web browser that it shows the new text. Repeat this a couple of times. Observe how the web browser still shows the old text if you don't restart the server.
+
+Programmers don't like doing things that the computer can do for them, so there are tools for [automatically restarting the web server][sinatra-reloading] whenever a file is changed. You should have installed the `rerun` tool as part of the install guide. Let's try it out.
+
+Start the server with the command `rerun ruby app.rb` in your terminal. Try changing the text that the `/hi` route returns a couple more times, but notice how you don't need to restart the web server yourself. The `rerun` command will restart it automatically every time that you save the file (it may take a couple of seconds, so you might see an error message if you reload the page in your web browser quickly).
 
 
 ## Static site on a web server
