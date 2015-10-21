@@ -77,7 +77,7 @@ Start the server with the command `rerun ruby app.rb` in your terminal. Try chan
 
 As a first step towards serving our web site through Sinatra, we can use Sinatra's ability to [serve static files][sinatra-static] to serve our existing HTML and CSS files unmodified.
 
-In the same folder as `app.rb`, create a new folder called `public` and move your HTML and CSS files and pictures there. Then start your web server with `ruby app.rb`, visit <http://localhost:4567/pictures.html> in your web browser and make sure that your site looks the same as before.
+Inside the same folder as `app.rb`, create a new folder called `public` and move your HTML and CSS files and pictures there. Then start your web server with `ruby app.rb`, visit <http://localhost:4567/pictures.html> in your web browser and make sure that your site looks the same as before, but this time it's being served to you by a web server the same way as all web sites on the Internet.
 
 * TODO: avoid åöä in path
 
@@ -88,112 +88,88 @@ In the same folder as `app.rb`, create a new folder called `public` and move you
 
 ## Fix the front page
 
-You should make sure that people can visit your web site through its base URL instead of having to know one of its sub pages.
+You should make sure that people can visit your web site through its base URL, the same way as all web sites on the Internet, instead of having to know one of its sub pages.
 
 First try going to <http://localhost:4567/> on your current site. It should show an error message "Sinatra doesn’t know this ditty." Let's fix that.
 
-Change your `app.rb` to [redirect][sinatra-redirect] the path `/` to `/my-page.html`. Restart the web server and check that when you visit <http://localhost:4567/>, it will send your web browser to the <http://localhost:4567/my-page.html> address.
+Change your `app.rb` to [redirect][sinatra-redirect] the path `/` to `/about.html` by adding the following route.
+
+```ruby
+get '/' do
+  redirect to('/about.html')
+end
+```
+
+Check that when you visit <http://localhost:4567/>, your web browser immediately goes to the <http://localhost:4567/about.html> address.
 
 ![Front page redirect works](front-page-redirect.png)
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/09b915909b1bc173e6f87b8f96a73815fcb66232)
 
 
-## Generating pages dynamically
-
-TODO: remove this section
-
-The idea of a templating system is to dynamically generate the HTML that will be shown to the user. To make sure that we understand how to generate pages dynamically with Sinatra, add the following two routes to your application.
-
-```ruby
-get '/foo' do
-  IO.read('public/my-page.html')
-end
-
-get '/:page' do
-  "You're on page " + params['page']
-end
-```
-
-When you visit <http://localhost:4567/foo>, you should see exactly the same content as on <http://localhost:4567/my-page.html>. The [`IO.read`][ruby-read] method reads a file and gives you its contents.
-
-When you visit <http://localhost:4567/bar>, you should see the text "You're on page bar". On <http://localhost:4567/gazonk> you should see "You're on page gazonk". This is an example of a [parameterized route][sinatra-routes] which can serve multiple pages. Note that the `/:page` route must be after the `/foo` route, because Sinatra will use the first route that matches the path in the HTTP request.
-
-<s>[View solution](https://github.com/orfjackal/web-intro-project/commit/d94fc393487def0e1e1421166b8b3b749774c418)</s>
-
-
-## Bare bones templating system
-
-TODO: remove this section
-
-Now that we have a proof-of-concept for dynamically generating HTML and for reading existing HTML files, we can use that to create a very basic templating system.
-
-Create a `views` folder and move all your HTML files from the `public` folder there (`views` is Sinatra's default folder for templates). Don't move the CSS files. Create empty files `layout-top.html` and `layout-bottom.html` in the `views` folder.
-
-Add the following route to your application. Remove the old `/foo` and `/:page` routes.  Make sure that your application still looks the same as before. The difference is that now the pages are no more served as static files, because they are no more in the `public` folder, but they are generated dynamically using this code.
-
-```ruby
-get '/:page.html' do
-  IO.read('views/layout-top.html') +
-  IO.read('views/' + params['page'] + '.html') +
-  IO.read('views/layout-bottom.html')
-end
-```
-
-Now you can move the top and bottom parts of the code from your individual HTML pages to the `layout-top.html` and `layout-bottom.html` files. Restart your application and check that it still looks the same as before.
-
-<s>[View solution](https://github.com/orfjackal/web-intro-project/commit/595a09999b3ce0165792712929937c60fc179542)</s>
-
-Now you have managed to apply the DRY principle and in the future it will be enough to change just one place when you change the layout or add pages to the navigation menu. You also understand the basic idea of how templates work. Next let's use a proper templating system.
-
-
 ## Templates
 
-TODO: rewrite this section
+The idea of *templates* is to sprinkle your HTML code with some placeholder marks where you can easily insert some dynamic content. We will use the [ERB][erb] templating *library* which is included in Ruby's *standard library* and which Sinatra also supports.
 
-[ERB][erb] is a templating system which comes with Ruby's standard library, so it's easy to get started with and also [Sinatra supports it][sinatra-templates]. Change your application to use ERB instead of the code we wrote earlier.
+Create a `views` folder inside your project folder (next to the `public` folder). This is the folder where Sinatra expects to find all your template files.
 
-* Combine `layout-top.html` and `layout-bottom.html` into a file `layout.erb`, and add the `<%= yield %>` code where the page content should be inserted
-* Rename the file extension of the `.html` pages in the `views` folder to `.erb`
-* Change the `/:page.html` route to call the `erb` method:
+Copy `public/about.html` to the `views` folder and name it `layout.erb`. In `views/layout.erb`, replace all page content (i.e. the stuff between `<section class="content">` and `</section>`) with just `<%= yield %>`
+
+Copy `public/about.html` to `views/about.erb` and remove everything except the page content (i.e. the opposite of what you did in `views/layout.erb`). Copy `public/pictures.html` to `views/pictures.erb` and do the same thing. Remove `public/about.html` and `public/pictures.html`.
+
+Add the following routes to `app.rb` to [render][sinatra-templates] the above mentioned ERB templates.
 
 ```ruby
-get '/:page.html' do
-  erb params['page'].to_sym
+get '/about.html' do
+  erb :about
+end
+
+get '/pictures.html' do
+  erb :pictures
 end
 ```
 
-*Note: The above code has a security vulnerability, but we'll address that in a [later chapter](/security/).*
-
-After restarting your application, check that all the pages still look the same before. This time it's being powered by the ERB templating system, so later we'll be able to take advantage of some of its useful features.
+Check that all the pages still look the same as before in your web browser. The difference is that now all the common HTML for the layout and navigation is in a single place, so changing it and adding new pages will be easier. Templates also make it possible to have dynamic content, as we will see next.
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/47cb34755f57f56f478dbee80ccfa4887fba5177)
 
 
 ## Lottery
 
-TODO
+You might have seen on the Internet many sites which say "Click here to find out your lucky number". Here is how you can make your own using a couple of lines of code and templates.
+
+In `app.rb`, change the `/about.html` route to contain the following code.
+
+```ruby
+get '/about.html' do
+  backstreet_boys = ["A.J.", "Howie", "Nick", "Kevin", "Brian"]
+  @who_i_marry = backstreet_boys.sample
+  erb :about
+end
+```
+
+The above code first creates a list of the names of all Backstreet Boys and stores it in the `backstreet_boys` *variable*. The next lines calls the `sample` *method* on the list, which will randomly pick one of the items in the list, and then the code stores it in the `@who_i_marry` variable. Because the variable name starts with `@`, also the template can access that variable.
+
+In `views/about.erb`, add the following code to show the value of `@who_i_marry` on the page.
+
+```erb
+<p>I like Backstreet Boys a lot. I'm going to marry <%= @who_i_marry %>!</p>
+```
+
+Try reloading the about page in your web browser multiple times. The name should change randomly every time that the page is reloaded.
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/0aa84a7aee603691d888ccb4ddc218ef0a37dbff)
 
 
 ## Front page at the root
 
-TODO: rewrite this chapter
+Normally the front page of every web site is at the root path (`/`), but on our web site it's instead at the `/about.html` path. We can solve that by rendering the about template at the root path instead of doing a redirect.
 
-Before moving on to the next topic, let's clean up our code a little bit. The front page of a site should be at the root path (`/`) and there is a convention to call it the *index* page.
+In `app.rb`, remove the old `/` route and change the `/about.html` route to be the new `/` route.
 
-Rename `my-page.erb` to `index.erb` and change your routes to render it at the root instead of doing a page redirect. This is easy to do now that we have templates.
+In `views/layout.erb`, change the link to the about page from `<a href="about.html">` to `<a href="/">`.
 
-```ruby
-get '/' do
-  erb :index
-end
-```
-
-Also change the link in your navigation menu from `<a href="my-page.html">` to `<a href="/">`. The `/` path refers to the base URL of your web site.
-
-In the layout it's a good practice to have all the links prefixed with `/`, because that way they will work the same way regardless of the page where the user is currently. You can read more about this in [Absolute vs. Relative Paths/Links][absolute-vs-relative-paths].
+Check that when you visit <http://localhost:4567/>, your web browser stays at the <http://localhost:4567/> address and shows the front page.
 
 ![Front page at the root](front-page-root.png)
 
@@ -379,6 +355,8 @@ TODO
 ## Fix relative links
 
 TODO
+
+In the layout it's a good practice to have all the links prefixed with `/`, because that way they will work the same way regardless of the page where the user is currently. You can read more about this in [Absolute vs. Relative Paths/Links][absolute-vs-relative-paths].
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/b719dcc1e819a283788de845fd3eb64763c4cadd)
 
