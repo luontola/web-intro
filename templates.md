@@ -267,106 +267,53 @@ Visit every page on your site to make sure that they still work and that they ha
 [View solution](https://github.com/orfjackal/web-intro-project/commit/29c04f352bcce2b69eec9a8af7792b9ba986a5a3)
 
 
-## Sitemap for titles
+## Pages for individual pictures
 
-TODO: remove this chapter
+It would be nice to be able to click a picture on the pictures page to see that picture in full size and also allow people to write comments for that picture. For that we will need to have separate pages for every picture. Because our application can have an unlimited number of pictures, it's not possible to create separate routes for every picture, but we need a route to handle *all* the pictures.
 
-Add one more page to your web site, for example a page about your life story. It will contain just plain HTML, so it will use the `/:page.html` route. Now we have a problem - multiple pages can be rendered by the `/:page.html` route, so how can it decide what to make the page title? One solution is to store a list of all the pages and their titles in a [*hash*][ruby-hash] (also known as a *dictionary* or *map*).
+In `views/pictures.erb`, make each of the pictures a link to another page. The target of the link will be the URL of the picture but with the file extension changed to `.html` (this code does it using [regular expressions][ruby-regexp]).
 
-Add the following code to your application, outside all the routes, after which you can refer its contents using the *keys* of the hash: `PAGES[:pictures]`
-
-```ruby
-PAGES = {
-  :index => "I'm Ruby",
-  :pictures => "Lovely Pictures",
-  :story => "My Story",
-}
-```
-
-With this it will be easy to parameterize also the title of pages which don't have custom routes.
-
-```ruby
-get '/:page.html' do
-  page = params['page'].to_sym
-  erb page, :locals => {:title => PAGES[page]}
-end
-```
-
-Change all the routes to use the title from the `PAGES` hash. Test that all your pages still work.
-
-<s>[View solution](https://github.com/orfjackal/web-intro-project/commit/ee2a9760fbfa3dac04780c2294430a3bcebf3214)</s>
-
-
-## Sitemap for navigation
-
-TODO: remove this chapter
-
-Now that we have a sitemap of all the pages, we can use it to also generate our navigation menu, so that we can avoid having to update the layout template whenever we add more pages.
-
-Pass in the `PAGES` hash to the templates as a local variable `pages` and update your navigation menu to be generated dynamically like this:
-
-```html
-<nav class="navigation">
-    <ul>
-<% for page, title in pages %>
-        <li><a href="<%= (page == :index ? '/' : "/#{page}.html") %>"><%= title %></a></li>
+```erb
+<% for url in @picture_urls %>
+<a href="<%= url.sub(/\.\w+$/, '.html') %>"><img class="album-photo" src="<%= url %>"></a>
 <% end %>
-    </ul>
-</nav>
 ```
 
-Check that the navigation menu and all of its links still work.
-
-TODO: screenshot, the navigation menu and page titles are now in sync
-
-<s>[View solution](https://github.com/orfjackal/web-intro-project/commit/b81b3ce39bf919cd7b88c890f45bf212cac637c0)</s>
-
-
-## Helper method for rendering templates
-
-TODO: remove this chapter
-
-Have a look at your code. All the lines which render a template with `erb` have quite much repetition, because every template needs to be parameterized with `title` and `pages`. To avoid this duplicated code, which violates the DRY principle, we can create a helper method which takes care of all the common code.
+In `app.rb`, add the following route which uses [named parameters][sinatra-routes]. The `:picture` will match anything in that position of the path, and will make it accessible as `params['picture']`.
 
 ```ruby
-def render_page(page, locals={})
-  locals = locals.merge({:title => PAGES[page], :pages => PAGES})
-  erb page, :locals => locals
+get '/pictures/:picture.html' do
+  "Here will be a page for " + params['picture']
 end
 ```
 
-With this helper method the rest of the code becomes much simpler.
-
-```ruby
-get '/' do
-  render_page :index
-end
-
-get '/pictures.html' do
-  picture_urls = Dir.glob('public/pictures/**').map { |path| path.sub('public', '') }
-  render_page :pictures, {:picture_urls => picture_urls}
-end
-
-get '/:page.html' do
-  render_page params['page'].to_sym
-end
-```
-
-Most of the time when you notice some repetition in your code, you can extract the common code into its own method, which makes the code easier to understand and change.
-
-<s>[View solution](https://github.com/orfjackal/web-intro-project/commit/dc60a1ea4e5e01ff83acd13d6378ba80802779a6)</s>
-
-
-## Dynamic route for pictures
-
-TODO
+Go to your pictures page and click some of the pictures there. Notice how the text shown on the page is related to page's address.
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/a9f6491c3d2f36e3a01e0aa8c5a1482accf3cd3d)
 
 
 ## Picture page template
 
-TODO
+Create `views/picture.erb` with the following content.
+
+```erb
+<img class="full-photo" src="<%= @picture_url %>">
+
+<p><a href="pictures.html">Return to album</a></p>
+```
+
+Make the route render that template.
+
+```ruby
+get '/pictures/:picture.html' do
+  @picture_url = params['picture'] + '.jpg'
+  erb :picture
+end
+```
+
+Visit the pages of a few pictures and check that they look right. Tweak the CSS if necessary, for example picture [width][css-width].
+
+You might notice that some of the links on your site don't work right. That needs to be solved next.
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/0fc93a837a82539720805214805f14701efa1e14)
 
@@ -387,7 +334,7 @@ TODO
 [View solution](https://github.com/orfjackal/web-intro-project/commit/41592451a607ca75ef94f183f4947ece4ab83278)
 
 
-## Error when picture not found
+## Picture not found
 
 TODO
 
@@ -395,6 +342,7 @@ TODO
 
 
 [html-img]: https://developer.mozilla.org/en/docs/Web/HTML/Element/img
+[css-width]: https://developer.mozilla.org/en-US/docs/Web/CSS/width
 [css-height]: https://developer.mozilla.org/en-US/docs/Web/CSS/height
 [css-background-color]: https://developer.mozilla.org/en-US/docs/Web/CSS/background-color
 [css-margin]: https://developer.mozilla.org/en-US/docs/Web/CSS/margin
@@ -417,4 +365,5 @@ TODO
 [ruby-sub]: http://docs.ruby-lang.org/en/2.2.0/String.html#method-i-sub
 [ruby-hash]: http://docs.ruby-lang.org/en/2.2.0/Hash.html
 [ruby-printing]: http://zetcode.com/lang/rubytutorial/io/
+[ruby-regexp]: http://ruby-doc.org/core-2.2.0/Regexp.html
 [repl]: https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop
