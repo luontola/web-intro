@@ -178,25 +178,25 @@ Check that when you visit <http://localhost:4567/>, your web browser stays at th
 
 ## Album photo template
 
-The main benefit of a templating system is that we can parameterize it with dynamically generated data. Let's take advantage of that to avoid repeating ourselves in the pictures page.
+In addition to inserting single items to a template, as we did a moment ago, we can insert a list of items and repeat a piece of the template for each of them. To demonstrate that, we will remove the repetition of multiple image tags on the pictures page. Using templates might seem overkill for simple image tags, but imagine that each image will also have a description, like button and a link to the full-sized picture, in which case avoiding the repetition becomes very important.
 
-First create a route for `/pictures.html` which stores the URLs of all your pictures in a list and gives it as a parameter the template. Note that this route must be before the `/:page.html` route, because Sinatra will use the first route that matches the requested path.
+Change your `/pictures.html` route to store a list of the picture URLs in a variable.
 
 ```ruby
 get '/pictures.html' do
-  picture_urls = [
+  @picture_urls = [
     "http://www.publicdomainpictures.net/pictures/50000/t2/cat-looking-up.jpg",
     "http://www.publicdomainpictures.net/pictures/30000/t2/cat-in-the-city-5.jpg",
     "http://www.publicdomainpictures.net/pictures/30000/t2/annoyed-cat.jpg",
   ]
-  erb :pictures, :locals => {:picture_urls => picture_urls}
+  erb :pictures
 end
 ```
 
-Then change `pictures.erb` to use the *local variable* `picture_urls` which the above route gave the template. This is a *for loop* which repeats the contained HTML for every element in the `picture_urls` list, so that on every iteration the `url` variable refers to a different element of the list.
+In `views/pictures.erb`, use a *for loop* to repeat the image tag for each url in the list.
 
-```html
-<% for url in picture_urls %>
+```erb
+<% for url in @picture_urls %>
 <img class="album-photo" src="<%= url %>">
 <% end %>
 ```
@@ -212,12 +212,13 @@ There is still some work involved in adding the picture URLs by hand to the list
 
 Create a `pictures` folder under the `public` folder and save there all the pictures in your list.
 
-To find out how to do something in a particular programming language, you can google for "[name of the language] [what you want to do]", which in this case would be "ruby list files in a folder". But even if you find some snippet of code on the Internet, you should understand what it does, for example by checking the official reference documentation, before using it. Or if you know the language and its standard library already a bit, you can probably start from the reference documentation and find there what you need.
-
-In this case you can get a list of files in the `public/pictures` folder using the following code. Have a look at the documentation for the methods [glob][ruby-glob], [map][ruby-map] and [sub][ruby-sub] to understand what each of them does individually, and then try to understand this code as a whole.
+Change your `/pictures.html` route to generate a list of the picture URLs based on the contents of the `public/pictures` directory.
 
 ```ruby
-picture_urls = Dir.glob('public/pictures/**').map { |path| path.sub('public', '') }
+get '/pictures.html' do
+  @picture_urls = Dir.glob('public/pictures/**').map { |path| path.sub('public', '') }
+  erb :pictures
+end
 ```
 
 Check that the pictures page still works. Try adding a couple more pictures - much easier now, isn't it?
@@ -225,23 +226,41 @@ Check that the pictures page still works. Try adding a couple more pictures - mu
 [View solution](https://github.com/orfjackal/web-intro-project/commit/2030d93bd772adb74a5d384a7ed4b41a723ce2c6)
 
 
-## Parameterize the page title
+### How does this code work?
 
-Earlier when we started using templates, our web site didn't anymore have unique titles for every page. Now that we know how to parameterize templates, we can get those page titles back.
+The above code combines multiple operations to achieve the desired result. Always when copying code from the Internet, you should try to understand what it does. One way is to read the documentation, in this case for the [glob][ruby-glob], [map][ruby-map] and [sub][ruby-sub] methods. Another way is to run pieces of the code interactively using a [REPL][repl] and check their result. Instead of a REPL you can also [print things to the terminal][ruby-printing] when you run your application.
 
-Change the `<title>` in your `layout.erb` to get the title from a local variable `title`:
+You can start a Ruby REPL by running the `irb` command in your terminal. When you type there a line of Ruby code and press Enter, it will print the result of that code. Here is an example session of experimenting what the above code does.
+
+```
+$ irb
+irb(main):001:0> Dir.glob('public/pictures/**')
+=> ["public/pictures/annoyed-cat.jpg", "public/pictures/cat-1373445873hvw.jpg", "public/pictures/cat-1382017414PaD.jpg", "public/pictures/cat-hunting.jpg", "public/pictures/lieblingskater-44421287869401VYcy.jpg"]
+irb(main):002:0> "public/pictures/annoyed-cat.jpg".sub('public', '')
+=> "/pictures/annoyed-cat.jpg"
+irb(main):003:0> Dir.glob('public/pictures/**').map { |path| path.sub('public', '') }
+=> ["/pictures/annoyed-cat.jpg", "/pictures/cat-1373445873hvw.jpg", "/pictures/cat-1382017414PaD.jpg", "/pictures/cat-hunting.jpg", "/pictures/lieblingskater-44421287869401VYcy.jpg"]
+irb(main):004:0> exit
+```
+
+
+## Unique titles for every page
+
+Earlier when we started using templates, our web site didn't anymore have unique titles for every page. Now that we know how use variables in templates, we can give each page its own title.
+
+In `views/layout.erb`, get the page title from the `@title` variable.
 
 ```html
-<title><%= title %></title>
+<title><%= @title %></title>
 ```
 
-Then change every route to pass a title as parameter to the template, for example:
+Add to each of your routes the code for setting the title.
 
 ```ruby
-erb :pictures, :locals => {:picture_urls => picture_urls, :title => "Lovely Pictures"}
+@title = "type the title here"
 ```
 
-Visit every page on your site to make sure that they still work and that they have the correct page title.
+Visit every page on your site to make sure that they still work and that they have different page titles.
 
 ![Parameterized page title](parameterized-title.png)
 
@@ -397,3 +416,5 @@ TODO
 [ruby-map]: http://docs.ruby-lang.org/en/2.2.0/Enumerable.html#method-i-map
 [ruby-sub]: http://docs.ruby-lang.org/en/2.2.0/String.html#method-i-sub
 [ruby-hash]: http://docs.ruby-lang.org/en/2.2.0/Hash.html
+[ruby-printing]: http://zetcode.com/lang/rubytutorial/io/
+[repl]: https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop
