@@ -311,25 +311,52 @@ get '/pictures/:picture.html' do
 end
 ```
 
-Visit the pages of a few pictures and check that they look right. Tweak the CSS if necessary, for example picture [width][css-width].
-
-You might notice that some of the links on your site don't work right. That needs to be solved next.
+Visit a few picture pages pictures and check that they show the picture. You'll notice that the CSS and some links don't work, so that needs to be solved next.
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/0fc93a837a82539720805214805f14701efa1e14)
 
 
 ## Fix relative links
 
-TODO
+On a picture page, if you click the "Pictures" or "Return to album" link, it will take your browser to <http://localhost:4567/pictures/pictures.html> instead of <http://localhost:4567/pictures.html>. Similarly it tries to load your CSS from <http://localhost:4567/pictures/style.css> instead of <http://localhost:4567/style.css> (you can see this with your web browser's [developer tools][browser-developer-tools]). However, the link to the front page still works.
 
-In the layout it's a good practice to have all the links prefixed with `/`, because that way they will work the same way regardless of the page where the user is currently. You can read more about this in [Absolute vs. Relative Paths/Links][absolute-vs-relative-paths].
+The reason has to do with how relative links work. Read [Absolute vs. Relative Paths/Links][absolute-vs-relative-paths] for an explanation. Absolute links start with `http://` or similar. Other links are relative to the page where the link appears. To make a link point to the same target regardless of the page where it appears in your site, you should prefix the link with `/`, which makes it relative to the site's root path instead of the current page's path.
+
+Change all relative links in `views/layout.erb` and `views/picture.erb` to start with the `/` character. Check that the picture pages look right and all the links work.
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/b719dcc1e819a283788de845fd3eb64763c4cadd)
 
 
 ## Fix guessing the picture file extension
 
-TODO
+Not all pictures have the `.jpg` file extension. There are `.png`, `.gif` and other image types as well. But currently the `/pictures/:picture.html` route has been hard-coded to work with only `.jpg` images.
+
+A solution for that is to check the contents of the `public/pictures` folder to find out the actual file extension. This can be implemented by taking advantage of the code that already lists all pictures in the folder, so we will extract that code into a new method so that we can reuse it.
+
+In `app.rb`, add the methods `picture_urls` and `find_picture_url` as shown below, and change your routes to use them to set `@picture_urls` and `@picture_url`.
+
+TODO: page title
+
+```ruby
+get '/pictures.html' do
+  @title = "Lovely Pictures"
+  @picture_urls = picture_urls
+  erb :pictures
+end
+
+get '/pictures/:picture.html' do
+  @picture_url = find_picture_url(params['picture'])
+  erb :picture
+end
+
+def picture_urls
+  Dir.glob('public/pictures/**').map { |path| path.sub('public', '') }
+end
+
+def find_picture_url(basename)
+  picture_urls.select { |path| File.basename(path, '.*') == basename }.first
+end
+```
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/41592451a607ca75ef94f183f4947ece4ab83278)
 
@@ -367,3 +394,4 @@ TODO
 [ruby-printing]: http://zetcode.com/lang/rubytutorial/io/
 [ruby-regexp]: http://ruby-doc.org/core-2.2.0/Regexp.html
 [repl]: https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop
+[browser-developer-tools]: https://developer.mozilla.org/en-US/Learn/Discover_browser_developer_tools
