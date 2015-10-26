@@ -363,7 +363,26 @@ end
 
 ## Picture not found
 
-TODO
+Currently if you go to a picture page that doesn't exist, for example <http://localhost:4567/pictures/foo.html>, it shows a page with the picture not working. But instead of that a well behaving site should give an error message that the page was not found.
+
+In HTTP there are a bunch of numeric status codes, of which the code 404 means that a page was not found. In Sinatra we can produce that status code with `halt 404`. Additionally we can create a `not_found` route to produce an error message page (otherwise the page is empty).
+
+Update your `/pictures/:picture.html` route to be as follows.
+
+TODO: page title
+
+```ruby
+get '/pictures/:picture.html' do
+  @picture_url = find_picture_url(params['picture']) or halt 404
+  erb :picture
+end
+
+not_found do
+  "Page Not Found"
+end
+```
+
+Check that <http://localhost:4567/pictures/foo.html> shows an error message. Also use the [developer tools][browser-developer-tools] to check that the status code for that page is 404.
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/33b388bd9a3faf1004f44be4cf7e920d22302ba8)
 
