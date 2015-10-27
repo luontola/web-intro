@@ -5,9 +5,7 @@ permalink: /databases/
 next: /security/
 ---
 
-Databases are used by applications to store data in a safe place. Think of them as Excel sheets with possibly millions of rows of data, but with more powerful tools for modifying and calculating things based on the data.
-
-This this chapter we will implement a commenting feature. Later it could be expanded to having comments for each of the pictures you have on your site, but to start simple let's first focus on just writing a guestbook where visitors can leave their messages.
+Most applications store their data in a database. Think of databases as Excel sheets with possibly millions of rows of data, but with more powerful tools for manipulating and summarizing the data. In this chapter we will use databases to implement a commenting feature for the pictures on your site.
 
 
 ## Web forms
@@ -17,19 +15,46 @@ Web applications can receive input from the user though [web forms][web-form]. A
 
 ### Comment form
 
-TODO: rewrite this section
+In `views/picture.erb`, use the following HTML to create a form.
 
-Create a guestbook page with the following form.
+```erb
+<h2>Comments</h2>
 
-```html
 <form action="/add-comment" method="post" class="add-comment">
-    <label for="name">Name</label>
-    <br><input type="text" name="name">
-    <br><label for="comment">Comment</label>
-    <br><textarea type="text" name="comment"></textarea>
-    <br><button type="submit">Send</button>
+    <input type="hidden" name="picture" value="<%= @picture %>">
+    <label for="author">Name</label>
+    <br><input type="text" name="author">
+    <br><label for="message">Comment</label>
+    <br><textarea type="text" name="message"></textarea>
+    <br><button type="submit">Add Comment</button>
 </form>
 ```
+
+This form has a hidden field for associating the submitted comment with a particular picture.
+
+Change the `/pictures/:picture.html` tell the above template the name of the picture as `@picture`.
+
+```ruby
+get '/pictures/:picture.html' do
+  @picture = params['picture']
+  @picture_url = find_picture_url(params['picture']) or halt 404
+  erb :picture
+end
+```
+
+In `public/style.css`, you can set the size of the form elements. The following code uses [CSS selector combinators][css-selectors] to limit the custom styles inside the comment form, to avoid accidentally changing the style of unrelated form elements.
+
+```css
+.add-comment input, .add-comment textarea {
+    width: 20em;
+}
+
+.add-comment textarea {
+    height: 3em;
+}
+```
+
+Check that the form looks good.
 
 ![Form for writing comments](comments-form.png)
 
@@ -38,20 +63,18 @@ Create a guestbook page with the following form.
 
 ### Receive form parameters
 
-Write something into the form and press the Submit button. Sinatra should give you an error page because the necessary route is missing. Go add that route to your application and try to submit the form again. It should now work.
-
-Did you notice that the `<form>` element had a `method="post"` attribute and that the route declaration also mentioned `post`? This refers to the [HTTP request methods][http-methods] of which the most common ones are GET and POST. GET is meant for reading pages and it should not change the application's state, so you can safely do multiple GET request to a page. POST is used for sending data to the page and it may be used to change the application's state.
-
-To see the parameters which you typed into the form, change your `post '/add-comment'` route to be as shown below. The `puts` will print the parameters and then it will send the visitor back to the guestbook page.
+Write something into the form and press the submit button. You should get an error page because the necessary route is missing. Add the following route to your application and try to submit the form again. It should now work.
 
 ```ruby
 post '/add-comment' do
   puts params
-  redirect '/guestbook.html'
+  redirect '/pictures/' + params['picture'] + '.html'
 end
 ```
 
-Now when you submit a form, it should print to the terminal where your application is running something like `{"name"=>"Ruby", "comment"=>"This is fun!"}`.
+Did you notice that the `<form>` element had a `method="post"` attribute and that the route declaration also mentions `post`? This refers to the [HTTP request methods][http-methods] of which the most common ones are GET and POST. GET is meant for reading pages and it should not change the application's state, so you can safely do multiple GET request to a page. POST is used for sending data to the web server and it may be used to change the application's state.
+
+Try again writing something to the form and submit it. The `puts` method will print the parameters to the terminal where your application is running. It should print something like `{"picture"=>"annoyed-cat", "author"=>"Ruby", "message"=>"How cute~~!"}`. After submitting the form, your web browser should end up on the same picture page where it was.
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/ef1d973ce1752aaa54e52c7595ec57253e84b7b9)
 
@@ -294,6 +317,7 @@ TODO
 [html-form]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form
 [html-input]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input
 [html-button]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button
+[css-selectors]: https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_started/Selectors
 [http-methods]: https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods
 [sinatra-templates]: http://www.sinatrarb.com/intro.html#Views%20/%20Templates
 [ruby-datetime]: http://docs.ruby-lang.org/en/2.2.0/DateTime.html
