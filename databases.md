@@ -121,18 +121,18 @@ In `views/picture.erb`, add the following code to show the comments.
 <p><%= @comments %></p>
 ```
 
+*Note: This template has a security vulnerability, but we'll address that in a [later chapter](/security/).*
+
 ![Show comments, bare bones solution](comments-txt.png)
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/fe7f495e4a86ce92deae71170f6ced09307c2936)
 
-*Note: The example solution has a security vulnerability, but we'll address that in a [later chapter](/security/).*
 
-
-## In-memory database
+## Keep comments in application memory
 
 Though the comments are now visible, they are very limited. For example we cannot easily edit or remove comments, and using templates for them is hard, because the comments are in a simple text file.
 
-To solve these issues, we will store the comments in application memory in an easier to manage data structure. Because the comments are only in application memory, they will disappear when the application is restarted, but the code will be one step away from switching to use a real database.
+To solve these issues, we will store the comments in application memory, in an easier to manage data structure. Because the comments are only in application memory, they will disappear when the application is restarted, but the code will be one step away from switching to use a real database.
 
 Create an empty [array][ruby-array] with `[]` when the program starts and store it in the `$comments` variable. In the `/add-comment` route append new comments to `$comments`. In the `/pictures/:picture.html` route read the comments from `$comments` and give them to the template.
 
@@ -165,43 +165,22 @@ TODO: screenshot
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/a1cf1ba00f63c424c0938a52f3bf4c2d345dc022)
 
-*Note: The example solution has a security vulnerability, but we'll address that in a [later chapter](/security/).*
-
 
 ## Comment template
 
-TODO: rewrite this section
+In `views/picture.erb`, show the comments in a human-readable format.
 
-To make the comments look better, let's render them as HTML using templates. First create a `comment.erb` template for a single comment as shown below.
-
-```html
-<p>
-  <span class="comment-author"><%= name %> wrote on <%= date.strftime('%Y-%m-%d %H:%M') %>:</span>
-  <br><span class="comment-message"><%= comment %></span>
-</p>
+```erb
+<% for comment in @comments %>
+<p><span class="comment-author"><%= comment[:author] %>
+  wrote on <%= comment[:added].strftime('%Y-%m-%d %H:%M:%S') %></span>
+<br><span class="comment-message"><%= comment[:message] %></span></p>
+<% end %>
 ```
 
 *Note: This template has a security vulnerability, but we'll address that in a [later chapter](/security/).*
 
-Then in your `/add-comment` route use `erb` to rendered HTML using the `comment.erb` template and append the result to the `comments.txt` file.
-
-```ruby
-post '/add-comment' do
-  File.open('comments.txt', 'a') do |f|
-    comment = erb :comment, :layout => false, :locals => {
-      :name => params['name'],
-      :comment => params['comment'],
-      :date => DateTime.now
-    }
-    f.puts(comment)
-  end
-  redirect '/guestbook.html'
-end
-```
-
-The [layout option][sinatra-templates] had to be set to `false` because otherwise Sinatra will try to wrap the template in `layout.rb`.
-
-Try adding some comments and write some CSS to make it look the way you like it. If you want the template to render the [DateTime][ruby-datetime] in a different format, see the documentation for [strftime][ruby-strftime].
+Try adding comments and write some CSS to make them look the way you like. If you want the template to render the [DateTime][ruby-datetime] in a different format, see the documentation for [strftime][ruby-strftime].
 
 ![Comments rendered using templates](comments-html.png)
 
@@ -210,14 +189,14 @@ Try adding some comments and write some CSS to make it look the way you like it.
 
 ## Keep comments in a database
 
-The commenting feature is now working nicely and the code is easy to change, but when you restart the server (try it), all the comments will be lost. To keep the data safe and the code maintainable, a database is needed.
+The commenting feature is now working nicely and the code is easy to change, but when you restart the web server, all the comments will be lost. To keep the data safe and the code maintainable, a database is needed.
 
-We will use the [SQLite](https://www.sqlite.org/) database, the [DataMapper](http://datamapper.org/) library for accessing SQLite in Ruby, and [DB Browser for SQLite](http://sqlitebrowser.org/) as a UI for seeing inside the database. If you haven't yet installed them, go through the [installation guide](/install/) and then come then back here.
+We will use the [SQLite](https://www.sqlite.org/) database, the [DataMapper](http://datamapper.org/) library for accessing SQLite in Ruby, and [DB Browser for SQLite](http://sqlitebrowser.org/) as a GUI for seeing inside the database. If you haven't yet installed them, go through the [installation guide](/install/) and then come then back here.
 
 
 ### Create a database for comments
 
-Add the following code to the beginning of your application. It will create a `my-database.db` file where all your data will be saved. In that file it will create a *table* for storing the comments as *rows*. The table will have four *columns* (id, name, comment and date).
+Add the following code to the beginning of your application. It will create a `my-database.db` file where all your data will be saved. Inside the database it will create a *table* for storing the comments as *rows*. The table will have five *columns* (id, picture, author, message and added).
 
 ```ruby
 require 'data_mapper'
@@ -229,9 +208,10 @@ class Comment
   include DataMapper::Resource
 
   property :id, Serial
-  property :name, String
-  property :comment, Text
-  property :date, DateTime
+  property :picture, String
+  property :author, String
+  property :message, Text
+  property :added, DateTime
 end
 
 DataMapper.finalize
@@ -249,17 +229,27 @@ Use [DB Browser for SQLite][sqlitebrowser] to open the `my-database.db` database
 
 ### Write comments to database
 
-In the `/add-comment` route, where you already append the comment to `$comments`, add the following code to save the comment also to the database.
+In the `/add-comment` route, use `Comment.create` to save the comment to the database. You can keep the old `$comments` usage still side by side with the new code, so that the application won't be broken by this change.
 
 ```ruby
-Comment.create(
-  :name => params['name'],
-  :comment => params['comment'],
-  :date => DateTime.now
-)
+post '/add-comment' do
+  Comment.create(
+    :picture => params['picture'],
+    :author => params['author'],
+    :message => params['message'],
+    :added => DateTime.now
+  )
+  $comments << {
+    :picture => params['picture'],
+    :author => params['author'],
+    :message => params['message'],
+    :added => DateTime.now
+  }
+  redirect '/pictures/' + params['picture'] + '.html'
+end
 ```
 
-Go add some comments to the guestbook. Then use DB Browser to browse the data in the `comments` table and check that the comments you just wrote were added there.
+Go add some comments on your site. Then use DB Browser to browse the data in the `comments` table and check that the comments you just wrote were added there.
 
 ![Some data inside the database](database-data.png)
 
@@ -268,13 +258,18 @@ Go add some comments to the guestbook. Then use DB Browser to browse the data in
 
 ### Read comments from database
 
-In the `/guestbook.html` route, replace `$comments` with the following code which will read all comments from the database (ordered newest first). After that change, you can remove the `$comments` variable and all code that still uses it.
+In the `/pictures/:picture.html` route, use `Comment.all` to find from the database all comments for that picture, newest first. After that change, you can remove the `$comments` variable and all code that still uses it.
 
 ```ruby
-Comment.all(:order => [:date.desc])
+get '/pictures/:picture.html' do
+  @picture = params['picture']
+  @picture_url = find_picture_url(params['picture']) or halt 404
+  @comments = Comment.all(:picture => params['picture'], :order => [:added.asc])
+  erb :picture
+end
 ```
 
-Check what the guestbook page looks like now. It should contain all the comments you wrote earlier, and the newest comment should be on top.
+Check the comments on the picture page now. It should show all the comments you saw in the database earlier.
 
 ![Showing comments from the database](comments-database.png)
 
