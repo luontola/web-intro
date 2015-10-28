@@ -90,35 +90,35 @@ Use the following code in your `/add-comment` route to append the comment and th
 
 ```ruby
 post '/add-comment' do
-  File.open('comments.txt', 'a') do |f|
-    f.puts(params['name'] + ': ' + params['comment'])
+  File.open('comments_' + params['picture'] + '.txt', 'a') do |f|
+    f.puts(params['author'] + ': ' + params['message'])
   end
-  redirect '/guestbook.html'
+  redirect '/pictures/' + params['picture'] + '.html'
 end
 ```
 
-Try to submit some comments to the guestbook and check that they are added to `comments.txt`.
+Try to submit some comments to the guestbook and check that they are added to `comments_*.txt`.
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/d75f43d80b9d5fa09c7c82d6618722dce08c7493)
 
 
 ### Read comments from text file
 
-Now let's show the comments on the guestbook page.
-
-Use the following code to read the contents of the text file and give it as a parameter to the guestbook template. The `if File.exist?` avoids the program crashing when the text file doesn't yet exist.
+Use the following code to read the contents of the text file and give it as a parameter to the picture template. The `if File.exist?` avoids the program crashing when the text file doesn't yet exist.
 
 ```ruby
-get '/guestbook.html' do
-  comments = IO.read('comments.txt') if File.exist?('comments.txt')
-  render_page :guestbook, {:comments => comments}
+get '/pictures/:picture.html' do
+  @picture = params['picture']
+  @picture_url = find_picture_url(params['picture']) or halt 404
+  @comments = IO.read('comments_' + params['picture'] + '.txt') if File.exist?('comments_' + params['picture'] + '.txt')
+  erb :picture
 end
 ```
 
-Then in `guestbook.erb` add the following code to show the comments.
+In `views/picture.erb`, add the following code to show the comments.
 
-```html
-<p><%= comments %></p>
+```erb
+<p><%= @comments %></p>
 ```
 
 ![Show comments, bare bones solution](comments-txt.png)
@@ -128,45 +128,40 @@ Then in `guestbook.erb` add the following code to show the comments.
 *Note: The example solution has a security vulnerability, but we'll address that in a [later chapter](/security/).*
 
 
-## Keep comments in memory
+## In-memory database
 
-TODO: rewrite this section
+Though the comments are now visible, they are very limited. For example we cannot easily edit or remove comments, and using templates for them is hard, because the comments are in a simple text file.
 
-Though the comments are now visible, they are very limited. For example we cannot easily edit or remove comments, or change the template for existing comments.
+To solve these issues, we will store the comments in application memory in an easier to manage data structure. Because the comments are only in application memory, they will disappear when the application is restarted, but the code will be one step away from switching to use a real database.
 
-As a step towards using a database, we will store the comments in application memory. That way the comments will disappear when the application is stopped, but we'll be able do the necessary changes to our templates. After that switching to a real database will be a small step.
+Create an empty [array][ruby-array] with `[]` when the program starts and store it in the `$comments` variable. In the `/add-comment` route append new comments to `$comments`. In the `/pictures/:picture.html` route read the comments from `$comments` and give them to the template.
 
-Create an empty [array][ruby-array] (`[]`) when the program starts and store it in the `$comments` variable. In the `/add-comment` route append new comments to `$comments`. In the `/guestbook.html` route read the comments from `$comments` and give them to the guestbook template.
+TODO: page title
 
 ```ruby
 $comments = []
 
-get '/guestbook.html' do
-  render_page :guestbook, {:comments => $comments}
+get '/pictures/:picture.html' do
+  @picture = params['picture']
+  @picture_url = find_picture_url(params['picture']) or halt 404
+  @comments = $comments.select { |comment| comment[:picture] == params['picture'] }
+  erb :picture
 end
 
 post '/add-comment' do
   $comments << {
-    :name => params['name'],
-    :comment => params['comment'],
-    :date => DateTime.now
+    :picture => params['picture'],
+    :author => params['author'],
+    :message => params['message'],
+    :added => DateTime.now
   }
-  redirect '/guestbook.html'
+  redirect '/pictures/' + params['picture'] + '.html'
 end
 ```
 
-Finally update the template `guestbook.rb` to render all the comments similar to how we rendered all the pictures in `pictures.erb`.
+Try adding some comments. They should look like a data structure. Try restarting the application and notice how all comments disappear then.
 
-```html
-<% for comment in comments %>
-<p>
-  <span class="comment-author"><%= comment[:name] %> wrote on <%= comment[:date].strftime('%Y-%m-%d %H:%M') %>:</span>
-  <br><span class="comment-message"><%= comment[:comment] %></span>
-</p>
-<% end %>
-```
-
-Check that adding comments works.
+TODO: screenshot
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/a1cf1ba00f63c424c0938a52f3bf4c2d345dc022)
 
