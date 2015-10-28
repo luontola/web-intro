@@ -191,7 +191,7 @@ Try adding comments and write some CSS to make them look the way you like. If yo
 
 The commenting feature is now working nicely and the code is easy to change, but when you restart the web server, all the comments will be lost. To keep the data safe and the code maintainable, a database is needed.
 
-We will use the [SQLite](https://www.sqlite.org/) database, the [DataMapper](http://datamapper.org/) library for accessing SQLite in Ruby, and [DB Browser for SQLite](http://sqlitebrowser.org/) as a GUI for seeing inside the database. If you haven't yet installed them, go through the [installation guide](/install/) and then come then back here.
+We will use the [SQLite][sqlite] database, the [DataMapper][datamapper] library for accessing SQLite in Ruby, and [DB Browser for SQLite][sqlitebrowser] as a GUI for seeing inside the database. If you haven't yet installed them, go through the [installation guide](/install/) and then come then back here.
 
 
 ### Create a database for comments
@@ -258,7 +258,7 @@ Go add some comments on your site. Then use DB Browser to browse the data in the
 
 ### Read comments from database
 
-In the `/pictures/:picture.html` route, use `Comment.all` to find from the database all comments for that picture, newest first. After that change, you can remove the `$comments` variable and all code that still uses it.
+In the `/pictures/:picture.html` route, use [`Comment.all`][datamapper-find] to find from the database all comments for that picture, newest first. After that change, you can remove the `$comments` variable and all code that still uses it.
 
 ```ruby
 get '/pictures/:picture.html' do
@@ -269,39 +269,83 @@ get '/pictures/:picture.html' do
 end
 ```
 
-Check the comments on the picture page now. It should show all the comments you saw in the database earlier.
+Check the comments on the picture page now. It should show the comments which you saw being saved into the database.
 
 ![Showing comments from the database](comments-database.png)
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/3fbf2743e41e240f768872f99df318c8201fcf51)
 
 
-## Calculating the number of comments using a database
+## Count the comments using a database
 
-TODO: rewrite this section
-
-Now that all the data is in the database, we have more power at hand for querying that data. For example we can easily count how many comments there are in total and how many comments were added during the last 15 minutes. If we later implement commenting for photos, likewise we could easily find the photos with the most commenting activity.
-
-Use `Comment.count` to get the total number of comments, and show it on the guestbook page.
-
-Use `Comment.count(:date.gt => Time.now - (15 * 60))` to get the number of comments which are newer than 15 minutes, and show it on the guestbook page.
-
-![Showing the number of comments](comments-counts.png)
+Now that all the data is in the database, we have more power at hand for querying that data. For example we can easily count how many comments there are for each picture. The DataMapper library provides methods for that and other simple things, but if you'll learn to write [SQL][sql], you'll be able to do even very complex queries.
 
 
 ### Comment count styles
 
-TODO
+Let's start with just a placeholder for the number of comments, in order to first determine what it should look like.
+
+In `views/pictures.erb`, add the text "0 comments" on a line below the picture, and wrap it and the picture into a `<div>` element, so that they will be grouped together.
+
+```erb
+<% for url in @picture_urls %>
+<div class="album-caption">
+<a href="<%= url.sub(/\.\w+$/, '.html') %>"><img class="album-photo" src="<%= url %>"></a>
+<br>0 comments
+</div>
+<% end %>
+```
+
+Use some CSS to make it look nice.
+
+```css
+.album-caption {
+    float: left;
+    text-align: center;
+    padding-bottom: 0.5em;
+    font-size: 80%;
+}
+```
+
+TODO: screenshot
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/fdc2eb9ce33bbb42ff1b10611dc4e938cc67867c)
 
 
 ### Comment counts
 
-TODO
+Next replace the placeholder with the actual number of comments. The `Comment.count` method will return the number of comments in the database. You can also use it to count only those comments that [satisfy a particular criteria][datamapper-find], as in the following code.
+
+It used to be enough to give the `pictures` template just the list of picture URLs, but now that there are more pieces of data related to each picture, it's better to give the template a list of hashes. This way the program logic will stay out of the templates, making the code more maintainable.
+
+```ruby
+get '/pictures.html' do
+  @title = "Lovely Pictures"
+  @pictures = picture_urls.map { |url| {
+    :picture_url => url,
+    :page_url => url.sub(/\.\w+$/, '.html'),
+    :comments => Comment.count(:picture => File.basename(url, '.*'))
+  }}
+  erb :pictures
+end
+```
+
+The `views/pictures.erb` template needs to be changed to use `@pictures` instead of `@picture_urls`.
+
+```erb
+<% for picture in @pictures %>
+<div class="album-caption">
+<a href="<%= picture[:page_url] %>"><img class="album-photo" src="<%= picture[:picture_url] %>"></a>
+<br><%= picture[:comments] %> comments
+</div>
+<% end %>
+```
+
+Add some comments for one picture and check that its comment count increases, but the others stay unchanged.
+
+TODO: screenshot
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/9fcd6dd2b26e04f978e9fab658d1dada018c2768)
-
 
 [web-form]: https://en.wikipedia.org/wiki/Form_(HTML)
 [html-form]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form
@@ -313,4 +357,8 @@ TODO
 [ruby-datetime]: http://docs.ruby-lang.org/en/2.2.0/DateTime.html
 [ruby-strftime]: http://docs.ruby-lang.org/en/2.2.0/DateTime.html#method-i-strftime
 [ruby-array]: http://docs.ruby-lang.org/en/2.2.0/Array.html
+[sql]: https://www.techopedia.com/definition/1245/structured-query-language-sql
+[sqlite]: https://www.sqlite.org/
+[datamapper]: http://datamapper.org/
+[datamapper-find]: http://datamapper.org/docs/find.html
 [sqlitebrowser]: http://sqlitebrowser.org/
