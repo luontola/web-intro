@@ -264,7 +264,7 @@ Visit every page on your site to make sure that they still work and that they ha
 
 ![Parameterized page title](parameterized-title.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/29c04f352bcce2b69eec9a8af7792b9ba986a5a3)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/4a19cd7b685865ce6f3aad26ba122210e1757909)
 
 
 ## Pages for individual pictures
@@ -289,7 +289,7 @@ end
 
 Go to your pictures page and click some of the pictures there. Notice how the text shown on the page is related to page's address.
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/a9f6491c3d2f36e3a01e0aa8c5a1482accf3cd3d)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/6970862e13b4b7a30ffce38c78fe3d4f77122ac0)
 
 
 ## Picture page template
@@ -313,7 +313,7 @@ end
 
 Visit a few picture pages pictures and check that they show the picture. You'll notice that the CSS and some links don't work, so that needs to be solved next.
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/0fc93a837a82539720805214805f14701efa1e14)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/eabccfb1860cbc8dca1c77ced2639a23f8edbede)
 
 
 ## Fix relative links
@@ -324,10 +324,10 @@ The reason has to do with how relative links work. Read [Absolute vs. Relative P
 
 Change all relative links in `views/layout.erb` and `views/picture.erb` to start with the `/` character. Check that the picture pages look right and all the links work.
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/b719dcc1e819a283788de845fd3eb64763c4cadd)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/46a0dabc2655f90fe37201e13d0065a173a33924)
 
 
-## Fix guessing the picture file extension
+## Don't guess the picture's file extension
 
 Not all pictures have the `.jpg` file extension. There are `.png`, `.gif` and other image types as well. But currently the `/pictures/:picture.html` route has been hard-coded to work with only `.jpg` images.
 
@@ -358,14 +358,14 @@ def find_picture_url(basename)
 end
 ```
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/41592451a607ca75ef94f183f4947ece4ab83278)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/d436d000bdfac8622c4fff36363c22878efc0a5f)
 
 
 ## Picture not found
 
 Currently if you go to a picture page that doesn't exist, for example <http://localhost:4567/pictures/foo.html>, it shows a page with the picture not working. But instead of that a well behaving site should give an error message that the page was not found.
 
-In HTTP there are a bunch of numeric status codes, of which the code 404 means that a page was not found. In Sinatra we can produce that status code with `halt 404`. Additionally we can create a `not_found` route to produce an error message page (otherwise the page is empty).
+In HTTP there are a bunch of numeric status codes, of which the code 404 means that a page was not found. In Sinatra we can produce that status code with `halt 404`. Additionally we can create a `not_found` route to produce an error message page (otherwise the page is empty). It could produce a full web page, but a simple "Page Not Found" text is enough.
 
 Update your `/pictures/:picture.html` route to be as follows.
 
@@ -384,7 +384,7 @@ end
 
 Check that <http://localhost:4567/pictures/foo.html> shows an error message. Also use the [developer tools][browser-developer-tools] to check that the status code for that page is 404.
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/33b388bd9a3faf1004f44be4cf7e920d22302ba8)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/1a668e61e48dfd9e58562cf8e5eb98d4ddacf6f3)
 
 
 [html-img]: https://developer.mozilla.org/en/docs/Web/HTML/Element/img

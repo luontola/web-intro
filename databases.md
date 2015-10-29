@@ -58,7 +58,7 @@ Check that the form looks good.
 
 ![Form for writing comments](comments-form.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/792421d12596b9ee5cbb3b1b9817b135aa912cb4)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/faece687862500600b9d5ed7515a003a239fa5ba)
 
 
 ### Receive form parameters
@@ -76,7 +76,7 @@ Did you notice that the `<form>` element had a `method="post"` attribute and tha
 
 Try again writing something to the form and submit it. The `puts` method will print the parameters to the terminal where your application is running. It should print something like `{"picture"=>"annoyed-cat", "author"=>"Ruby", "message"=>"How cute~~!"}`. After submitting the form, your web browser should end up on the same picture page where it was.
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/ef1d973ce1752aaa54e52c7595ec57253e84b7b9)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/7d341fca26b718ba4022e4cf1c71bdfc4c3b644d)
 
 
 ## Keep comments in a text file
@@ -99,7 +99,7 @@ end
 
 Try to submit some comments to the guestbook and check that they are added to `comments_*.txt`.
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/d75f43d80b9d5fa09c7c82d6618722dce08c7493)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/0ef240700670d22f9ee71d443e5a433df3b71060)
 
 
 ### Read comments from text file
@@ -125,7 +125,7 @@ In `views/picture.erb`, add the following code to show the comments.
 
 ![Show comments, bare bones solution](comments-txt.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/fe7f495e4a86ce92deae71170f6ced09307c2936)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/848485c1679ce419459b5258efd3abf7421a4f9a)
 
 
 ## Keep comments in application memory
@@ -163,7 +163,7 @@ Try adding some comments. They should look like a data structure. Try restarting
 
 TODO: screenshot
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/a1cf1ba00f63c424c0938a52f3bf4c2d345dc022)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/0edf8131c9667b72da2a3183a1c719f62f898081)
 
 
 ## Comment template
@@ -184,7 +184,7 @@ Try adding comments and write some CSS to make them look the way you like. If yo
 
 ![Comments rendered using templates](comments-html.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/0d8152da3c54ad0eb26acf8e8b418c766b084183)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/5b1d9b02a1559fdd3e0e71a162ca7f0aa337e411)
 
 
 ## Keep comments in a database
@@ -224,7 +224,7 @@ Use [DB Browser for SQLite][sqlitebrowser] to open the `my-database.db` database
 
 ![The database structure which was created](database-structure.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/8f3ddb5dc9299228d77ea993b0db8d9abafcfffa)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/c81529d5223bd41d5d1f13370e0a781aeb86c1d3)
 
 
 ### Write comments to database
@@ -253,7 +253,7 @@ Go add some comments on your site. Then use DB Browser to browse the data in the
 
 ![Some data inside the database](database-data.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/341d2be9c1503cd268992755b8d6cdd2d2638f00)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/f33a4737ace7f2b5fd369202bc63054a80987b15)
 
 
 ### Read comments from database
@@ -273,7 +273,7 @@ Check the comments on the picture page now. It should show the comments which yo
 
 ![Showing comments from the database](comments-database.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/3fbf2743e41e240f768872f99df318c8201fcf51)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/b40d33ea00c00f33da8002816530d29e454026e7)
 
 
 ## Count the comments using a database
@@ -309,7 +309,7 @@ Use some CSS to make it look nice.
 
 TODO: screenshot
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/fdc2eb9ce33bbb42ff1b10611dc4e938cc67867c)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/536291aeedaa886c625d9a866404722a3a815e91)
 
 
 ### Comment counts
@@ -345,7 +345,8 @@ Add some comments for one picture and check that its comment count increases, bu
 
 TODO: screenshot
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/9fcd6dd2b26e04f978e9fab658d1dada018c2768)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/8237bb300afd985f3b6602e6fefa62e1b1bcaeb8)
+
 
 [web-form]: https://en.wikipedia.org/wiki/Form_(HTML)
 [html-form]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form
