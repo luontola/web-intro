@@ -36,17 +36,18 @@ Change the `/pictures/:picture.html` tell the above template the name of the pic
 
 ```ruby
 get '/pictures/:picture.html' do
+  @title = "Picture"
   @picture = params['picture']
   @picture_url = find_picture_url(params['picture']) or halt 404
   erb :picture
 end
 ```
 
-In `public/style.css`, you can set the size of the form elements. The following code uses [CSS selector combinators][css-selectors] to limit the custom styles inside the comment form, to avoid accidentally changing the style of unrelated form elements.
+In `public/style.css`, you can set the size of the form elements. The following code uses [CSS selector combinators][css-selectors] to limit the custom styles inside the comment form, to avoid accidentally changing the style of unrelated form elements. It also uses [relative length units][css-length] which depend on the font size instead of the pixels on the screen.
 
 ```css
 .add-comment input, .add-comment textarea {
-    width: 20em;
+    width: 40ch;
 }
 
 .add-comment textarea {
@@ -97,7 +98,7 @@ post '/add-comment' do
 end
 ```
 
-Try to submit some comments to the guestbook and check that they are added to `comments_*.txt`.
+Try adding some comments and check that they are saved to `comments_*.txt`.
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/0ef240700670d22f9ee71d443e5a433df3b71060)
 
@@ -108,9 +109,11 @@ Use the following code to read the contents of the text file and give it as a pa
 
 ```ruby
 get '/pictures/:picture.html' do
+  @title = "Picture"
   @picture = params['picture']
   @picture_url = find_picture_url(params['picture']) or halt 404
-  @comments = IO.read('comments_' + params['picture'] + '.txt') if File.exist?('comments_' + params['picture'] + '.txt')
+  comments_file = 'comments_' + params['picture'] + '.txt'
+  @comments = IO.read(comments_file) if File.exist?(comments_file)
   erb :picture
 end
 ```
@@ -136,12 +139,11 @@ To solve these issues, we will store the comments in application memory, in an e
 
 Create an empty [array][ruby-array] with `[]` when the program starts and store it in the `$comments` variable. In the `/add-comment` route append new comments to `$comments`. In the `/pictures/:picture.html` route read the comments from `$comments` and give them to the template.
 
-TODO: page title
-
 ```ruby
 $comments = []
 
 get '/pictures/:picture.html' do
+  @title = "Picture"
   @picture = params['picture']
   @picture_url = find_picture_url(params['picture']) or halt 404
   @comments = $comments.select { |comment| comment[:picture] == params['picture'] }
@@ -229,7 +231,7 @@ Use [DB Browser for SQLite][sqlitebrowser] to open the `my-database.db` database
 
 ### Write comments to database
 
-In the `/add-comment` route, use `Comment.create` to save the comment to the database. You can keep the old `$comments` usage still side by side with the new code, so that the application won't be broken by this change.
+In the `/add-comment` route, use `Comment.create` to save the comment to the database. You can keep the old `$comments` usage still side by side with the new code, so that no existing functionality is broken by the changes.
 
 ```ruby
 post '/add-comment' do
@@ -258,10 +260,11 @@ Go add some comments on your site. Then use DB Browser to browse the data in the
 
 ### Read comments from database
 
-In the `/pictures/:picture.html` route, use [`Comment.all`][datamapper-find] to find from the database all comments for that picture, newest first. After that change, you can remove the `$comments` variable and all code that still uses it.
+In the `/pictures/:picture.html` route, use [`Comment.all`][datamapper-find] to find from the database all comments for that picture, newest first. After this change, you can remove the `$comments` variable and all code that still uses it.
 
 ```ruby
 get '/pictures/:picture.html' do
+  @title = "Picture"
   @picture = params['picture']
   @picture_url = find_picture_url(params['picture']) or halt 404
   @comments = Comment.all(:picture => params['picture'], :order => [:added.asc])
@@ -269,7 +272,7 @@ get '/pictures/:picture.html' do
 end
 ```
 
-Check the comments on the picture page now. It should show the comments which you saw being saved into the database.
+Check the comments on the picture page now. It should show the comments which you saw saved in the database.
 
 ![Showing comments from the database](comments-database.png)
 
@@ -353,6 +356,7 @@ TODO: screenshot
 [html-input]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input
 [html-button]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button
 [css-selectors]: https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_started/Selectors
+[css-length]: https://developer.mozilla.org/en/docs/Web/CSS/length
 [http-methods]: https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods
 [sinatra-templates]: http://www.sinatrarb.com/intro.html#Views%20/%20Templates
 [ruby-datetime]: http://docs.ruby-lang.org/en/2.2.0/DateTime.html

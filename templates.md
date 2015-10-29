@@ -92,7 +92,7 @@ You should make sure that people can visit your web site through its base URL, t
 
 First try going to <http://localhost:4567/> on your current site. It should show an error message "Sinatra doesn’t know this ditty." Let's fix that.
 
-Change your `app.rb` to [redirect][sinatra-redirect] the path `/` to `/about.html` by adding the following route.
+Change `app.rb` to [redirect][sinatra-redirect] the path `/` to `/about.html` by adding the following route.
 
 ```ruby
 get '/' do
@@ -306,6 +306,7 @@ Make the route render that template.
 
 ```ruby
 get '/pictures/:picture.html' do
+  @title = "Picture"
   @picture_url = params['picture'] + '.jpg'
   erb :picture
 end
@@ -335,8 +336,6 @@ A solution for that is to check the contents of the `public/pictures` folder to 
 
 In `app.rb`, add the methods `picture_urls` and `find_picture_url` as shown below, and change your routes to use them to set `@picture_urls` and `@picture_url`.
 
-TODO: page title
-
 ```ruby
 get '/pictures.html' do
   @title = "Lovely Pictures"
@@ -345,6 +344,7 @@ get '/pictures.html' do
 end
 
 get '/pictures/:picture.html' do
+  @title = "Picture"
   @picture_url = find_picture_url(params['picture'])
   erb :picture
 end
@@ -361,7 +361,7 @@ end
 [View solution](https://github.com/orfjackal/web-intro-project/commit/d436d000bdfac8622c4fff36363c22878efc0a5f)
 
 
-## Picture not found
+## Error when picture not found
 
 Currently if you go to a picture page that doesn't exist, for example <http://localhost:4567/pictures/foo.html>, it shows a page with the picture not working. But instead of that a well behaving site should give an error message that the page was not found.
 
@@ -369,10 +369,9 @@ In HTTP there are a bunch of numeric status codes, of which the code 404 means t
 
 Update your `/pictures/:picture.html` route to be as follows.
 
-TODO: page title
-
 ```ruby
 get '/pictures/:picture.html' do
+  @title = "Picture"
   @picture_url = find_picture_url(params['picture']) or halt 404
   erb :picture
 end
