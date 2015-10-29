@@ -276,7 +276,7 @@ Check the comments on the picture page now. It should show the comments which yo
 
 ![Showing comments from the database](comments-database.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/0de4bdf30dec01098756da74c38386daf35ef69a)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/2e308db43863c2ac4d63d48e4618b37dbd0c7dcf)
 
 
 ## Count the comments using a database
@@ -312,7 +312,7 @@ Use some CSS to make it look nice.
 
 TODO: screenshot
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/97dbf3224e25b31d08cb245f5fbde89871b50f71)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/29715d3d7ec4a6a27923f780bf07da9acca4fa81)
 
 
 ### Comment counts
@@ -348,7 +348,7 @@ Add some comments for one picture and check that its comment count increases, bu
 
 TODO: screenshot
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/5633db17cf8a66c722d827689c467c5d06aba278)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/f220bc251f69e4e15eb07fdfaee57f7b1749b2fe)
 
 
 [web-form]: https://en.wikipedia.org/wiki/Form_(HTML)
