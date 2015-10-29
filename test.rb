@@ -1,6 +1,6 @@
 require 'sinatra'
 require 'data_mapper'
-require 'net/http'
+require 'erubis'
 
 DataMapper::Logger.new($stdout, :debug)
 DataMapper.setup(:default, 'sqlite::memory:')
@@ -26,7 +26,7 @@ raise "Database problem!" unless Comment.count == 0
 puts
 puts "Database OK"
 puts
-puts "Please visit the following address to check that the web server is OK"
+puts "Please visit the following address and check that is says \”Web server OK\”"
 puts
 puts "  http://localhost:4567/"
 puts
