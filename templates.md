@@ -27,7 +27,7 @@ The following example uses the CSS properties [border][css-border], [background-
 
 ![Photo album](photo-album.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/f402219504af273d03270f51eb36d6eeab1164de)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/b8ab72533a34efa609a47653ba899f57e802f135)
 
 
 ## Don't Repeat Yourself
@@ -57,7 +57,7 @@ Then run the command `ruby app.rb` in your terminal. It should start a web serve
 
 ![Your first web server is working](sinatra-hello-world.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/d89cf7c04e9840963a2f21778eb7b4a5cc18c102)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/85703bad1a3eef6e6a9ac84781067f6da90a1712)
 
 Finally stop the web server by pressing `Ctrl+C` in your terminal. Try refreshing the page in your web browser. It should now show an error message because there is no more a web server to connect to.
 
@@ -83,7 +83,7 @@ Inside the same folder as `app.rb`, create a new folder called `public` and move
 
 ![Your first web server is working](sinatra-static-site.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/89edaab90a65f74758abaf86c9af950bb2f4cda9)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/305b7ef7f8eb223e24cc9944947bb890a2898b91)
 
 
 ## Fix the front page
@@ -104,7 +104,7 @@ Check that when you visit <http://localhost:4567/>, your web browser immediately
 
 ![Front page redirect works](front-page-redirect.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/09b915909b1bc173e6f87b8f96a73815fcb66232)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/6390abceb5e2239c29da964944729686dab06888)
 
 
 ## Templates
@@ -131,7 +131,7 @@ end
 
 Check that all the pages still look the same as before in your web browser. The difference is that now all the common HTML for the layout and navigation is in a single place, so changing it and adding new pages will be easier. Templates also make it possible to have dynamic content, as we will see next.
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/47cb34755f57f56f478dbee80ccfa4887fba5177)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/42995902c6a7cda88666eda93a9af73b0655a619)
 
 
 ## Lottery
@@ -158,7 +158,7 @@ In `views/about.erb`, add the following code to show the value of `@who_i_marry`
 
 Try reloading the about page in your web browser multiple times. The name should change randomly every time that the page is reloaded.
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/0aa84a7aee603691d888ccb4ddc218ef0a37dbff)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/c994a887276f8f15c413d73906d4f55c8d1fa0e2)
 
 
 ## Front page at the root
@@ -173,7 +173,7 @@ Check that when you visit <http://localhost:4567/>, your web browser stays at th
 
 ![Front page at the root](front-page-root.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/e5a5a9215f1e3815efcbe7bcc217c762a8f4dcf7)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/ef3cfe65226c4437fed66addcad1d765ddd103af)
 
 
 ## Album photo template
@@ -203,7 +203,7 @@ In `views/pictures.erb`, use a *for loop* to repeat the image tag for each url i
 
 Now check that the pictures page still looks the same as before. Also try adding a couple more pictures to make sure that the template works how it should.
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/2fd4a7cbe266f8fa56beb1b786f12db11fed12c7)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/f22f9b7963c8793587c787a970163fbbbf24e8af)
 
 
 ## Show all pictures from a folder
@@ -223,7 +223,7 @@ end
 
 Check that the pictures page still works. Try adding a couple more pictures - much easier now, isn't it?
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/2030d93bd772adb74a5d384a7ed4b41a723ce2c6)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/0917ff1f02f511f0d3a456761013c9562de8912f)
 
 
 ### How does this code work?
@@ -264,7 +264,7 @@ Visit every page on your site to make sure that they still work and that they ha
 
 ![Parameterized page title](parameterized-title.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/4a19cd7b685865ce6f3aad26ba122210e1757909)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/ac7b434fd1ecfd942b284e7b347fa611a106a196)
 
 
 ## Pages for individual pictures
@@ -289,7 +289,7 @@ end
 
 Go to your pictures page and click some of the pictures there. Notice how the text shown on the page is related to page's address.
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/6970862e13b4b7a30ffce38c78fe3d4f77122ac0)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/1ecac778838c16a0e8dc9ab452dc5c05c2ec1f81)
 
 
 ## Picture page template
@@ -314,7 +314,7 @@ end
 
 Visit a few picture pages pictures and check that they show the picture. You'll notice that the CSS and some links don't work, so that needs to be solved next.
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/eabccfb1860cbc8dca1c77ced2639a23f8edbede)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/1d4eae230df76cc43c088d175ef8a1ffbe19cf37)
 
 
 ## Fix relative links
@@ -325,7 +325,7 @@ The reason has to do with how relative links work. Read [Absolute vs. Relative P
 
 Change all relative links in `views/layout.erb` and `views/picture.erb` to start with the `/` character. Check that the picture pages look right and all the links work.
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/46a0dabc2655f90fe37201e13d0065a173a33924)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/f3643b362c18b4d8d74f729965feda87210054da)
 
 
 ## Don't guess the picture's file extension
@@ -358,10 +358,10 @@ def find_picture_url(basename)
 end
 ```
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/d436d000bdfac8622c4fff36363c22878efc0a5f)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/ec8659f804ecc113d0682f5a4b5476762ebf8f3b)
 
 
-## Error when picture not found
+## Error page when the picture is not found
 
 Currently if you go to a picture page that doesn't exist, for example <http://localhost:4567/pictures/foo.html>, it shows a page with the picture not working. But instead of that a well behaving site should give an error message that the page was not found.
 
@@ -383,7 +383,7 @@ end
 
 Check that <http://localhost:4567/pictures/foo.html> shows an error message. Also use the [developer tools][browser-developer-tools] to check that the status code for that page is 404.
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/1a668e61e48dfd9e58562cf8e5eb98d4ddacf6f3)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/0129a3f6e25fa72d5ebf9e31c561795a81701385)
 
 
 [html-img]: https://developer.mozilla.org/en/docs/Web/HTML/Element/img

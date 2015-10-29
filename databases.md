@@ -59,7 +59,7 @@ Check that the form looks good.
 
 ![Form for writing comments](comments-form.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/faece687862500600b9d5ed7515a003a239fa5ba)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/eae9445e5fedf66b0638190b87897162220533b7)
 
 
 ### Receive form parameters
@@ -77,7 +77,7 @@ Did you notice that the `<form>` element had a `method="post"` attribute and tha
 
 Try again writing something to the form and submit it. The `puts` method will print the parameters to the terminal where your application is running. It should print something like `{"picture"=>"annoyed-cat", "author"=>"Ruby", "message"=>"How cute~~!"}`. After submitting the form, your web browser should end up on the same picture page where it was.
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/7d341fca26b718ba4022e4cf1c71bdfc4c3b644d)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/227a4d4f674068769bde587ec7989899fc65a853)
 
 
 ## Keep comments in a text file
@@ -85,7 +85,7 @@ Try again writing something to the form and submit it. The `puts` method will pr
 Let's keep things simple and implement as much as we can without a database. That way you will also see how a database makes many things better. At first we'll just save the comments into a text file.
 
 
-### Write comments to text file
+### Write comments to a text file
 
 Use the following code in your `/add-comment` route to append the comment and the name of its author to a text file.
 
@@ -100,10 +100,10 @@ end
 
 Try adding some comments and check that they are saved to `comments_*.txt`.
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/0ef240700670d22f9ee71d443e5a433df3b71060)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/88e4d40a1f4989c8c22a0f2b58585b6d322c05c2)
 
 
-### Read comments from text file
+### Read comments from a text file
 
 Use the following code to read the contents of the text file and give it as a parameter to the picture template. The `if File.exist?` avoids the program crashing when the text file doesn't yet exist.
 
@@ -128,7 +128,7 @@ In `views/picture.erb`, add the following code to show the comments.
 
 ![Show comments, bare bones solution](comments-txt.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/848485c1679ce419459b5258efd3abf7421a4f9a)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/393045ef7db701d3781860cdd541f7b15b38ae61)
 
 
 ## Keep comments in application memory
@@ -165,7 +165,7 @@ Try adding some comments. They should look like a data structure. Try restarting
 
 TODO: screenshot
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/0edf8131c9667b72da2a3183a1c719f62f898081)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/42b309bf24fbb6966a2d1ea07e6313872b127113)
 
 
 ## Comment template
@@ -186,7 +186,7 @@ Try adding comments and write some CSS to make them look the way you like. If yo
 
 ![Comments rendered using templates](comments-html.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/5b1d9b02a1559fdd3e0e71a162ca7f0aa337e411)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/a83781af7cd68fc9dc8da148c4b58ef904407e36)
 
 
 ## Keep comments in a database
@@ -226,10 +226,10 @@ Use [DB Browser for SQLite][sqlitebrowser] to open the `my-database.db` database
 
 ![The database structure which was created](database-structure.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/c81529d5223bd41d5d1f13370e0a781aeb86c1d3)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/cf8a06ec3891f32303f13f1297b61825224a24ac)
 
 
-### Write comments to database
+### Write comments to a database
 
 In the `/add-comment` route, use `Comment.create` to save the comment to the database. You can keep the old `$comments` usage still side by side with the new code, so that no existing functionality is broken by the changes.
 
@@ -255,10 +255,10 @@ Go add some comments on your site. Then use DB Browser to browse the data in the
 
 ![Some data inside the database](database-data.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/f33a4737ace7f2b5fd369202bc63054a80987b15)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/5f9f17e071bef0537d92e68f778df9e986a2910e)
 
 
-### Read comments from database
+### Read comments from a database
 
 In the `/pictures/:picture.html` route, use [`Comment.all`][datamapper-find] to find from the database all comments for that picture, newest first. After this change, you can remove the `$comments` variable and all code that still uses it.
 
@@ -276,7 +276,7 @@ Check the comments on the picture page now. It should show the comments which yo
 
 ![Showing comments from the database](comments-database.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/b40d33ea00c00f33da8002816530d29e454026e7)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/0de4bdf30dec01098756da74c38386daf35ef69a)
 
 
 ## Count the comments using a database
@@ -312,7 +312,7 @@ Use some CSS to make it look nice.
 
 TODO: screenshot
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/536291aeedaa886c625d9a866404722a3a815e91)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/97dbf3224e25b31d08cb245f5fbde89871b50f71)
 
 
 ### Comment counts
@@ -348,7 +348,7 @@ Add some comments for one picture and check that its comment count increases, bu
 
 TODO: screenshot
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/8237bb300afd985f3b6602e6fefa62e1b1bcaeb8)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/5633db17cf8a66c722d827689c467c5d06aba278)
 
 
 [web-form]: https://en.wikipedia.org/wiki/Form_(HTML)

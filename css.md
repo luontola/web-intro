@@ -88,6 +88,8 @@ The `<nav>` and `<section>` elements are just "boxes" for more content. They are
 
 TODO: screenshot
 
+[View solution](https://github.com/orfjackal/web-intro-project/commit/7c671763aafe022c0977e54143e2759cf8a9cd24)
+
 
 ### Prepare for layout fiddling
 
@@ -107,7 +109,7 @@ To get ready for fiddling with the positioning of layout elements, make the edge
 
 ![Layout elements highlighted](layout-blocks-before.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/07fbf94b53f888e010c61a2c31b1fdf861684ef6)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/5271129168f39165b420629ac1c2a41c579507c0)
 
 
 ### Position the layout elements
@@ -120,7 +122,7 @@ It's a good practice to try out how the layout stretches when the page has many 
 
 ![Layout elements where we want them](layout-blocks-after.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/d460ff730c7e4ccb55c1821a6fe7e8fe9fc14b9b)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/a4680b89489fe8d150d6c3bb521ae7f77871bd68)
 
 
 ### Make it pretty
@@ -153,7 +155,7 @@ For the navigation menu, just copy the following CSS as a starting point. If you
 
 ![Finished layout styling](pretty-layout.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/e7e4aa852afe598bf7aa609a4a6a22775992d773)
+[View solution](https://github.com/orfjackal/web-intro-project/commit/4684a6bd538e3a1f751d95f99e319a1b9d45f40c)
 
 
 [css]: https://developer.mozilla.org/en-US/docs/Web/CSS
