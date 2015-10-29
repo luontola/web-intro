@@ -105,7 +105,7 @@ Try adding some comments and check that they are saved to `comments_*.txt`.
 
 ### Read comments from a text file
 
-Use the following code to read the contents of the text file and give it as a parameter to the picture template. The `if File.exist?` avoids the program crashing when the text file doesn't yet exist.
+Use the following code to read the contents of the text file and pass it to the picture template. The `if File.exist?` avoids the program crashing when the text file doesn't yet exist.
 
 ```ruby
 get '/pictures/:picture.html' do

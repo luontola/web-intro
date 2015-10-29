@@ -262,7 +262,7 @@ Add to each of your routes the code for setting the title.
 
 Visit every page on your site to make sure that they still work and that they have different page titles.
 
-![Parameterized page title](parameterized-title.png)
+![Unique page titles](parameterized-title.png)
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/ac7b434fd1ecfd942b284e7b347fa611a106a196)
 
