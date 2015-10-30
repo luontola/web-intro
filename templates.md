@@ -25,7 +25,7 @@ As shown above, give the images a unique class and use CSS to make them look lik
 
 The following example uses the CSS properties [border][css-border], [background-color][css-background-color], [margin][css-margin], [padding][css-padding] and [box-shadow][css-box-shadow].
 
-![Photo album](photo-album.png)
+![Pictures page with some pictures](pictures-page.png)
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/b8ab72533a34efa609a47653ba899f57e802f135)
 
@@ -55,7 +55,7 @@ end
 
 Then run the command `ruby app.rb` in your terminal. It should start a web server on your own machine in port 4567. To view it, visit <http://localhost:4567/hi> in your web browser. It should show the *Hello World!* text.
 
-![Your first web server is working](sinatra-hello-world.png)
+![Your first web server is working](run-a-web-server.png)
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/85703bad1a3eef6e6a9ac84781067f6da90a1712)
 
@@ -70,6 +70,8 @@ Change the text that the `/hi` route returns and check in your web browser that 
 
 Programmers don't like doing things that the computer can do for them, so there are tools for [automatically restarting the web server][sinatra-reloading] whenever a file is changed. You should have installed the `rerun` tool as part of the install guide. Let's try it out.
 
+*Note: Rerun does not work on Windows. You will have to restart manually with Ctrl+C, Up, Enter.*
+
 Start the server with the command `rerun ruby app.rb` in your terminal. Try changing the text that the `/hi` route returns a couple more times, but notice how you don't need to restart the web server yourself. The `rerun` command will restart it automatically every time that you save the file (it may take a couple of seconds, so you might see an error message if you reload the page in your web browser quickly).
 
 
@@ -79,9 +81,9 @@ As a first step towards serving our web site through Sinatra, we can use Sinatra
 
 Inside the same folder as `app.rb`, create a new folder called `public` and move your HTML and CSS files and pictures there. Then start your web server with `ruby app.rb`, visit <http://localhost:4567/pictures.html> in your web browser and make sure that your site looks the same as before, but this time it's being served to you by a web server the same way as all web sites on the Internet.
 
-* TODO: avoid åöä in path
+*Note: If the full path of your project folder contains non-English letters, such as åäö, Sinatra will fail to serve your static files. In that case move your project folder for example to `C:\project`*
 
-![Your first web server is working](sinatra-static-site.png)
+![Your web site on a web server](static-site-on-a-web-server.png)
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/305b7ef7f8eb223e24cc9944947bb890a2898b91)
 
@@ -101,8 +103,6 @@ end
 ```
 
 Check that when you visit <http://localhost:4567/>, your web browser immediately goes to the <http://localhost:4567/about.html> address.
-
-![Front page redirect works](front-page-redirect.png)
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/6390abceb5e2239c29da964944729686dab06888)
 
@@ -158,6 +158,8 @@ In `views/about.erb`, add the following code to show the value of `@who_i_marry`
 
 Try reloading the about page in your web browser multiple times. The name should change randomly every time that the page is reloaded.
 
+![Lottery result is shown](lottery.png)
+
 [View solution](https://github.com/orfjackal/web-intro-project/commit/c994a887276f8f15c413d73906d4f55c8d1fa0e2)
 
 
@@ -171,7 +173,7 @@ In `views/layout.erb`, change the link to the about page from `<a href="about.ht
 
 Check that when you visit <http://localhost:4567/>, your web browser stays at the <http://localhost:4567/> address and shows the front page.
 
-![Front page at the root](front-page-root.png)
+![Front page at the root](front-page-at-the-root.png)
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/ef3cfe65226c4437fed66addcad1d765ddd103af)
 
@@ -262,7 +264,7 @@ Add to each of your routes the code for setting the title.
 
 Visit every page on your site to make sure that they still work and that they have different page titles.
 
-![Unique page titles](parameterized-title.png)
+![Unique page titles](unique-titles-for-every-page.png)
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/ac7b434fd1ecfd942b284e7b347fa611a106a196)
 
@@ -289,6 +291,8 @@ end
 
 Go to your pictures page and click some of the pictures there. Notice how the text shown on the page is related to page's address.
 
+![Placeholder page for a picture](pages-for-individual-pictures.png)
+
 [View solution](https://github.com/orfjackal/web-intro-project/commit/1ecac778838c16a0e8dc9ab452dc5c05c2ec1f81)
 
 
@@ -314,6 +318,8 @@ end
 
 Visit a few picture pages pictures and check that they show the picture. You'll notice that the CSS and some links don't work, so that needs to be solved next.
 
+![Broken page for a picture](picture-page-template.png)
+
 [View solution](https://github.com/orfjackal/web-intro-project/commit/1d4eae230df76cc43c088d175ef8a1ffbe19cf37)
 
 
@@ -324,6 +330,8 @@ On a picture page, if you click the "Pictures" or "Return to album" link, it wil
 The reason has to do with how relative links work. Read [Absolute vs. Relative Paths/Links][absolute-vs-relative-paths] for an explanation. Absolute links start with `http://` or similar. Other links are relative to the page where the link appears. To make a link point to the same target regardless of the page where it appears in your site, you should prefix the link with `/`, which makes it relative to the site's root path instead of the current page's path.
 
 Change all relative links in `views/layout.erb` and `views/picture.erb` to start with the `/` character. Check that the picture pages look right and all the links work.
+
+![Working page for a picture](fix-relative-links.png)
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/f3643b362c18b4d8d74f729965feda87210054da)
 
@@ -382,6 +390,8 @@ end
 ```
 
 Check that <http://localhost:4567/pictures/foo.html> shows an error message. Also use the [developer tools][browser-developer-tools] to check that the status code for that page is 404.
+
+![Page not found error shown with developer tools](error-page-when-the-picture-is-not-found.png)
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/0129a3f6e25fa72d5ebf9e31c561795a81701385)
 

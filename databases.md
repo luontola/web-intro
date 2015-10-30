@@ -57,7 +57,7 @@ In `public/style.css`, you can set the size of the form elements. The following 
 
 Check that the form looks good.
 
-![Form for writing comments](comments-form.png)
+![Comment form](comment-form.png)
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/eae9445e5fedf66b0638190b87897162220533b7)
 
@@ -126,7 +126,7 @@ In `views/picture.erb`, add the following code to show the comments.
 
 *Note: This template has a security vulnerability, but we'll address that in a [later chapter](/security/).*
 
-![Show comments, bare bones solution](comments-txt.png)
+![Comments raw from a text file](keep-comments-in-a-text-file.png)
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/393045ef7db701d3781860cdd541f7b15b38ae61)
 
@@ -163,7 +163,7 @@ end
 
 Try adding some comments. They should look like a data structure. Try restarting the application and notice how all comments disappear then.
 
-TODO: screenshot
+![Comments raw from application memory](keep-comments-in-application-memory.png)
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/42b309bf24fbb6966a2d1ea07e6313872b127113)
 
@@ -184,7 +184,7 @@ In `views/picture.erb`, show the comments in a human-readable format.
 
 Try adding comments and write some CSS to make them look the way you like. If you want the template to render the [DateTime][ruby-datetime] in a different format, see the documentation for [strftime][ruby-strftime].
 
-![Comments rendered using templates](comments-html.png)
+![Comments rendered using templates](comment-template.png)
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/a83781af7cd68fc9dc8da148c4b58ef904407e36)
 
@@ -224,7 +224,7 @@ When you restart your application after this change, it should print a "CREATE T
 
 Use [DB Browser for SQLite][sqlitebrowser] to open the `my-database.db` database. Have a look at the database structure and find the table and columns which the application created. The table doesn't yet contain any data, but we'll solve that next.
 
-![The database structure which was created](database-structure.png)
+![The database structure which the application created](create-a-database-for-comments.png)
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/cf8a06ec3891f32303f13f1297b61825224a24ac)
 
@@ -251,11 +251,13 @@ post '/add-comment' do
 end
 ```
 
-Go add some comments on your site. Then use DB Browser to browse the data in the `comments` table and check that the comments you just wrote were added there.
+Go add some comments on your site. Then use DB Browser to browse the data in the `comments` table and check that the comments you just wrote were saved in the database.
 
-![Some data inside the database](database-data.png)
+![Some comments inside the database](write-comments-to-a-database.png)
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/5f9f17e071bef0537d92e68f778df9e986a2910e)
+
+<!-- XXX: the following heading breaks if this comment is removed -->
 
 
 ### Read comments from a database
@@ -274,7 +276,7 @@ end
 
 Check the comments on the picture page now. It should show the comments which you saw saved in the database.
 
-![Showing comments from the database](comments-database.png)
+![Showing comments from the database](read-comments-from-a-database.png)
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/2e308db43863c2ac4d63d48e4618b37dbd0c7dcf)
 
@@ -310,7 +312,7 @@ Use some CSS to make it look nice.
 }
 ```
 
-TODO: screenshot
+![Comment count placeholders with style](comment-count-styles.png)
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/29715d3d7ec4a6a27923f780bf07da9acca4fa81)
 
@@ -346,7 +348,7 @@ The `views/pictures.erb` template needs to be changed to use `@pictures` instead
 
 Add some comments for one picture and check that its comment count increases, but the others stay unchanged.
 
-TODO: screenshot
+![Actual comment counts](comment-counts.png)
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/f220bc251f69e4e15eb07fdfaee57f7b1749b2fe)
 

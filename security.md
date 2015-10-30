@@ -12,7 +12,7 @@ Before making your web applications available for others to use, you should lear
 
 Try adding a comment to your site with the author `<h1>Evil Hacker</h1>` and the message `<script>alert("You've been hacked!");</script>`. You should see a popup window and the comments should show the author in big letters.
 
-TODO: screenshot
+![Hacked commenting feature](comments-hacked.png)
 
 This is an example of a classical web application security flaw. The application takes input from the user and puts it as-is into a context where it can be interpreted as code. In the web browser the attack is called [cross-site scripting (XSS)][xss] and in the database it is called [SQL injection][sql-injection].
 
@@ -54,7 +54,7 @@ Have a look at the hacked picture page now. A bit too much was escaped, so in `v
 
 Now your web site is safe from the XSS attack.
 
-TODO: screenshot
+![Secured commenting feature](comments-secured.png)
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/9b126d0b86349561d17dc75330808bf515b1d608)
 

@@ -20,7 +20,7 @@ Add the following code inside your HTML page's `<head>` element.
 
 *Note: The `<meta charset="UTF-8">` element must be in the beginning of `<head>`, but otherwise the order of elements inside `<head>` doesn't usually matter.*
 
-![Pure CSS](pure.png)
+![Default styles using Pure CSS](prettier-defaults.png)
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/a6be40bb4f6f5a511ad4bb060efebd81ab961939)
 
@@ -51,7 +51,7 @@ This CSS defines the visual style for the `h1` element and `profile-picture` *cl
 
 Add the `profile-picture` class to your `<img>` tag, so that the `float: right;` CSS property will position it to the right of elements that follow it. To make the picture be on the right side of your page's heading, you will need to move the picture's element before the heading's element.
 
-![Custom styles](custom.png)
+![Custom styles](custom-styles.png)
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/fdeae81320dcc3d9fcf7a1ec8d8af6fabe196cfa)
 
@@ -60,7 +60,7 @@ Add the `profile-picture` class to your `<img>` tag, so that the `float: right;`
 
 A good starting point for making a web site is to draw on paper a sketch of what you want the site to look like. Here is a sketch of a typical layout where the navigation menu is on the left and page content in the middle.
 
-TODO: sketch of what we want to achieve
+TODO: a sketch of what we want to achieve
 
 Then we can start converting that into code. We'll start with the structure, then the positioning of the navigation and content, and finally make it all pretty.
 
@@ -86,7 +86,7 @@ This navigation menu is made out of an *unordered list* (`<ul>`) which contains 
 
 The `<nav>` and `<section>` elements are just "boxes" for more content. They are similar to the `<div>` element (if you happen to know some HTML), but have some semantic meaning, so for example the screen readers for blind people can be smarter about where the navigation is etc.
 
-TODO: screenshot
+![Page structure](page-structure.png)
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/7c671763aafe022c0977e54143e2759cf8a9cd24)
 
@@ -107,7 +107,7 @@ To get ready for fiddling with the positioning of layout elements, make the edge
 }
 ```
 
-![Layout elements highlighted](layout-blocks-before.png)
+![Layout elements highlighted](prepare-for-layout-fiddling.png)
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/5271129168f39165b420629ac1c2a41c579507c0)
 
@@ -120,7 +120,7 @@ Then start experimenting with different values for the CSS properties [left][css
 
 It's a good practice to try out how the layout stretches when the page has many or few paragraphs of text, or when the browser window is wide or narrow. You can use [min-height][css-min-height] to enforce a minimum height for an element when it has only a little content.
 
-![Layout elements where we want them](layout-blocks-after.png)
+![Layout elements positioned](position-the-layout-elements.png)
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/a4680b89489fe8d150d6c3bb521ae7f77871bd68)
 
@@ -153,7 +153,7 @@ For the navigation menu, just copy the following CSS as a starting point. If you
 }
 ```
 
-![Finished layout styling](pretty-layout.png)
+![Finished layout styling](make-it-pretty.png)
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/4684a6bd538e3a1f751d95f99e319a1b9d45f40c)
 
