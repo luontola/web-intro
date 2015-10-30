@@ -60,7 +60,7 @@ Add the `profile-picture` class to your `<img>` tag, so that the `float: right;`
 
 A good starting point for making a web site is to draw on paper a sketch of what you want the site to look like. Here is a sketch of a typical layout where the navigation menu is on the left and page content in the middle.
 
-TODO: a sketch of what we want to achieve
+![Layout sketch](layout-sketch.jpg)
 
 Then we can start converting that into code. We'll start with the structure, then the positioning of the navigation and content, and finally make it all pretty.
 
