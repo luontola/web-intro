@@ -55,6 +55,15 @@ Install the Ruby programming language
 * If the [terminal][terminal] says "`Database OK`" and you can visit <http://localhost:4567/> with your web browser (e.g. [Firefox](https://www.mozilla.org/en-US/firefox/new/), Safari, or similar) and if it says "`Web server OK`", then you're all done!
 
 
+### Workarounds to some problems
+
+#### getaddrinfo: The requested name is valid, but no data of the requested type was found. (SocketError)
+
+If you get this error when running `ruby test.rb`, it means that the web server is failing to listen on the `0.0.0.0` host, your computer's public network interface. A workaround is to make it listen only private connections.
+
+Try running `ruby test.rb -o 127.0.0.1` and if it works, you will need to add the `-o 127.0.0.1` option also when running your application during the rest of this guide.
+
+
 [terminal]: http://askubuntu.com/questions/38162/what-is-a-terminal-and-how-do-i-open-and-use-it
 [macnavigation]: http://askubuntu.com/questions/232442/how-do-i-navigate-between-directories-in-terminal
 [winnavigation]: http://www.pcstats.com/articleview.cfm?articleid=1723&page=3
