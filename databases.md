@@ -133,11 +133,11 @@ In `views/picture.erb`, add the following code to show the comments.
 
 ## Keep comments in application memory
 
-Though the comments are now visible, they are very limited. For example we cannot easily edit or remove comments, and using templates for them is hard, because the comments are in a simple text file.
+Though the comments are now visible, they are very limited. For example we cannot easily edit or remove comments, and using templates for them is hard, because the comments are in an unstructured text file.
 
-To solve these issues, we will store the comments in application memory, in an easier to manage data structure. Because the comments are only in application memory, they will disappear when the application is restarted, but the code will be one step away from switching to use a real database.
+To solve these issues, we will store the comments in application memory, in a structured data structure. Because the comments are only in application memory, they will disappear when the application is restarted, but the code will be one step away from switching to use a real database which will save the data to the disk in a structured format.
 
-Create an empty [array][ruby-array] with `[]` when the program starts and store it in the `$comments` variable. In the `/add-comment` route append new comments to `$comments`. In the `/pictures/:picture.html` route read the comments from `$comments` and give them to the template.
+Create a global variable `$comments` which starts as an empty list `[]` (in Ruby lists are called [arrays][ruby-array]). In the `/add-comment` route append new comments to the `$comments` list using `<<`. In the `/pictures/:picture.html` route find the comments of the current picture from among all the comments in `$comments` and give them to the template as `@comments`.
 
 ```ruby
 $comments = []
