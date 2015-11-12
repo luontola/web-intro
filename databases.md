@@ -257,8 +257,6 @@ Go add some comments on your site. Then use DB Browser to browse the data in the
 
 [View solution](https://github.com/orfjackal/web-intro-project/commit/5f9f17e071bef0537d92e68f778df9e986a2910e)
 
-<!-- XXX: the following heading breaks if this comment is removed -->
-
 
 ### Read comments from a database
 
