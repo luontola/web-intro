@@ -43,7 +43,7 @@ Install the Ruby programming language
 ## 5. Ruby libraries
 
 * Run the following command in your [terminal][terminal] (known as the [Command Prompt][winprompt] on Windows) to install some Ruby libraries which we'll use in this tutorial:  
-  `gem install sinatra rerun data_mapper dm-sqlite-adapter erubis --no-ri --no-rdoc`
+  `gem install sinatra sinatra-contrib data_mapper dm-sqlite-adapter erubis --no-ri --no-rdoc`
   * While the computer is in the middle of performing the command, a cursor will blink on an empty line. When the command is completed, there will be stuff in front of the blinking cursor.
   * On OS X and Linux, if the command fails complaining about permissions, add the `sudo` word to the beginning of the command and try again.
 

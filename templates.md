@@ -47,6 +47,7 @@ Create a file called `app.rb` and put the following code in it. This minimal web
 
 ```ruby
 require 'sinatra'
+require 'sinatra/reloader'
 
 get '/hi' do
   "Hello World!"
@@ -61,18 +62,7 @@ Then run the command `ruby app.rb` in your terminal. It should start a web serve
 
 Finally stop the web server by pressing `Ctrl+C` in your terminal. Try refreshing the page in your web browser. It should now show an error message because there is no more a web server to connect to.
 
-
-### Making file changes visible
-
-Always when you change your application, you will need to stop and restart the web server. To stop the web server running in your terminal, press `Ctrl+C`. To start it again without having to type the command, press `Up` and then `Enter`.
-
-Change the text that the `/hi` route returns and check in your web browser that it shows the new text. Repeat this a couple of times. Observe how the web browser still shows the old text if you don't restart the server.
-
-Programmers don't like doing things that the computer can do for them, so there are tools for [automatically restarting the web server][sinatra-reloading] whenever a file is changed. You should have installed the `rerun` tool as part of the install guide. Let's try it out.
-
-*Note: Rerun does not work on Windows. You will have to restart manually with Ctrl+C, Up, Enter.*
-
-Start the server with the command `rerun ruby app.rb` in your terminal. Try changing the text that the `/hi` route returns a couple more times, but notice how you don't need to restart the web server yourself. The `rerun` command will restart it automatically every time that you save the file (it may take a couple of seconds, so you might see an error message if you reload the page in your web browser quickly).
+To start the server again without having to type the command, press `Up` and then `Enter`.
 
 
 ## Static site on a web server
@@ -407,7 +397,6 @@ Check that <http://localhost:4567/pictures/foo.html> shows an error message. Als
 [dry]: http://programmer.97things.oreilly.com/wiki/index.php/Don't_Repeat_Yourself
 [ruby]: https://www.ruby-lang.org/
 [sinatra]: http://www.sinatrarb.com/
-[sinatra-reloading]: http://www.sinatrarb.com/faq.html#reloading
 [sinatra-static]: http://www.sinatrarb.com/intro.html#Static%20Files
 [sinatra-redirect]: http://www.sinatrarb.com/intro.html#Browser%20Redirect
 [sinatra-routes]: http://www.sinatrarb.com/intro.html#Routes
