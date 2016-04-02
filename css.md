@@ -10,7 +10,7 @@ next: /templates/
 
 ## Prettier defaults
 
-At first let's make the default text look a bit nicer by using the [Pure](http://purecss.io/) CSS library.
+Let's use the [Pure](http://purecss.io/) CSS library to make the fonts, buttons and other things to look nicer than what the web browser gives you by default.
 
 Add the following code inside your HTML page's `<head>` element.
 
@@ -26,6 +26,8 @@ Add the following code inside your HTML page's `<head>` element.
 
 
 ## Custom styles
+
+We could set the visual style for each HTML element individually, but that quickly becomes a lot of work. Instead, in a CSS file we can *in one place* change the visual style of *all* elements on the web site. For example we can say that all headings should be red. If we want only some elements to look different, we can give them a name with *CSS classes* and give them a different visual style. For example there are many pictures on the web site, but the profile picture has a colored border.
 
 To have a place where to add our own CSS, create a file `style.css` with the following content.
 
@@ -47,9 +49,9 @@ Add into your `<head>` a stylesheet link which points to that CSS file.
 <link rel="stylesheet" href="style.css">
 ```
 
-This CSS defines the visual style for the `h1` element and `profile-picture` *class*. The `.` in front of `.profile-picture` means that any element with the attribute `class="profile-picture"` will have this style.
+This CSS defines the visual style for the `h1` element and `profile-picture` class. The `.` in front of `.profile-picture` means that any element with the `class="profile-picture"` attribute will have this style.
 
-Add the `profile-picture` class to your `<img>` tag, so that the `float: right;` CSS property will position it to the right of elements that follow it. To make the picture be on the right side of your page's heading, you will need to move the picture's element before the heading's element.
+Add the `class="profile-picture"` attribute to your `<img>` tag. Then because of the `float: right;` CSS property, the picture will  will position it to the right of elements that follow it. To make the picture be on the right side of your page's heading, you will need to move the picture's element before the heading's element.
 
 ![Custom styles](custom-styles.png)
 
