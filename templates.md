@@ -222,8 +222,7 @@ Check that the pictures page still works. Try adding a couple more pictures - mu
 
 The above code combines multiple operations to achieve the desired result. Always when copying code from the Internet, you should try to understand what it does. One way is to read the documentation, in this case for the [glob][ruby-glob], [map][ruby-map] and [sub][ruby-sub] methods. Another way is to run pieces of the code interactively using a [REPL][repl] and check their result. Instead of a REPL you can also [print things to the terminal][ruby-printing] when you run your application.
 
-<!--
-TODO: this part if confusing, move it to an "advanced side note" or remove it
+*The following is advanced information. Feel free to skip it.*
 
 You can start a Ruby REPL by running the `irb` command in your terminal. When you type there a line of Ruby code and press Enter, it will print the result of that code. Here is an example session of experimenting what the above code does.
 
@@ -237,7 +236,7 @@ irb(main):003:0> Dir.glob('public/pictures/**').map { |path| path.sub('public', 
 => ["/pictures/annoyed-cat.jpg", "/pictures/cat-1373445873hvw.jpg", "/pictures/cat-1382017414PaD.jpg", "/pictures/cat-hunting.jpg", "/pictures/lieblingskater-44421287869401VYcy.jpg"]
 irb(main):004:0> exit
 ```
--->
+
 
 ## Unique titles for every page
 
