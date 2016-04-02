@@ -46,7 +46,7 @@ require 'erubis'
 set :erb, :escape_html => true
 ```
 
-Have a look at the hacked picture page now. A bit too much was escaped, so in `views/layout.erb` you will need to disable escaping for the page content.
+Have a look at the hacked picture page now. A bit too much was escaped, so in `views/layout.erb` you will need to disable escaping for the page content; replace `<%=` with `<%==`.
 
 ```erb
 <%== yield %>
