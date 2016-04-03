@@ -14,7 +14,7 @@ Let's use the [Pure](http://purecss.io/) CSS library to make the fonts, buttons 
 
 Add the following code inside your HTML page's `<head>` element.
 
-```HTML
+```html
 <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
 ```
 

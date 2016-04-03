@@ -19,4 +19,4 @@ navigation:
     url: /security/
 
 # Build settings
-markdown: redcarpet
+markdown: kramdown
