@@ -362,7 +362,7 @@ Add some comments for one picture and check that its comment count increases, bu
 [ruby-datetime]: http://docs.ruby-lang.org/en/2.2.0/DateTime.html
 [ruby-strftime]: http://docs.ruby-lang.org/en/2.2.0/DateTime.html#method-i-strftime
 [ruby-array]: http://docs.ruby-lang.org/en/2.2.0/Array.html
-[sql]: https://www.techopedia.com/definition/1245/structured-query-language-sql
+[sql]: http://www.guru99.com/introduction-to-database-sql.html
 [sqlite]: https://www.sqlite.org/
 [datamapper]: http://datamapper.org/
 [datamapper-find]: http://datamapper.org/docs/find.html
