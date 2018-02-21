@@ -35,7 +35,10 @@ It should look like this:
 
 ![Minimal HTML page](minimal-html-page.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/b3d748e2abd28e96267318d8c483dd301970a4f0)
+<aside class="solution">
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/b3d748e2abd28e96267318d8c483dd301970a4f0/about.html">about.html</a>
+    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/b3d748e2abd28e96267318d8c483dd301970a4f0">View changes</a>
+</aside>
 
 
 ## Basic HTML elements
@@ -48,7 +51,10 @@ You can find out more information about the [`<h1>`][html-h1], [`<p>`][html-p], 
 
 ![Basic HTML Elements](basic-html-elements.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/2836c57c048ff823eb7b194d8a6b470bd41eb891)
+<aside class="solution">
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/2836c57c048ff823eb7b194d8a6b470bd41eb891/about.html">about.html</a>
+    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/2836c57c048ff823eb7b194d8a6b470bd41eb891">View changes</a>
+</aside>
 
 
 [html]: https://developer.mozilla.org/en-US/docs/Web/HTML

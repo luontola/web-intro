@@ -56,7 +56,11 @@ Now your web site is safe from the XSS attack.
 
 ![Secured commenting feature](comments-secured.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/9b126d0b86349561d17dc75330808bf515b1d608)
+<aside class="solution">
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/9b126d0b86349561d17dc75330808bf515b1d608/app.rb">app.rb</a>
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/9b126d0b86349561d17dc75330808bf515b1d608/views/layout.erb">views/layout.erb</a>
+    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/9b126d0b86349561d17dc75330808bf515b1d608">View changes</a>
+</aside>
 
 
 ## OWASP Top 10

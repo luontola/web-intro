@@ -59,7 +59,12 @@ Check that the form looks good.
 
 ![Comment form](comment-form.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/eae9445e5fedf66b0638190b87897162220533b7)
+<aside class="solution">
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/eae9445e5fedf66b0638190b87897162220533b7/app.rb">app.rb</a>
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/eae9445e5fedf66b0638190b87897162220533b7/views/picture.erb">views/picture.erb</a>
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/eae9445e5fedf66b0638190b87897162220533b7/public/style.css">public/style.css</a>
+    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/eae9445e5fedf66b0638190b87897162220533b7">View changes</a>
+</aside>
 
 
 ### Receive form parameters
@@ -77,7 +82,10 @@ Did you notice that the `<form>` element had a `method="post"` attribute and tha
 
 Try again writing something to the form and submit it. The `puts` method will print the parameters to the terminal where your application is running. It should print something like `{"picture"=>"annoyed-cat", "author"=>"Ruby", "message"=>"How cute~~!"}`. After submitting the form, your web browser should end up on the same picture page where it was.
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/227a4d4f674068769bde587ec7989899fc65a853)
+<aside class="solution">
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/227a4d4f674068769bde587ec7989899fc65a853/app.rb">app.rb</a>
+    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/227a4d4f674068769bde587ec7989899fc65a853">View changes</a>
+</aside>
 
 
 ## Keep comments in a text file
@@ -100,7 +108,10 @@ end
 
 Try adding some comments and check that they are saved to `comments_*.txt`.
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/88e4d40a1f4989c8c22a0f2b58585b6d322c05c2)
+<aside class="solution">
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/88e4d40a1f4989c8c22a0f2b58585b6d322c05c2/app.rb">app.rb</a>
+    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/88e4d40a1f4989c8c22a0f2b58585b6d322c05c2">View changes</a>
+</aside>
 
 
 ### Read comments from a text file
@@ -128,7 +139,11 @@ In `views/picture.erb`, add the following code to show the comments.
 
 ![Comments raw from a text file](keep-comments-in-a-text-file.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/393045ef7db701d3781860cdd541f7b15b38ae61)
+<aside class="solution">
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/393045ef7db701d3781860cdd541f7b15b38ae61/app.rb">app.rb</a>
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/393045ef7db701d3781860cdd541f7b15b38ae61/views/picture.erb">views/picture.erb</a>
+    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/393045ef7db701d3781860cdd541f7b15b38ae61">View changes</a>
+</aside>
 
 
 ## Keep comments in application memory
@@ -165,7 +180,10 @@ Try adding some comments. They should look like a data structure. Try restarting
 
 ![Comments raw from application memory](keep-comments-in-application-memory.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/42b309bf24fbb6966a2d1ea07e6313872b127113)
+<aside class="solution">
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/42b309bf24fbb6966a2d1ea07e6313872b127113/app.rb">app.rb</a>
+    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/42b309bf24fbb6966a2d1ea07e6313872b127113">View changes</a>
+</aside>
 
 
 ## Comment template
@@ -186,7 +204,11 @@ Try adding comments and write some CSS to make them look the way you like. If yo
 
 ![Comments rendered using templates](comment-template.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/a83781af7cd68fc9dc8da148c4b58ef904407e36)
+<aside class="solution">
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/a83781af7cd68fc9dc8da148c4b58ef904407e36/views/picture.erb">views/picture.erb</a>
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/a83781af7cd68fc9dc8da148c4b58ef904407e36/public/style.css">public/style.css</a>
+    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/a83781af7cd68fc9dc8da148c4b58ef904407e36">View changes</a>
+</aside>
 
 
 ## Keep comments in a database
@@ -226,7 +248,10 @@ Use [DB Browser for SQLite][sqlitebrowser] to open the `my-database.db` database
 
 ![The database structure which the application created](create-a-database-for-comments.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/cf8a06ec3891f32303f13f1297b61825224a24ac)
+<aside class="solution">
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/cf8a06ec3891f32303f13f1297b61825224a24ac/app.rb">app.rb</a>
+    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/cf8a06ec3891f32303f13f1297b61825224a24ac">View changes</a>
+</aside>
 
 
 ### Write comments to a database
@@ -255,7 +280,10 @@ Go add some comments on your site. Then use DB Browser to browse the data in the
 
 ![Some comments inside the database](write-comments-to-a-database.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/5f9f17e071bef0537d92e68f778df9e986a2910e)
+<aside class="solution">
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/5f9f17e071bef0537d92e68f778df9e986a2910e/app.rb">app.rb</a>
+    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/5f9f17e071bef0537d92e68f778df9e986a2910e">View changes</a>
+</aside>
 
 
 ### Read comments from a database
@@ -276,7 +304,10 @@ Check the comments on the picture page now. It should show the comments which yo
 
 ![Showing comments from the database](read-comments-from-a-database.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/2e308db43863c2ac4d63d48e4618b37dbd0c7dcf)
+<aside class="solution">
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/2e308db43863c2ac4d63d48e4618b37dbd0c7dcf/app.rb">app.rb</a>
+    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/2e308db43863c2ac4d63d48e4618b37dbd0c7dcf">View changes</a>
+</aside>
 
 
 ## Count the comments using a database
@@ -312,7 +343,11 @@ Use some CSS to make it look nice.
 
 ![Comment count placeholders with style](comment-count-styles.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/29715d3d7ec4a6a27923f780bf07da9acca4fa81)
+<aside class="solution">
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/29715d3d7ec4a6a27923f780bf07da9acca4fa81/views/pictures.erb">views/pictures.erb</a>
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/29715d3d7ec4a6a27923f780bf07da9acca4fa81/public/style.css">public/style.css</a>
+    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/29715d3d7ec4a6a27923f780bf07da9acca4fa81">View changes</a>
+</aside>
 
 
 ### Comment counts
@@ -348,7 +383,11 @@ Add some comments for one picture and check that its comment count increases, bu
 
 ![Actual comment counts](comment-counts.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/f220bc251f69e4e15eb07fdfaee57f7b1749b2fe)
+<aside class="solution">
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/f220bc251f69e4e15eb07fdfaee57f7b1749b2fe/app.rb">app.rb</a>
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/f220bc251f69e4e15eb07fdfaee57f7b1749b2fe/views/pictures.erb">views/pictures.erb</a>
+    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/f220bc251f69e4e15eb07fdfaee57f7b1749b2fe">View changes</a>
+</aside>
 
 
 [web-form]: https://en.wikipedia.org/wiki/Form_(HTML)

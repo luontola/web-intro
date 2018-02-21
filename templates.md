@@ -27,7 +27,11 @@ The following example uses the CSS properties [border][css-border], [background-
 
 ![Pictures page with some pictures](pictures-page.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/b8ab72533a34efa609a47653ba899f57e802f135)
+<aside class="solution">
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/b8ab72533a34efa609a47653ba899f57e802f135/pictures.html">pictures.html</a>
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/b8ab72533a34efa609a47653ba899f57e802f135/style.css">style.css</a>
+    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/b8ab72533a34efa609a47653ba899f57e802f135">View changes</a>
+</aside>
 
 
 ## Don't Repeat Yourself
@@ -58,7 +62,10 @@ Then run the command `ruby app.rb` in your terminal. It should start a web serve
 
 ![Your first web server is working](run-a-web-server.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/85703bad1a3eef6e6a9ac84781067f6da90a1712)
+<aside class="solution">
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/85703bad1a3eef6e6a9ac84781067f6da90a1712/app.rb">app.rb</a>
+    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/85703bad1a3eef6e6a9ac84781067f6da90a1712">View changes</a>
+</aside>
 
 Finally stop the web server by pressing `Ctrl+C` in your terminal. Try refreshing the page in your web browser. It should now show an error message because there is no more a web server to connect to.
 
@@ -75,7 +82,12 @@ Inside the same folder as `app.rb`, create a new folder called `public` and move
 
 ![Your web site on a web server](static-site-on-a-web-server.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/305b7ef7f8eb223e24cc9944947bb890a2898b91)
+<aside class="solution">
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/305b7ef7f8eb223e24cc9944947bb890a2898b91/public/about.html">public/about.html</a>
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/305b7ef7f8eb223e24cc9944947bb890a2898b91/public/pictures.html">public/pictures.html</a>
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/305b7ef7f8eb223e24cc9944947bb890a2898b91/public/style.css">public/style.css</a>
+    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/305b7ef7f8eb223e24cc9944947bb890a2898b91">View changes</a>
+</aside>
 
 
 ## Fix the front page
@@ -94,7 +106,10 @@ end
 
 Check that when you visit <http://localhost:4567/>, your web browser immediately goes to the <http://localhost:4567/about.html> address.
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/6390abceb5e2239c29da964944729686dab06888)
+<aside class="solution">
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/6390abceb5e2239c29da964944729686dab06888/app.rb">app.rb</a>
+    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/6390abceb5e2239c29da964944729686dab06888">View changes</a>
+</aside>
 
 
 ## Templates
@@ -121,7 +136,13 @@ end
 
 Check that all the pages still look the same as before in your web browser. The difference is that now all the common HTML for the layout and navigation is in a single place, so changing it and adding new pages will be easier. Templates also make it possible to have dynamic content, as we will see next.
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/42995902c6a7cda88666eda93a9af73b0655a619)
+<aside class="solution">
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/42995902c6a7cda88666eda93a9af73b0655a619/app.rb">app.rb</a>
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/42995902c6a7cda88666eda93a9af73b0655a619/views/about.erb">views/about.erb</a>
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/42995902c6a7cda88666eda93a9af73b0655a619/views/layout.erb">views/layout.erb</a>
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/42995902c6a7cda88666eda93a9af73b0655a619/views/pictures.erb">views/pictures.erb</a>
+    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/42995902c6a7cda88666eda93a9af73b0655a619">View changes</a>
+</aside>
 
 
 ## Lottery
@@ -150,7 +171,11 @@ Try reloading the about page in your web browser multiple times. The name should
 
 ![Lottery result is shown](lottery.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/c994a887276f8f15c413d73906d4f55c8d1fa0e2)
+<aside class="solution">
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/c994a887276f8f15c413d73906d4f55c8d1fa0e2/app.rb">app.rb</a>
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/c994a887276f8f15c413d73906d4f55c8d1fa0e2/views/about.erb">views/about.erb</a>
+    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/c994a887276f8f15c413d73906d4f55c8d1fa0e2">View changes</a>
+</aside>
 
 
 ## Front page at the root
@@ -165,7 +190,11 @@ Check that when you visit <http://localhost:4567/>, your web browser stays at th
 
 ![Front page at the root](front-page-at-the-root.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/ef3cfe65226c4437fed66addcad1d765ddd103af)
+<aside class="solution">
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/ef3cfe65226c4437fed66addcad1d765ddd103af/app.rb">app.rb</a>
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/ef3cfe65226c4437fed66addcad1d765ddd103af/views/layout.erb">views/layout.erb</a>
+    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/ef3cfe65226c4437fed66addcad1d765ddd103af">View changes</a>
+</aside>
 
 
 ## Album photo template
@@ -195,7 +224,11 @@ In `views/pictures.erb`, use a *for loop* to repeat the image tag for each url i
 
 Now check that the pictures page still looks the same as before. Also try adding a couple more pictures to make sure that the template works how it should.
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/f22f9b7963c8793587c787a970163fbbbf24e8af)
+<aside class="solution">
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/f22f9b7963c8793587c787a970163fbbbf24e8af/app.rb">app.rb</a>
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/f22f9b7963c8793587c787a970163fbbbf24e8af/views/pictures.erb">views/pictures.erb</a>
+    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/f22f9b7963c8793587c787a970163fbbbf24e8af">View changes</a>
+</aside>
 
 
 ## Show all pictures from a folder
@@ -215,7 +248,11 @@ end
 
 Check that the pictures page still works. Try adding a couple more pictures - much easier now, isn't it?
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/0917ff1f02f511f0d3a456761013c9562de8912f)
+<aside class="solution">
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/0917ff1f02f511f0d3a456761013c9562de8912f/app.rb">app.rb</a>
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/0917ff1f02f511f0d3a456761013c9562de8912f/public/pictures/annoyed-cat.jpg">public/pictures/annoyed-cat.jpg</a> and other pictures
+    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/0917ff1f02f511f0d3a456761013c9562de8912f">View changes</a>
+</aside>
 
 
 ### How does this code work?
@@ -258,7 +295,11 @@ Visit every page on your site to make sure that they still work and that they ha
 
 ![Unique page titles](unique-titles-for-every-page.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/ac7b434fd1ecfd942b284e7b347fa611a106a196)
+<aside class="solution">
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/ac7b434fd1ecfd942b284e7b347fa611a106a196/app.rb">app.rb</a>
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/ac7b434fd1ecfd942b284e7b347fa611a106a196/views/layout.erb">views/layout.erb</a>
+    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/ac7b434fd1ecfd942b284e7b347fa611a106a196">View changes</a>
+</aside>
 
 
 ## Pages for individual pictures
@@ -285,7 +326,11 @@ Go to your pictures page and click some of the pictures there. Notice how the te
 
 ![Placeholder page for a picture](pages-for-individual-pictures.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/1ecac778838c16a0e8dc9ab452dc5c05c2ec1f81)
+<aside class="solution">
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/1ecac778838c16a0e8dc9ab452dc5c05c2ec1f81/app.rb">app.rb</a>
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/1ecac778838c16a0e8dc9ab452dc5c05c2ec1f81/views/pictures.erb">views/pictures.erb</a>
+    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/1ecac778838c16a0e8dc9ab452dc5c05c2ec1f81">View changes</a>
+</aside>
 
 
 ## Picture page template
@@ -312,7 +357,12 @@ Visit a few picture pages pictures and check that they show the picture. You'll 
 
 ![Broken page for a picture](picture-page-template.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/1d4eae230df76cc43c088d175ef8a1ffbe19cf37)
+<aside class="solution">
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/1d4eae230df76cc43c088d175ef8a1ffbe19cf37/app.rb">app.rb</a>
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/1d4eae230df76cc43c088d175ef8a1ffbe19cf37/views/picture.erb">views/picture.erb</a>
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/1d4eae230df76cc43c088d175ef8a1ffbe19cf37/public/style.css">public/style.css</a>
+    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/1d4eae230df76cc43c088d175ef8a1ffbe19cf37">View changes</a>
+</aside>
 
 
 ## Fix relative links
@@ -325,7 +375,11 @@ Change all relative links in `views/layout.erb` and `views/picture.erb` to start
 
 ![Working page for a picture](fix-relative-links.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/f3643b362c18b4d8d74f729965feda87210054da)
+<aside class="solution">
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/f3643b362c18b4d8d74f729965feda87210054da/views/layout.erb">views/layout.erb</a>
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/f3643b362c18b4d8d74f729965feda87210054da/views/picture.erb">views/picture.erb</a>
+    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/f3643b362c18b4d8d74f729965feda87210054da">View changes</a>
+</aside>
 
 
 ## Don't guess the picture's file extension
@@ -358,7 +412,10 @@ def find_picture_url(basename)
 end
 ```
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/ec8659f804ecc113d0682f5a4b5476762ebf8f3b)
+<aside class="solution">
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/ec8659f804ecc113d0682f5a4b5476762ebf8f3b/app.rb">app.rb</a>
+    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/ec8659f804ecc113d0682f5a4b5476762ebf8f3b">View changes</a>
+</aside>
 
 
 ## Error page when the picture is not found
@@ -385,7 +442,10 @@ Check that <http://localhost:4567/pictures/foo.html> shows an error message. Als
 
 ![Page not found error shown with developer tools](error-page-when-the-picture-is-not-found.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/0129a3f6e25fa72d5ebf9e31c561795a81701385)
+<aside class="solution">
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/0129a3f6e25fa72d5ebf9e31c561795a81701385/app.rb">app.rb</a>
+    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/0129a3f6e25fa72d5ebf9e31c561795a81701385">View changes</a>
+</aside>
 
 
 [html-img]: https://developer.mozilla.org/en/docs/Web/HTML/Element/img

@@ -16,6 +16,7 @@ a.next-chapter {
   display: block;
   font-size: 150%;
   text-align: center;
+  margin: 1em;
 }
 
 .fork-me img {
@@ -38,4 +39,23 @@ a.next-chapter {
 .social > .facebook {
   position: relative;
   top: -7px;
+}
+
+.solution {
+  /* styling based on https://www.madcapsoftware.com/blog/2017/08/17/css-tip-creating-styled-boxes-notes-warnings-examples-tips/ */
+  background-color: #f0f7fb;
+  border-left: solid 4px #3498db;
+  overflow: hidden;
+  padding: 12px;
+  font-size: 90%;
+}
+.solution::before {
+  content: "Example solution:";
+  font-weight: bold;
+}
+.solution > .file {
+  margin-left: 1ex;
+}
+.solution > .diff {
+  float: right;
 }

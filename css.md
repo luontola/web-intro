@@ -22,7 +22,10 @@ Add the following code inside your HTML page's `<head>` element.
 
 ![Default styles using Pure CSS](prettier-defaults.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/a6be40bb4f6f5a511ad4bb060efebd81ab961939)
+<aside class="solution">
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/a6be40bb4f6f5a511ad4bb060efebd81ab961939/about.html">about.html</a>
+    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/a6be40bb4f6f5a511ad4bb060efebd81ab961939">View changes</a>
+</aside>
 
 
 ## Custom styles
@@ -55,7 +58,11 @@ Add the `class="profile-picture"` attribute to your `<img>` tag. Then because of
 
 ![Custom styles](custom-styles.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/fdeae81320dcc3d9fcf7a1ec8d8af6fabe196cfa)
+<aside class="solution">
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/fdeae81320dcc3d9fcf7a1ec8d8af6fabe196cfa/about.html">about.html</a>
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/fdeae81320dcc3d9fcf7a1ec8d8af6fabe196cfa/style.css">style.css</a>
+    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/fdeae81320dcc3d9fcf7a1ec8d8af6fabe196cfa">View changes</a>
+</aside>
 
 
 ## Layout
@@ -90,7 +97,10 @@ The `<nav>` and `<section>` elements are just "boxes" for more content. They are
 
 ![Page structure](page-structure.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/7c671763aafe022c0977e54143e2759cf8a9cd24)
+<aside class="solution">
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/7c671763aafe022c0977e54143e2759cf8a9cd24/about.html">about.html</a>
+    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/7c671763aafe022c0977e54143e2759cf8a9cd24">View changes</a>
+</aside>
 
 
 ### Prepare for layout fiddling
@@ -111,7 +121,10 @@ To get ready for fiddling with the positioning of layout elements, make the edge
 
 ![Layout elements highlighted](prepare-for-layout-fiddling.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/5271129168f39165b420629ac1c2a41c579507c0)
+<aside class="solution">
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/5271129168f39165b420629ac1c2a41c579507c0/style.css">style.css</a>
+    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/5271129168f39165b420629ac1c2a41c579507c0">View changes</a>
+</aside>
 
 
 ### Position the layout elements
@@ -124,7 +137,10 @@ It's a good practice to try out how the layout stretches when the page has many 
 
 ![Layout elements positioned](position-the-layout-elements.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/a4680b89489fe8d150d6c3bb521ae7f77871bd68)
+<aside class="solution">
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/a4680b89489fe8d150d6c3bb521ae7f77871bd68/style.css">style.css</a>
+    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/a4680b89489fe8d150d6c3bb521ae7f77871bd68">View changes</a>
+</aside>
 
 
 ### Make it pretty
@@ -157,7 +173,10 @@ For the navigation menu, just copy the following CSS as a starting point. If you
 
 ![Finished layout styling](make-it-pretty.png)
 
-[View solution](https://github.com/orfjackal/web-intro-project/commit/4684a6bd538e3a1f751d95f99e319a1b9d45f40c)
+<aside class="solution">
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/4684a6bd538e3a1f751d95f99e319a1b9d45f40c/style.css">style.css</a>
+    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/4684a6bd538e3a1f751d95f99e319a1b9d45f40c">View changes</a>
+</aside>
 
 
 [css]: https://developer.mozilla.org/en-US/docs/Web/CSS
