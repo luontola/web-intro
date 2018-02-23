@@ -174,7 +174,7 @@ Here is the updated CSS.
 }
 ```
 
-<!-- TODO: picture of page in desktop size -->
+![Responsive layout in desktop size](position-the-layout-elements--desktop.png)
 
 <aside class="solution">
     <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/ae9b6357120b5603b06f45b6c0d421a335181ce5/about.html">about.html</a>
@@ -184,7 +184,7 @@ Here is the updated CSS.
 
 This layout is *responsive*, which means that it will adjust itself to both big and small screens - from desktops to mobile phones. Try making your browser window narrower and see how the navigation menu will move from the left to the top.
 
-<!-- TODO: picture of page in mobile size -->
+![Responsive layout in mobile size](position-the-layout-elements--mobile.png)
 
 Try fiddling with the code to figure out which of the CSS classes does what. For example remove the `pure-u-sm-1-5` class and see how the page behaves now when you resize it. Then put that code back and try removing something else until you have a feel for how it works.
 
