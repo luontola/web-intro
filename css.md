@@ -5,14 +5,14 @@ permalink: /css/
 next: /templates/
 ---
 
-[CSS][css] is a markup language for describing the visuals of web pages. It contains numerous [properties][css-properties] for changing how the HTML elements look like (color, font, position and so on).
+[CSS][css] is a markup language for describing the visuals of web pages. It contains numerous [properties][css-properties] for changing how the HTML elements look - their color, size, position etc.
 
 
 ## Add a CSS framework
 
-To make working with CSS faster and easier, there are CSS frameworks which have reusable solutions to common problems. In this tutorial we'll use [Pure](http://purecss.io/).
+To make working with CSS easier, there are CSS frameworks which have reusable solutions to common problems. In this tutorial we'll use [Pure](http://purecss.io/).
 
-Add the following code inside your HTML page's `<head>` element.
+Add the following code inside your HTML page's `<head>` element to install Pure.
 
 ```html
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,7 +22,7 @@ Add the following code inside your HTML page's `<head>` element.
 
 *Note: The `<meta charset="UTF-8">` element must be in the beginning of `<head>`, but otherwise the order of elements inside `<head>` doesn't usually matter.*
 
-When you reload the page, you will see that the text has a bit nicer default font.
+When you reload the page, you should see that the text has a bit nicer font.
 
 ![Default styles using Pure CSS](prettier-defaults.png)
 
@@ -50,7 +50,7 @@ h1 {
 }
 ```
 
-Add into your `<head>` a stylesheet link which points to that CSS file.
+Add to your `<head>` a stylesheet link which points to that CSS file.
 
 ```html
 <link rel="stylesheet" href="style.css">
@@ -58,7 +58,7 @@ Add into your `<head>` a stylesheet link which points to that CSS file.
 
 This CSS defines the visual style for the `<h1>` element and `profile-picture` class. The `.` in front of `.profile-picture` means that any element with the `class="profile-picture"` attribute will have this style.
 
-Add the `class="profile-picture"` attribute to your `<img>` tag. The `float: right;` CSS property makes the picture go to the right side of elements that follow it. To make the picture be on the right side of your page's heading, you will need to move the picture's element before the heading's element.
+Add the `class="profile-picture"` attribute to your `<img>` tag. The `float: right` CSS property makes the picture go to the right side of any elements that follow it. To make the picture go to the right side of your page's heading, you will need to reorder your code so that the picture is before the heading.
 
 ![Custom styles](custom-styles.png)
 
@@ -75,7 +75,7 @@ A good starting point for making a web site is to draw on paper a sketch of what
 
 ![Layout sketch](layout-sketch.jpg)
 
-Then we can start converting that into code. We'll start with the structure, then the positioning of the navigation and content, and finally make it all pretty.
+Then we can start converting that into code. We'll start with the structure, then position the navigation and content, and finally make it all pretty.
 
 
 ### Page structure
@@ -182,16 +182,16 @@ Here is the updated CSS.
     <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/ae9b6357120b5603b06f45b6c0d421a335181ce5">View changes</a>
 </aside>
 
-This layout is *responsive*, which means that it will adjust itself to both big and small screens - from desktops to mobile phones. Try making your browser window narrower and see how the navigation menu will move from the left to the top.
+This layout is *responsive*, which means that it will adjust itself to both big and small screens - from desktops to mobile phones. Try making your browser window narrower and see how the navigation menu will move from left to top.
 
 ![Responsive layout in mobile size](position-the-layout-elements--mobile.png)
 
-Try fiddling with the code to figure out which of the CSS classes does what. For example remove the `pure-u-sm-1-5` class and see how the page behaves now when you resize it. Then put that code back and try removing something else until you have a feel for how it works.
+Try fiddling with the code to figure out which of the CSS classes does what. For example remove the `pure-u-sm-1-5` class and see how the page behaves now when you resize it. Then put that code back and try changing something else until you have a feel for how it works.
 
 
 ### Make it pretty
 
-After the boxes are where you want them to be, remove those placeholder borders and move on to styling the visual look of the layout elements. You can for example change their [background][css-background], [border][css-border], [padding][css-padding] and [margin][css-margin] (padding is empty space inside the borders, margin is empty space around the borders).
+After the boxes are positioned the way you like, remove the placeholder borders from `.content` and `.navigation`, and focus on their visual style. You can for example change their [background][css-background], [border][css-border], [padding][css-padding] and [margin][css-margin] (padding is empty space inside the borders, margin is empty space around the borders).
 
 *Feel free to copy the example solution as a starting point.*
 

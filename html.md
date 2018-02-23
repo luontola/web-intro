@@ -47,7 +47,7 @@ Edit the page you just created to say a few things about yourself.
 
 Create a heading with `<h1>some text</h1>`, one or more paragraphs with `<p>some text</p>` and a picture using `<img src="picture.jpg" alt="alternative text">` (if you don't have a picture of yourself, you can use [this one](ruby.png)). All visible elements like these will go between `<body>` and `</body>`. Also change the page title.
 
-You can find out more information about the [`<h1>`][html-h1], [`<p>`][html-p], [`<img>`][html-img] and all other possible HTML elements in the [HTML element reference][html-elements].
+You can learn more about [`<h1>`][html-h1], [`<p>`][html-p], [`<img>`][html-img] and all other HTML elements from the [HTML element reference][html-elements] at MDN Web Docs.
 
 ![Basic HTML Elements](basic-html-elements.png)
 

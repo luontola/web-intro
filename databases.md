@@ -5,7 +5,7 @@ permalink: /databases/
 next: /security/
 ---
 
-Most applications store their data in a database. Think of databases as Excel sheets with possibly millions of rows of data, but with more powerful tools for manipulating and summarizing the data. In this chapter we will use databases to implement a commenting feature for the pictures on your site.
+Most applications store their data in a database. Think of databases as Excel sheets, but with even millions of rows of data and with more powerful tools for manipulating and summarizing the data. In this chapter we will use databases to implement a commenting feature for the pictures on your site.
 
 
 ## Web forms
@@ -90,7 +90,9 @@ Try again writing something to the form and submit it. The `puts` method will pr
 
 ## Keep comments in a text file
 
-Let's keep things simple and implement as much as we can without a database. That way you will also see how a database makes many things better. At first we'll just save the comments into a text file.
+Let's keep things simple and implement as much as we can without a database. That way you will also see how a database makes things better. But we are still making some progress every step of the way and checking our assumptions of what the code does. Working incrementally like this is good practice even in real life.
+
+At first we'll just save the comments into a text file.
 
 
 ### Write comments to a text file
@@ -150,9 +152,9 @@ In `views/picture.erb`, add the following code to show the comments.
 
 Though the comments are now visible, they are very limited. For example we cannot easily edit or remove comments, and using templates for them is hard, because the comments are in an unstructured text file.
 
-To solve these issues, we will store the comments in application memory, in a structured data structure. Because the comments are only in application memory, they will disappear when the application is restarted, but the code will be one step away from switching to use a real database which will save the data to the disk in a structured format.
+To solve these issues, we will store the comments in application memory, in a structured data structure. Because the comments are only in application memory, they will disappear when the application is restarted. But it will be one step closer to saving the data in a real database.
 
-Create a global variable `$comments` which starts as an empty list `[]` (in Ruby lists are called [arrays][ruby-array]). In the `/add-comment` route append new comments to the `$comments` list using `<<`. In the `/pictures/:picture.html` route find the comments of the current picture from among all the comments in `$comments` and give them to the template as `@comments`.
+Create a global variable `$comments` which starts as an empty list `[]` (in Ruby lists are also called [arrays][ruby-array]). In the `/add-comment` route append new comments to the `$comments` list using `<<`. In the `/pictures/:picture.html` route find the comments of the current picture from among all the comments in `$comments` and give them to the template as `@comments`.
 
 ```ruby
 $comments = []
@@ -360,7 +362,7 @@ Use some CSS to make it look nice.
 
 Next replace the placeholder with the actual number of comments. The `Comment.count` method will return the number of comments in the database. You can also use it to count only those comments that [satisfy a particular criteria][datamapper-find], as in the following code.
 
-It used to be enough to give the `pictures` template just the list of picture URLs, but now that there are more pieces of data related to each picture, it's better to give the template a list of hashes. This way the program logic will stay out of the templates, making the code more maintainable.
+It used to be enough to give the `pictures` template just the list of picture URLs, but now that there are more pieces of data related to each picture, it's better to give the template a list of [hashes][ruby-hash]. This way the program logic will stay out of the templates, making the code more maintainable.
 
 ```ruby
 get '/pictures.html' do
@@ -409,6 +411,7 @@ Add some comments for one picture and check that its comment count increases, bu
 [ruby-datetime]: http://docs.ruby-lang.org/en/2.2.0/DateTime.html
 [ruby-strftime]: http://docs.ruby-lang.org/en/2.2.0/DateTime.html#method-i-strftime
 [ruby-array]: http://docs.ruby-lang.org/en/2.2.0/Array.html
+[ruby-hash]: http://ruby-doc.org/core-2.2.0/Hash.html
 [sql]: http://www.guru99.com/introduction-to-database-sql.html
 [sqlite]: https://www.sqlite.org/
 [datamapper]: http://datamapper.org/

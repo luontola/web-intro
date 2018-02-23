@@ -5,14 +5,14 @@ permalink: /templates/
 next: /databases/
 ---
 
-In this chapter you will learn how to create a web server with Ruby, and how to use templates and a bit of programming to avoid repeating yourself. You will also get a taste of creating dynamic content, i.e. the page content is not always the same when somebody visits it.
+In this chapter you will learn how to create a web server with Ruby, how to use templates and a bit of programming to avoid repeating yourself. You will also get a taste of creating dynamic content, i.e. the page content is not always the same when somebody visits it.
 
 
 ## Pictures page
 
 Last time we created a navigation menu with a link to the `pictures.html` page, but that page doesn't yet exist. Let's create it now.
 
-Make a copy of `about.html`, name it `pictures.html`, and change its title and heading. Find about a dozen images which you like from [Public Domain Pictures](http://www.publicdomainpictures.net/) and add their thumbnails as images on your `pictures.html` using the [`<img>`][html-img] tag.
+Make a copy of `about.html`, name it `pictures.html`, and change its title and heading. Find about a dozen free images from [Public Domain Pictures](http://www.publicdomainpictures.net/) or [some similar site](https://commons.wikimedia.org/wiki/Commons:Free_media_resources/Photography). Add the images to your `pictures.html` page using the [`<img>`][html-img] tag.
 
 ```html
 <img class="album-photo" src="http://www.publicdomainpictures.net/pictures/50000/t2/cat-looking-up.jpg">
@@ -21,7 +21,7 @@ Make a copy of `about.html`, name it `pictures.html`, and change its title and h
 ...
 ```
 
-As shown above, give the images a unique class and use CSS to make them look like a photo album. In case the pictures are of different size, you can set their [height][css-height]; the web browser will set their width automatically to maintain the picture's aspect ratio.
+Use CSS to make the images look like a photo album. In case the images are of different size, you can set their [height][css-height]; the web browser will adjust their width automatically to maintain the image's aspect ratio.
 
 The following example uses the CSS properties [border][css-border], [background-color][css-background-color], [margin][css-margin], [padding][css-padding] and [box-shadow][css-box-shadow].
 
@@ -43,7 +43,7 @@ Our little web site is already breaking the DRY principle. Both of our pages are
 
 ## Run a web server
 
-This far we have created our site with just static HTML pages, but in order to use templates, we must create a *web server* which will dynamically generate HTML pages. Your web browser will communicate with the web server and show the HTML pages which the web server generates.
+This far we have created our site with just static HTML pages, but in order to use templates we must create a *web server* which will dynamically generate HTML pages. Your web browser will communicate with the web server and show the HTML pages which the web server generates.
 
 We will use the [Ruby][ruby] programming language and the [Sinatra][sinatra] web framework to create the web server. Follow the [installation guide](/install/) to install Ruby and Sinatra if you haven't yet done so.
 
@@ -67,18 +67,18 @@ Then run the command `ruby app.rb` in your terminal. It should start a web serve
     <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/d664151308553fc3aa9cee8f65c46f640f7a4513">View changes</a>
 </aside>
 
-<!-- TODO: motivation: it's necessary to stop and restart the application every now and then when developing it -->
+When programming, it is often necessary to stop and restart the web server to see your changes in action.
 
-Finally stop the web server by pressing `Ctrl+C` in your terminal. Try refreshing the page in your web browser. It should now show an error message because there is no more a web server to connect to.
+To stop the web server by pressing `Ctrl+C` in your terminal. Try refreshing the page in your web browser. It should now show an error message because there is no more a web server to connect to.
 
-To start the server again without having to type the command, press `Up` and then `Enter`.
+To start the server again, without having to retype the command, press `Up` to see your previous command and then press `Enter`.
 
 
 ## Static site on a web server
 
-As a first step towards serving our web site through Sinatra, we can use Sinatra's ability to [serve static files][sinatra-static] to serve our existing HTML and CSS files unmodified.
+As a first step towards a dynamic web site, we can use Sinatra's ability to [serve static files][sinatra-static] to serve our existing HTML and CSS files unmodified.
 
-Inside the same folder as `app.rb`, create a new folder called `public` and move your HTML and CSS files and pictures there. Then start your web server with `ruby app.rb`, visit <http://localhost:4567/pictures.html> in your web browser and make sure that your site looks the same as before, but this time it's being served to you by a web server the same way as all web sites on the Internet.
+Inside the same folder as `app.rb`, create a new folder called `public` and move your HTML and CSS files and pictures there. Then start your web server with `ruby app.rb`, visit <http://localhost:4567/pictures.html> in your web browser. Your site should look the same as before, but this time it's being served to you by a web server the same way as all web sites on the Internet.
 
 *Note: If the full path of your project folder contains non-English letters, such as åäö, Sinatra will fail to serve your static files. In that case move your project folder for example to `C:\project`*
 
@@ -116,13 +116,13 @@ Check that when you visit <http://localhost:4567/>, your web browser immediately
 
 ## Templates
 
-The idea of *templates* is to sprinkle your HTML code with some placeholder marks where you can easily insert some dynamic content. We will use the [ERB][erb] templating *library* which is included in Ruby's *standard library* and which Sinatra also supports.
+The idea of *templates* is to sprinkle your HTML code with some placeholder marks where you can easily insert some dynamic content. We will use the [ERB templating library][erb] for that.
 
 Create a `views` folder inside your project folder (next to the `public` folder). This is the folder where Sinatra expects to find all your template files.
 
-Copy `public/about.html` to the `views` folder and name it `layout.erb`. In `views/layout.erb`, replace all page content (i.e. the stuff between `<section class="content">` and `</section>`) with just `<%= yield %>`
+Create a `layout.erb` file inside the `views` folder. Copy from `public/about.html` to `views/layout.erb` all code except the page content (i.e. the stuff between `<section class="content">` and `</section>`). Replace the page content with just `<%= yield %>`
 
-Copy `public/about.html` to `views/about.erb` and remove everything except the page content (i.e. the opposite of what you did in `views/layout.erb`). Copy `public/pictures.html` to `views/pictures.erb` and do the same thing. Remove `public/about.html` and `public/pictures.html`.
+Copy `public/about.html` to `views/about.erb` and remove everything except the page content (i.e. the opposite of what you did in `views/layout.erb`). Copy `public/pictures.html` to `views/pictures.erb` and do the same thing. Remove the old `public/about.html` and `public/pictures.html`.
 
 Add the following routes to `app.rb` to [render][sinatra-templates] the above mentioned ERB templates.
 
@@ -161,7 +161,7 @@ get '/about.html' do
 end
 ```
 
-The above code first creates a list of the names of all Backstreet Boys and stores it in the `backstreet_boys` *variable*. The next lines calls the `sample` *method* on the list, which will randomly pick one of the items in the list, and then the code stores it in the `@who_i_marry` variable. Because the variable name starts with `@`, also the template can access that variable.
+The above code first creates a list of the names of all Backstreet Boys and stores it in the `backstreet_boys` *variable.* The next lines calls the `sample` *method* on that list, which will randomly pick one of the items in the list, and then the code stores it in the `@who_i_marry` variable. Because the variable name starts with `@`, also the template can access that variable.
 
 In `views/about.erb`, add the following code to show the value of `@who_i_marry` on the page.
 
@@ -201,7 +201,7 @@ Check that when you visit <http://localhost:4567/>, your web browser stays at th
 
 ## Album photo template
 
-In addition to inserting single items to a template, as we did a moment ago, we can insert a list of items and repeat a piece of the template for each of them. To demonstrate that, we will remove the repetition of multiple image tags on the pictures page. Using templates might seem overkill for simple image tags, but imagine that each image will also have a description, like button and a link to the full-sized picture, in which case avoiding the repetition becomes very important.
+In addition to inserting single items to a template, as we did a moment ago, we can insert a list of items and repeat a piece of the template for each of them. To demonstrate that we will remove the repetition of multiple image tags on the pictures page. Using templates might seem overkill for simple image tags, but imagine that each image will also have a description, like button and a link to the full-sized picture, in which case avoiding the repetition becomes very important.
 
 Change your `/pictures.html` route to store a list of the picture URLs in a variable.
 
@@ -239,7 +239,7 @@ There is still some work involved in adding the picture URLs by hand to the list
 
 Create a `pictures` folder under the `public` folder and save there all the pictures in your list.
 
-Change your `/pictures.html` route to generate a list of the picture URLs based on the contents of the `public/pictures` directory.
+Change your `/pictures.html` route to generate a list of the picture URLs based on the contents of the `public/pictures` folder.
 
 ```ruby
 get '/pictures.html' do
@@ -259,27 +259,16 @@ Check that the pictures page still works. Try adding a couple more pictures - mu
 
 ### How does this code work?
 
-The above code combines multiple operations to achieve the desired result. Always when copying code from the Internet, you should try to understand what it does. One way is to read the documentation, in this case for the [glob][ruby-glob], [map][ruby-map] and [sub][ruby-sub] methods. Another way is to run pieces of the code interactively using a [REPL][repl] and check their result. Instead of a REPL you can also [print things to the terminal][ruby-printing] when you run your application.
+The above code combines multiple operations to achieve the desired result. First [glob][ruby-glob] finds all files under the `public/pictures` folder and returns a list of their paths. Each of those paths is like `public/pictures/something.jpg`, but on the pictures page we need them to be like `/pictures/something.jpg`. That's why we use [map][ruby-map] to go through each path in the list and remove the `public` prefix from the paths using [sub][ruby-sub].
 
-*The following is advanced information. Feel free to skip it.*
+For the purposes of this tutorial, it's not necessary to fully understand how the code works. But to get better at programming, one question to ask is that do I really [understand every word and symbol][the-secret-of-fast-programming-stop-thinking] in the code? One way to learn more is to read the documentation. Another way is to debug your code by [printing things to the terminal][ruby-printing] when you run your application. For some programming languages, including Ruby, there are also tools such as a debugger and a REPL.
 
-You can start a Ruby REPL by running the `irb` command in your terminal. When you type there a line of Ruby code and press Enter, it will print the result of that code. Here is an example session of experimenting what the above code does.
-
-```
-$ irb
-irb(main):001:0> Dir.glob('public/pictures/**')
-=> ["public/pictures/annoyed-cat.jpg", "public/pictures/cat-1373445873hvw.jpg", "public/pictures/cat-1382017414PaD.jpg", "public/pictures/cat-hunting.jpg", "public/pictures/lieblingskater-44421287869401VYcy.jpg"]
-irb(main):002:0> "public/pictures/annoyed-cat.jpg".sub('public', '')
-=> "/pictures/annoyed-cat.jpg"
-irb(main):003:0> Dir.glob('public/pictures/**').map { |path| path.sub('public', '') }
-=> ["/pictures/annoyed-cat.jpg", "/pictures/cat-1373445873hvw.jpg", "/pictures/cat-1382017414PaD.jpg", "/pictures/cat-hunting.jpg", "/pictures/lieblingskater-44421287869401VYcy.jpg"]
-irb(main):004:0> exit
-```
+Rant over. The tutorial must go on. No time for deep learning yet. ;-)
 
 
 ## Unique titles for every page
 
-Earlier when we started using templates, our web site didn't anymore have unique titles for every page. Now that we know how use variables in templates, we can give each page its own title.
+Earlier when we started using templates, our web site didn't anymore have unique titles for every page. Now that we know how to use variables in templates, we can give each page its own title.
 
 In `views/layout.erb`, get the page title from the `@title` variable.
 
@@ -306,9 +295,9 @@ Visit every page on your site to make sure that they still work and that they ha
 
 ## Pages for individual pictures
 
-It would be nice to be able to click a picture on the pictures page to see that picture in full size and also allow people to write comments for that picture. For that we will need to have separate pages for every picture. Because our application can have an unlimited number of pictures, it's not possible to create separate routes for every picture, but we need a route to handle *all* the pictures.
+It would be nice to be able to click a picture on the pictures page to see that picture in full size and also allow people to write comments for that picture. For that we will need to have separate pages for every picture. Because our application can have an unlimited number of pictures, it's not possible to create separate routes for every picture; we need one route to handle *all* the pictures.
 
-In `views/pictures.erb`, make each of the pictures a link to another page. The target of the link will be the URL of the picture but with the file extension changed to `.html` (this code does it using [regular expressions][ruby-regexp]).
+In `views/pictures.erb`, make each of the pictures a link to another page. The target of the link will be the URL of the picture, but with the file extension changed to `.html`. The following code does it using [regular expressions][ruby-regexp].
 
 ```erb
 <% for url in @picture_urls %>
@@ -316,7 +305,7 @@ In `views/pictures.erb`, make each of the pictures a link to another page. The t
 <% end %>
 ```
 
-In `app.rb`, add the following route which uses [named parameters][sinatra-routes]. The `:picture` will match anything in that position of the path, and will make it accessible as `params['picture']`.
+In `app.rb`, add the following route which uses [named parameters][sinatra-routes]. The `:picture` will match anything in that position of the path and will make it accessible as `params['picture']`.
 
 ```ruby
 get '/pictures/:picture.html' do
@@ -371,7 +360,7 @@ Visit a few picture pages pictures and check that they show the picture. You'll 
 
 On a picture page, if you click the "Pictures" or "Return to album" link, it will take your browser to <http://localhost:4567/pictures/pictures.html> instead of <http://localhost:4567/pictures.html>. Similarly it tries to load your CSS from <http://localhost:4567/pictures/style.css> instead of <http://localhost:4567/style.css> (you can see this with your web browser's [developer tools][browser-developer-tools]). However, the link to the front page still works.
 
-The reason has to do with how relative links work. Read [Absolute vs. Relative Paths/Links][absolute-vs-relative-paths] for an explanation. Absolute links start with `http://` or similar. Other links are relative to the page where the link appears. To make a link point to the same target regardless of the page where it appears in your site, you should prefix the link with `/`, which makes it relative to the site's root path instead of the current page's path.
+The reason has to do with [absolute vs. relative paths][absolute-vs-relative-paths]. Absolute paths start with `http://` or similar. Other paths are relative to the page where the link appears. To make links point to the same target regardless of the page where it appears in your site, the link's path should start with `/` so that it will be relative to the site's root path instead of the current page's path.
 
 Change all relative links in `views/layout.erb` and `views/picture.erb` to start with the `/` character. Check that the picture pages look right and all the links work.
 
@@ -388,7 +377,7 @@ Change all relative links in `views/layout.erb` and `views/picture.erb` to start
 
 Not all pictures have the `.jpg` file extension. There are `.png`, `.gif` and other image types as well. But currently the `/pictures/:picture.html` route has been hard-coded to work with only `.jpg` images.
 
-A solution for that is to check the contents of the `public/pictures` folder to find out the actual file extension. This can be implemented by taking advantage of the code that already lists all pictures in the folder, so we will extract that code into a new method so that we can reuse it.
+A solution for that is to check the contents of the `public/pictures` folder to find out the actual file extension. This can be implemented by taking advantage of the code that already lists all pictures in the folder, so we will extract that code into a new method for reuse.
 
 In `app.rb`, add the methods `picture_urls` and `find_picture_url` as shown below, and change your routes to use them to set `@picture_urls` and `@picture_url`.
 
@@ -474,5 +463,5 @@ Check that <http://localhost:4567/pictures/foo.html> shows an error message. Als
 [ruby-hash]: http://docs.ruby-lang.org/en/2.2.0/Hash.html
 [ruby-printing]: http://zetcode.com/lang/rubytutorial/io/
 [ruby-regexp]: http://ruby-doc.org/core-2.2.0/Regexp.html
-[repl]: https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop
 [browser-developer-tools]: https://developer.mozilla.org/en-US/Learn/Discover_browser_developer_tools
+[the-secret-of-fast-programming-stop-thinking]: https://www.codesimplicity.com/post/the-secret-of-fast-programming-stop-thinking/
