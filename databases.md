@@ -60,10 +60,10 @@ Check that the form looks good.
 ![Comment form](comment-form.png)
 
 <aside class="solution">
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/eae9445e5fedf66b0638190b87897162220533b7/app.rb">app.rb</a>
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/eae9445e5fedf66b0638190b87897162220533b7/views/picture.erb">views/picture.erb</a>
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/eae9445e5fedf66b0638190b87897162220533b7/public/style.css">public/style.css</a>
-    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/eae9445e5fedf66b0638190b87897162220533b7">View changes</a>
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/6dd52bf61213211b33a872f29d1d73e91c3e898c/app.rb">app.rb</a>
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/6dd52bf61213211b33a872f29d1d73e91c3e898c/views/picture.erb">views/picture.erb</a>
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/6dd52bf61213211b33a872f29d1d73e91c3e898c/public/style.css">public/style.css</a>
+    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/6dd52bf61213211b33a872f29d1d73e91c3e898c">View changes</a>
 </aside>
 
 
@@ -83,8 +83,8 @@ Did you notice that the `<form>` element had a `method="post"` attribute and tha
 Try again writing something to the form and submit it. The `puts` method will print the parameters to the terminal where your application is running. It should print something like `{"picture"=>"annoyed-cat", "author"=>"Ruby", "message"=>"How cute~~!"}`. After submitting the form, your web browser should end up on the same picture page where it was.
 
 <aside class="solution">
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/227a4d4f674068769bde587ec7989899fc65a853/app.rb">app.rb</a>
-    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/227a4d4f674068769bde587ec7989899fc65a853">View changes</a>
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/648b9199f53c5aa0f6205bc3863ae0bec8ffa244/app.rb">app.rb</a>
+    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/648b9199f53c5aa0f6205bc3863ae0bec8ffa244">View changes</a>
 </aside>
 
 
@@ -109,8 +109,8 @@ end
 Try adding some comments and check that they are saved to `comments_*.txt`.
 
 <aside class="solution">
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/88e4d40a1f4989c8c22a0f2b58585b6d322c05c2/app.rb">app.rb</a>
-    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/88e4d40a1f4989c8c22a0f2b58585b6d322c05c2">View changes</a>
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/18c3ef9ec972bbd335280f665914dc7012c5b520/app.rb">app.rb</a>
+    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/18c3ef9ec972bbd335280f665914dc7012c5b520">View changes</a>
 </aside>
 
 
@@ -140,9 +140,9 @@ In `views/picture.erb`, add the following code to show the comments.
 ![Comments raw from a text file](keep-comments-in-a-text-file.png)
 
 <aside class="solution">
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/393045ef7db701d3781860cdd541f7b15b38ae61/app.rb">app.rb</a>
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/393045ef7db701d3781860cdd541f7b15b38ae61/views/picture.erb">views/picture.erb</a>
-    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/393045ef7db701d3781860cdd541f7b15b38ae61">View changes</a>
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/f7562ccfdeaad267f3c7df0c3326cc78e947a054/app.rb">app.rb</a>
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/f7562ccfdeaad267f3c7df0c3326cc78e947a054/views/picture.erb">views/picture.erb</a>
+    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/f7562ccfdeaad267f3c7df0c3326cc78e947a054">View changes</a>
 </aside>
 
 
@@ -181,8 +181,8 @@ Try adding some comments. They should look like a data structure. Try restarting
 ![Comments raw from application memory](keep-comments-in-application-memory.png)
 
 <aside class="solution">
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/42b309bf24fbb6966a2d1ea07e6313872b127113/app.rb">app.rb</a>
-    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/42b309bf24fbb6966a2d1ea07e6313872b127113">View changes</a>
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/25fd412a909f828b30b7ce753962d089a35b0ab5/app.rb">app.rb</a>
+    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/25fd412a909f828b30b7ce753962d089a35b0ab5">View changes</a>
 </aside>
 
 
@@ -205,9 +205,9 @@ Try adding comments and write some CSS to make them look the way you like. If yo
 ![Comments rendered using templates](comment-template.png)
 
 <aside class="solution">
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/a83781af7cd68fc9dc8da148c4b58ef904407e36/views/picture.erb">views/picture.erb</a>
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/a83781af7cd68fc9dc8da148c4b58ef904407e36/public/style.css">public/style.css</a>
-    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/a83781af7cd68fc9dc8da148c4b58ef904407e36">View changes</a>
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/7e91495c827f4f263b2fe6410c7492ac7c517689/views/picture.erb">views/picture.erb</a>
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/7e91495c827f4f263b2fe6410c7492ac7c517689/public/style.css">public/style.css</a>
+    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/7e91495c827f4f263b2fe6410c7492ac7c517689">View changes</a>
 </aside>
 
 
@@ -249,8 +249,8 @@ Use [DB Browser for SQLite][sqlitebrowser] to open the `my-database.db` database
 ![The database structure which the application created](create-a-database-for-comments.png)
 
 <aside class="solution">
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/cf8a06ec3891f32303f13f1297b61825224a24ac/app.rb">app.rb</a>
-    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/cf8a06ec3891f32303f13f1297b61825224a24ac">View changes</a>
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/90ee5d1c9bd9d244895cc8e86ebe9ab73ff99e8f/app.rb">app.rb</a>
+    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/90ee5d1c9bd9d244895cc8e86ebe9ab73ff99e8f">View changes</a>
 </aside>
 
 
@@ -281,8 +281,8 @@ Go add some comments on your site. Then use DB Browser to browse the data in the
 ![Some comments inside the database](write-comments-to-a-database.png)
 
 <aside class="solution">
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/5f9f17e071bef0537d92e68f778df9e986a2910e/app.rb">app.rb</a>
-    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/5f9f17e071bef0537d92e68f778df9e986a2910e">View changes</a>
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/674dc1e71ae3d1590821befe2fb5a8958a8b2742/app.rb">app.rb</a>
+    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/674dc1e71ae3d1590821befe2fb5a8958a8b2742">View changes</a>
 </aside>
 
 
@@ -305,8 +305,8 @@ Check the comments on the picture page now. It should show the comments which yo
 ![Showing comments from the database](read-comments-from-a-database.png)
 
 <aside class="solution">
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/2e308db43863c2ac4d63d48e4618b37dbd0c7dcf/app.rb">app.rb</a>
-    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/2e308db43863c2ac4d63d48e4618b37dbd0c7dcf">View changes</a>
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/3903ba27cfef5dc73f2c1f6c6f62f973d5830676/app.rb">app.rb</a>
+    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/3903ba27cfef5dc73f2c1f6c6f62f973d5830676">View changes</a>
 </aside>
 
 
@@ -322,19 +322,25 @@ Let's start with just a placeholder for the number of comments, in order to firs
 In `views/pictures.erb`, add the text "0 comments" on a line below the picture, and wrap it and the picture into a `<div>` element, so that they will be grouped together.
 
 ```erb
+<div class="album">
 <% for url in @picture_urls %>
-<div class="album-caption">
-<a href="<%= url.sub(/\.\w+$/, '.html') %>"><img class="album-photo" src="<%= url %>"></a>
-<br>0 comments
-</div>
+    <div class="album-caption">
+        <a href="<%= url.sub(/\.\w+$/, '.html') %>"><img class="album-photo" src="<%= url %>"></a>
+        <br>0 comments
+    </div>
 <% end %>
+</div>
 ```
 
 Use some CSS to make it look nice.
 
 ```css
+.album {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .album-caption {
-    float: left;
     text-align: center;
     padding-bottom: 0.5em;
     font-size: 80%;
@@ -371,12 +377,14 @@ end
 The `views/pictures.erb` template needs to be changed to use `@pictures` instead of `@picture_urls`.
 
 ```erb
+<div class="album">
 <% for picture in @pictures %>
-<div class="album-caption">
-<a href="<%= picture[:page_url] %>"><img class="album-photo" src="<%= picture[:picture_url] %>"></a>
-<br><%= picture[:comments] %> comments
-</div>
+    <div class="album-caption">
+        <a href="<%= picture[:page_url] %>"><img class="album-photo" src="<%= picture[:picture_url] %>"></a>
+        <br><%= picture[:comments] %> comments
+    </div>
 <% end %>
+</div>
 ```
 
 Add some comments for one picture and check that its comment count increases, but the others stay unchanged.
@@ -384,9 +392,9 @@ Add some comments for one picture and check that its comment count increases, bu
 ![Actual comment counts](comment-counts.png)
 
 <aside class="solution">
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/f220bc251f69e4e15eb07fdfaee57f7b1749b2fe/app.rb">app.rb</a>
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/f220bc251f69e4e15eb07fdfaee57f7b1749b2fe/views/pictures.erb">views/pictures.erb</a>
-    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/f220bc251f69e4e15eb07fdfaee57f7b1749b2fe">View changes</a>
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/1ccc7b0d35a105960a70c2f6285f128fa45de5ab/app.rb">app.rb</a>
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/1ccc7b0d35a105960a70c2f6285f128fa45de5ab/views/pictures.erb">views/pictures.erb</a>
+    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/1ccc7b0d35a105960a70c2f6285f128fa45de5ab">View changes</a>
 </aside>
 
 

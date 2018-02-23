@@ -27,8 +27,8 @@ When you reload the page, you will see that the text has a bit nicer default fon
 ![Default styles using Pure CSS](prettier-defaults.png)
 
 <aside class="solution">
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/a6be40bb4f6f5a511ad4bb060efebd81ab961939/about.html">about.html</a>
-    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/a6be40bb4f6f5a511ad4bb060efebd81ab961939">View changes</a>
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/6ba4873b0cc4b1e8c574c8e9dc99dac516bfe03c/about.html">about.html</a>
+    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/6ba4873b0cc4b1e8c574c8e9dc99dac516bfe03c">View changes</a>
 </aside>
 
 
@@ -63,9 +63,9 @@ Add the `class="profile-picture"` attribute to your `<img>` tag. The `float: rig
 ![Custom styles](custom-styles.png)
 
 <aside class="solution">
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/fdeae81320dcc3d9fcf7a1ec8d8af6fabe196cfa/about.html">about.html</a>
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/fdeae81320dcc3d9fcf7a1ec8d8af6fabe196cfa/style.css">style.css</a>
-    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/fdeae81320dcc3d9fcf7a1ec8d8af6fabe196cfa">View changes</a>
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/7c64178e9ec12310542aa1f7925e1df414451d04/about.html">about.html</a>
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/7c64178e9ec12310542aa1f7925e1df414451d04/style.css">style.css</a>
+    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/7c64178e9ec12310542aa1f7925e1df414451d04">View changes</a>
 </aside>
 
 
@@ -102,8 +102,8 @@ The `<nav>` and `<section>` elements are just "boxes" for more content. They are
 ![Page structure](page-structure.png)
 
 <aside class="solution">
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/7c671763aafe022c0977e54143e2759cf8a9cd24/about.html">about.html</a>
-    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/7c671763aafe022c0977e54143e2759cf8a9cd24">View changes</a>
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/20efe0cbb514292c31a3d43273be8fc042698540/about.html">about.html</a>
+    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/20efe0cbb514292c31a3d43273be8fc042698540">View changes</a>
 </aside>
 
 
@@ -126,8 +126,8 @@ To get ready for fiddling with the positioning of layout elements, make the edge
 ![Layout elements highlighted](prepare-for-layout-fiddling.png)
 
 <aside class="solution">
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/5271129168f39165b420629ac1c2a41c579507c0/style.css">style.css</a>
-    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/5271129168f39165b420629ac1c2a41c579507c0">View changes</a>
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/779795bc21b66edc64de0cd66d16f07c014a24a4/style.css">style.css</a>
+    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/779795bc21b66edc64de0cd66d16f07c014a24a4">View changes</a>
 </aside>
 
 
@@ -177,9 +177,9 @@ Here is the updated CSS.
 <!-- TODO: picture of page in desktop size -->
 
 <aside class="solution">
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/e500f8e79849b13001c7c694f3030951d3faa52e/about.html">about.html</a>
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/e500f8e79849b13001c7c694f3030951d3faa52e/style.css">style.css</a>
-    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/e500f8e79849b13001c7c694f3030951d3faa52e">View changes</a>
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/ae9b6357120b5603b06f45b6c0d421a335181ce5/about.html">about.html</a>
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/ae9b6357120b5603b06f45b6c0d421a335181ce5/style.css">style.css</a>
+    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/ae9b6357120b5603b06f45b6c0d421a335181ce5">View changes</a>
 </aside>
 
 This layout is *responsive*, which means that it will adjust itself to both big and small screens - from desktops to mobile phones. Try making your browser window narrower and see how the navigation menu will move from the left to the top.
@@ -200,8 +200,8 @@ If you want for example rounded corners, just google "css rounded corners" for s
 ![Finished layout styling](make-it-pretty.png)
 
 <aside class="solution">
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/4684a6bd538e3a1f751d95f99e319a1b9d45f40c/style.css">style.css</a>
-    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/4684a6bd538e3a1f751d95f99e319a1b9d45f40c">View changes</a>
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/26b92b4f8945c50ad1e5678863e0790fef48a167/style.css">style.css</a>
+    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/26b92b4f8945c50ad1e5678863e0790fef48a167">View changes</a>
 </aside>
 
 

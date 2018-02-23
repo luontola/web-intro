@@ -18,7 +18,7 @@ Copy the following HTML code into your text editor and save it as `about.html` i
 
 ```html
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>This is the page title</title>
@@ -36,8 +36,8 @@ It should look like this:
 ![Minimal HTML page](minimal-html-page.png)
 
 <aside class="solution">
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/b3d748e2abd28e96267318d8c483dd301970a4f0/about.html">about.html</a>
-    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/b3d748e2abd28e96267318d8c483dd301970a4f0">View changes</a>
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/f96f5cf249763b65d888827387b227c2c651bdd2/about.html">about.html</a>
+    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/f96f5cf249763b65d888827387b227c2c651bdd2">View changes</a>
 </aside>
 
 
@@ -52,8 +52,8 @@ You can find out more information about the [`<h1>`][html-h1], [`<p>`][html-p], 
 ![Basic HTML Elements](basic-html-elements.png)
 
 <aside class="solution">
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/2836c57c048ff823eb7b194d8a6b470bd41eb891/about.html">about.html</a>
-    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/2836c57c048ff823eb7b194d8a6b470bd41eb891">View changes</a>
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/e5466a8e79dcb612be4646f1a291d5760c97dcde/about.html">about.html</a>
+    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/e5466a8e79dcb612be4646f1a291d5760c97dcde">View changes</a>
 </aside>
 
 
