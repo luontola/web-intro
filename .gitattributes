@@ -5,3 +5,5 @@
 *.yml           eol=lf
 *.js            eol=lf
 *.rb            eol=lf
+*.sh            eol=lf
+*.cmd           eol=crlf
