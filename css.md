@@ -8,17 +8,21 @@ next: /templates/
 [CSS][css] is a markup language for describing the visuals of web pages. It contains numerous [properties][css-properties] for changing how the HTML elements look like (color, font, position and so on).
 
 
-## Prettier defaults
+## Add a CSS framework
 
-Let's use the [Pure](http://purecss.io/) CSS library to make the fonts, buttons and other things to look nicer than what the web browser gives you by default.
+To make working with CSS faster and easier, there are CSS frameworks which have reusable solutions to common problems. In this tutorial we'll use [Pure](http://purecss.io/).
 
 Add the following code inside your HTML page's `<head>` element.
 
 ```html
-<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css">
+<link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/grids-responsive-min.css">
 ```
 
 *Note: The `<meta charset="UTF-8">` element must be in the beginning of `<head>`, but otherwise the order of elements inside `<head>` doesn't usually matter.*
+
+When you reload the page, you will see that the text has a bit nicer default font.
 
 ![Default styles using Pure CSS](prettier-defaults.png)
 
@@ -30,7 +34,7 @@ Add the following code inside your HTML page's `<head>` element.
 
 ## Custom styles
 
-We could set the visual style for each HTML element individually, but that quickly becomes a lot of work. Instead, in a CSS file we can *in one place* change the visual style of *all* elements on the web site. For example we can say that all headings should be red. If we want only some elements to look different, we can give them a name with *CSS classes* and give them a different visual style. For example there are many pictures on the web site, but the profile picture has a colored border.
+In a CSS file we can in one place change the visual style of any elements on the web site. For example we can say that all headings should be red. We can also use *CSS classes* to give elements descriptive names and change their style with more precision. For example there are many pictures on the web site, but only the profile picture has a red border.
 
 To have a place where to add our own CSS, create a file `style.css` with the following content.
 
@@ -52,9 +56,9 @@ Add into your `<head>` a stylesheet link which points to that CSS file.
 <link rel="stylesheet" href="style.css">
 ```
 
-This CSS defines the visual style for the `h1` element and `profile-picture` class. The `.` in front of `.profile-picture` means that any element with the `class="profile-picture"` attribute will have this style.
+This CSS defines the visual style for the `<h1>` element and `profile-picture` class. The `.` in front of `.profile-picture` means that any element with the `class="profile-picture"` attribute will have this style.
 
-Add the `class="profile-picture"` attribute to your `<img>` tag. Then because of the `float: right;` CSS property, the picture will  will position it to the right of elements that follow it. To make the picture be on the right side of your page's heading, you will need to move the picture's element before the heading's element.
+Add the `class="profile-picture"` attribute to your `<img>` tag. The `float: right;` CSS property makes the picture go to the right side of elements that follow it. To make the picture be on the right side of your page's heading, you will need to move the picture's element before the heading's element.
 
 ![Custom styles](custom-styles.png)
 
@@ -91,9 +95,9 @@ Add the following elements to your page's `<body>` and put the page content you 
 </section>
 ```
 
-This navigation menu is made out of an *unordered list* (`<ul>`) which contains *list items* (`<li>`) which contains links (`<a>` as in *anchor*) to the site's pages (we'll create the pictures page later).
+This navigation menu is made out of an *unordered list* (`<ul>`) which contains *list items* (`<li>`) which contains links (`<a>` as in <u>a</u>nchor) to the site's pages (we'll create the pictures page later).
 
-The `<nav>` and `<section>` elements are just "boxes" for more content. They are similar to the `<div>` element (if you happen to know some HTML), but have some semantic meaning, so for example the screen readers for blind people can be smarter about where the navigation is etc.
+The `<nav>` and `<section>` elements are just "boxes" for more content. They are similar to the `<div>` element (if you happen to know some HTML), but have some semantic meaning, so for example the screen readers for blind people can be smarter about where the navigation is.
 
 ![Page structure](page-structure.png)
 
@@ -129,47 +133,69 @@ To get ready for fiddling with the positioning of layout elements, make the edge
 
 ### Position the layout elements
 
-First add the `position: absolute;` CSS property to the style definitions of `.content` and `.navigation`. [Absolute position][css-position] means that the position of the element is relative to the browser window, instead of other HTML elements (which is the default). Don't worry about understanding this yet.
+Most CSS frameworks have the concept of a grid for positioning elements. The basic idea is that the page is divided into rows and columns. You can then say that how many columns wide an element is. If an element does not fit to the same row as the previous element, it will go to the next row.
 
-Then start experimenting with different values for the CSS properties [left][css-left], [top][css-top] and [width][css-width] to get the boxes to look like shown below. Instead of [width][css-width] you can also use [right][css-right] to make it stretch based on the browser window size.
+Here is a layout for you. It uses Pure's [grid system][pure-grids] and [vertical menus][pure-menus]. 
 
-It's a good practice to try out how the layout stretches when the page has many or few paragraphs of text, or when the browser window is wide or narrow. You can use [min-height][css-min-height] to enforce a minimum height for an element when it has only a little content.
+```html
+<div class="pure-g">
+    <div class="pure-u-1 pure-u-sm-1-5">
+        <nav class="navigation pure-menu">
+            <ul class="pure-menu-list">
+                <li class="pure-menu-item"><a class="pure-menu-link" href="about.html">About</a></li>
+                <li class="pure-menu-item"><a class="pure-menu-link" href="pictures.html">Pictures</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="pure-u-1 pure-u-sm-4-5 pure-u-md-3-5">
+        <section class="content">
+            page content goes here
+        </section>
+    </div>
+</div>
+```
 
-![Layout elements positioned](position-the-layout-elements.png)
+Here is the updated CSS.
+
+```css
+.content {
+    border: 1px solid Green;
+    min-height: 300px;
+}
+
+.navigation {
+    border: 1px solid Blue;
+}
+
+@media screen and (min-width: 35.5em) { /* same as pure-u-sm  */
+    .navigation {
+        margin-top: 2em;
+    }
+}
+```
+
+<!-- TODO: picture of page in desktop size -->
 
 <aside class="solution">
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/a4680b89489fe8d150d6c3bb521ae7f77871bd68/style.css">style.css</a>
-    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/a4680b89489fe8d150d6c3bb521ae7f77871bd68">View changes</a>
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/e500f8e79849b13001c7c694f3030951d3faa52e/about.html">about.html</a>
+    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/e500f8e79849b13001c7c694f3030951d3faa52e/style.css">style.css</a>
+    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/e500f8e79849b13001c7c694f3030951d3faa52e">View changes</a>
 </aside>
+
+This layout is *responsive*, which means that it will adjust itself to both big and small screens - from desktops to mobile phones. Try making your browser window narrower and see how the navigation menu will move from the left to the top.
+
+<!-- TODO: picture of page in mobile size -->
+
+Try fiddling with the code to figure out which of the CSS classes does what. For example remove the `pure-u-sm-1-5` class and see how the page behaves now when you resize it. Then put that code back and try removing something else until you have a feel for how it works.
 
 
 ### Make it pretty
 
 After the boxes are where you want them to be, remove those placeholder borders and move on to styling the visual look of the layout elements. You can for example change their [background][css-background], [border][css-border], [padding][css-padding] and [margin][css-margin] (padding is empty space inside the borders, margin is empty space around the borders).
 
-For the navigation menu, just copy the following CSS as a starting point. If you like, you can google "css vertical navigation bar" for more examples. This kind of CSS tricks are hard to make yourself; everybody just copies them from someone else. ;-)
+*Feel free to copy the example solution as a starting point.*
 
-```css
-.navigation ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.navigation li {
-    font-size: 20px;
-    line-height: 30px;
-}
-
-.navigation a {
-    text-decoration: none;
-    color: #E0330C;
-}
-
-.navigation a:hover {
-    color: #F09986;
-}
-```
+If you want for example rounded corners, just google "css rounded corners" for some sample code. This kind of CSS tricks are hard to make yourself; everybody just copies them from someone else. ;-)
 
 ![Finished layout styling](make-it-pretty.png)
 
@@ -180,17 +206,12 @@ For the navigation menu, just copy the following CSS as a starting point. If you
 
 
 [css]: https://developer.mozilla.org/en-US/docs/Web/CSS
-[css-properties]: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference
-[css-position]: https://developer.mozilla.org/en-US/docs/Web/CSS/position
-[css-left]: https://developer.mozilla.org/en-US/docs/Web/CSS/left
-[css-top]: https://developer.mozilla.org/en-US/docs/Web/CSS/top
-[css-width]: https://developer.mozilla.org/en-US/docs/Web/CSS/width
-[css-right]: https://developer.mozilla.org/en-US/docs/Web/CSS/right
-[css-min-height]: https://developer.mozilla.org/en-US/docs/Web/CSS/min-height
 [css-background]: https://developer.mozilla.org/en-US/docs/Web/CSS/background
+[css-border]: https://developer.mozilla.org/en-US/docs/Web/CSS/border
 [css-margin]: https://developer.mozilla.org/en-US/docs/Web/CSS/margin
 [css-padding]: https://developer.mozilla.org/en-US/docs/Web/CSS/padding
-[css-border]: https://developer.mozilla.org/en-US/docs/Web/CSS/border
-[html-ul]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ul
+[css-properties]: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference
 [html-li]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ul
-[css-navigation-bar]: http://www.w3schools.com/css/css_navbar.asp
+[html-ul]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ul
+[pure-grids]: https://purecss.io/grids/
+[pure-menus]: https://purecss.io/menus/
