@@ -331,7 +331,7 @@ Create `views/picture.erb` with the following content.
 ```erb
 <img class="full-photo" src="<%= @picture_url %>">
 
-<p><a href="pictures.html">Return to album</a></p>
+<p><a href="/pictures.html">Return to album</a></p>
 ```
 
 Make the route render that template.
