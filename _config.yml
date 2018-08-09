@@ -2,7 +2,7 @@
 title: Introduction to Making Web Applications
 description: Tutorial for learning the basics of web development
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://web-intro.luontola.fi" # the base hostname & protocol for your site
+url: "https://web-intro.luontola.fi" # the base hostname & protocol for your site
 
 navigation:
   - title: 0. Installation
