@@ -18,7 +18,9 @@ Make a copy of `about.html`, name it `pictures.html`, and change its title and h
 <img class="album-photo" src="http://www.publicdomainpictures.net/pictures/50000/t2/cat-looking-up.jpg">
 <img class="album-photo" src="http://www.publicdomainpictures.net/pictures/30000/t2/cat-in-the-city-5.jpg">
 <img class="album-photo" src="http://www.publicdomainpictures.net/pictures/30000/t2/annoyed-cat.jpg">
-...
+<img class="album-photo" src="http://www.publicdomainpictures.net/pictures/30000/t2/cat-in-the-city-2.jpg">
+<img class="album-photo" src="http://www.publicdomainpictures.net/pictures/50000/t2/cat-in-chair.jpg">
+<img class="album-photo" src="http://www.publicdomainpictures.net/pictures/30000/t2/cat-hunting.jpg">
 ```
 
 Use CSS to make the images look like a photo album. In case the images are of different size, you can set their [height][css-height]; the web browser will adjust their width automatically to maintain the image's aspect ratio.
@@ -28,9 +30,9 @@ The following example uses the CSS properties [border][css-border], [background-
 ![Pictures page with some pictures](pictures-page.png)
 
 <aside class="solution">
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/be1bfe190f19c5ed201fac3c30bb311aad005032/pictures.html">pictures.html</a>
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/be1bfe190f19c5ed201fac3c30bb311aad005032/style.css">style.css</a>
-    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/be1bfe190f19c5ed201fac3c30bb311aad005032">View changes</a>
+    <a class="file" href="https://github.com/luontola/web-intro-project/blob/be1bfe190f19c5ed201fac3c30bb311aad005032/pictures.html">pictures.html</a>
+    <a class="file" href="https://github.com/luontola/web-intro-project/blob/be1bfe190f19c5ed201fac3c30bb311aad005032/style.css">style.css</a>
+    <a class="diff" href="https://github.com/luontola/web-intro-project/commit/be1bfe190f19c5ed201fac3c30bb311aad005032">View changes</a>
 </aside>
 
 
@@ -63,8 +65,8 @@ Then run the command `ruby app.rb` in your terminal. It should start a web serve
 ![Your first web server is working](run-a-web-server.png)
 
 <aside class="solution">
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/d664151308553fc3aa9cee8f65c46f640f7a4513/app.rb">app.rb</a>
-    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/d664151308553fc3aa9cee8f65c46f640f7a4513">View changes</a>
+    <a class="file" href="https://github.com/luontola/web-intro-project/blob/d664151308553fc3aa9cee8f65c46f640f7a4513/app.rb">app.rb</a>
+    <a class="diff" href="https://github.com/luontola/web-intro-project/commit/d664151308553fc3aa9cee8f65c46f640f7a4513">View changes</a>
 </aside>
 
 When programming, it is often necessary to stop and restart the web server to see your changes in action.
@@ -85,10 +87,10 @@ Inside the same folder as `app.rb`, create a new folder called `public` and move
 ![Your web site on a web server](static-site-on-a-web-server.png)
 
 <aside class="solution">
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/c9ef371e37cad51451460a5bafe9abc4b0bda7a6/public/about.html">public/about.html</a>
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/c9ef371e37cad51451460a5bafe9abc4b0bda7a6/public/pictures.html">public/pictures.html</a>
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/c9ef371e37cad51451460a5bafe9abc4b0bda7a6/public/style.css">public/style.css</a>
-    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/c9ef371e37cad51451460a5bafe9abc4b0bda7a6">View changes</a>
+    <a class="file" href="https://github.com/luontola/web-intro-project/blob/c9ef371e37cad51451460a5bafe9abc4b0bda7a6/public/about.html">public/about.html</a>
+    <a class="file" href="https://github.com/luontola/web-intro-project/blob/c9ef371e37cad51451460a5bafe9abc4b0bda7a6/public/pictures.html">public/pictures.html</a>
+    <a class="file" href="https://github.com/luontola/web-intro-project/blob/c9ef371e37cad51451460a5bafe9abc4b0bda7a6/public/style.css">public/style.css</a>
+    <a class="diff" href="https://github.com/luontola/web-intro-project/commit/c9ef371e37cad51451460a5bafe9abc4b0bda7a6">View changes</a>
 </aside>
 
 
@@ -109,8 +111,8 @@ end
 Check that when you visit <http://localhost:4567/>, your web browser immediately goes to the <http://localhost:4567/about.html> address.
 
 <aside class="solution">
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/30ce25ea147fe0306e5d1871be260220b86fd1b5/app.rb">app.rb</a>
-    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/30ce25ea147fe0306e5d1871be260220b86fd1b5">View changes</a>
+    <a class="file" href="https://github.com/luontola/web-intro-project/blob/30ce25ea147fe0306e5d1871be260220b86fd1b5/app.rb">app.rb</a>
+    <a class="diff" href="https://github.com/luontola/web-intro-project/commit/30ce25ea147fe0306e5d1871be260220b86fd1b5">View changes</a>
 </aside>
 
 
@@ -139,11 +141,11 @@ end
 Check that all the pages still look the same as before in your web browser. The difference is that now all the common HTML for the layout and navigation is in a single place, so changing it and adding new pages will be easier. Templates also make it possible to have dynamic content, as we will see next.
 
 <aside class="solution">
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/9de139db60f73333bf71c6e02b42db1be250692b/app.rb">app.rb</a>
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/9de139db60f73333bf71c6e02b42db1be250692b/views/about.erb">views/about.erb</a>
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/9de139db60f73333bf71c6e02b42db1be250692b/views/layout.erb">views/layout.erb</a>
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/9de139db60f73333bf71c6e02b42db1be250692b/views/pictures.erb">views/pictures.erb</a>
-    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/9de139db60f73333bf71c6e02b42db1be250692b">View changes</a>
+    <a class="file" href="https://github.com/luontola/web-intro-project/blob/9de139db60f73333bf71c6e02b42db1be250692b/app.rb">app.rb</a>
+    <a class="file" href="https://github.com/luontola/web-intro-project/blob/9de139db60f73333bf71c6e02b42db1be250692b/views/about.erb">views/about.erb</a>
+    <a class="file" href="https://github.com/luontola/web-intro-project/blob/9de139db60f73333bf71c6e02b42db1be250692b/views/layout.erb">views/layout.erb</a>
+    <a class="file" href="https://github.com/luontola/web-intro-project/blob/9de139db60f73333bf71c6e02b42db1be250692b/views/pictures.erb">views/pictures.erb</a>
+    <a class="diff" href="https://github.com/luontola/web-intro-project/commit/9de139db60f73333bf71c6e02b42db1be250692b">View changes</a>
 </aside>
 
 
@@ -174,9 +176,9 @@ Try reloading the about page in your web browser multiple times. The name should
 ![Lottery result is shown](lottery.png)
 
 <aside class="solution">
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/461eafea8a9665df71852c0ef612988733e5f4c7/app.rb">app.rb</a>
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/461eafea8a9665df71852c0ef612988733e5f4c7/views/about.erb">views/about.erb</a>
-    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/461eafea8a9665df71852c0ef612988733e5f4c7">View changes</a>
+    <a class="file" href="https://github.com/luontola/web-intro-project/blob/461eafea8a9665df71852c0ef612988733e5f4c7/app.rb">app.rb</a>
+    <a class="file" href="https://github.com/luontola/web-intro-project/blob/461eafea8a9665df71852c0ef612988733e5f4c7/views/about.erb">views/about.erb</a>
+    <a class="diff" href="https://github.com/luontola/web-intro-project/commit/461eafea8a9665df71852c0ef612988733e5f4c7">View changes</a>
 </aside>
 
 
@@ -193,9 +195,9 @@ Check that when you visit <http://localhost:4567/>, your web browser stays at th
 ![Front page at the root](front-page-at-the-root.png)
 
 <aside class="solution">
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/4314be08624f955c28bb0efcc35ac63f772cc401/app.rb">app.rb</a>
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/4314be08624f955c28bb0efcc35ac63f772cc401/views/layout.erb">views/layout.erb</a>
-    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/4314be08624f955c28bb0efcc35ac63f772cc401">View changes</a>
+    <a class="file" href="https://github.com/luontola/web-intro-project/blob/4314be08624f955c28bb0efcc35ac63f772cc401/app.rb">app.rb</a>
+    <a class="file" href="https://github.com/luontola/web-intro-project/blob/4314be08624f955c28bb0efcc35ac63f772cc401/views/layout.erb">views/layout.erb</a>
+    <a class="diff" href="https://github.com/luontola/web-intro-project/commit/4314be08624f955c28bb0efcc35ac63f772cc401">View changes</a>
 </aside>
 
 
@@ -227,9 +229,9 @@ In `views/pictures.erb`, use a *for loop* to repeat the image tag for each url i
 Now check that the pictures page still looks the same as before. Also try adding a couple more pictures to make sure that the template works how it should.
 
 <aside class="solution">
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/0d5309e7e8b9116e8ab5aa115382beacbde86462/app.rb">app.rb</a>
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/0d5309e7e8b9116e8ab5aa115382beacbde86462/views/pictures.erb">views/pictures.erb</a>
-    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/0d5309e7e8b9116e8ab5aa115382beacbde86462">View changes</a>
+    <a class="file" href="https://github.com/luontola/web-intro-project/blob/0d5309e7e8b9116e8ab5aa115382beacbde86462/app.rb">app.rb</a>
+    <a class="file" href="https://github.com/luontola/web-intro-project/blob/0d5309e7e8b9116e8ab5aa115382beacbde86462/views/pictures.erb">views/pictures.erb</a>
+    <a class="diff" href="https://github.com/luontola/web-intro-project/commit/0d5309e7e8b9116e8ab5aa115382beacbde86462">View changes</a>
 </aside>
 
 
@@ -251,9 +253,9 @@ end
 Check that the pictures page still works. Try adding a couple more pictures - much easier now, isn't it?
 
 <aside class="solution">
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/0868fa9f8d5d40d94fbb41b549f90c81ef71abd0/app.rb">app.rb</a>
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/0868fa9f8d5d40d94fbb41b549f90c81ef71abd0/public/pictures/annoyed-cat.jpg">public/pictures/annoyed-cat.jpg</a> and other pictures
-    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/0868fa9f8d5d40d94fbb41b549f90c81ef71abd0">View changes</a>
+    <a class="file" href="https://github.com/luontola/web-intro-project/blob/0868fa9f8d5d40d94fbb41b549f90c81ef71abd0/app.rb">app.rb</a>
+    <a class="file" href="https://github.com/luontola/web-intro-project/blob/0868fa9f8d5d40d94fbb41b549f90c81ef71abd0/public/pictures/annoyed-cat.jpg">public/pictures/annoyed-cat.jpg</a> and other pictures
+    <a class="diff" href="https://github.com/luontola/web-intro-project/commit/0868fa9f8d5d40d94fbb41b549f90c81ef71abd0">View changes</a>
 </aside>
 
 
@@ -287,9 +289,9 @@ Visit every page on your site to make sure that they still work and that they ha
 ![Unique page titles](unique-titles-for-every-page.png)
 
 <aside class="solution">
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/887bfac0ebb3eff948aed1ce40bc7fda70026eec/app.rb">app.rb</a>
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/887bfac0ebb3eff948aed1ce40bc7fda70026eec/views/layout.erb">views/layout.erb</a>
-    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/887bfac0ebb3eff948aed1ce40bc7fda70026eec">View changes</a>
+    <a class="file" href="https://github.com/luontola/web-intro-project/blob/887bfac0ebb3eff948aed1ce40bc7fda70026eec/app.rb">app.rb</a>
+    <a class="file" href="https://github.com/luontola/web-intro-project/blob/887bfac0ebb3eff948aed1ce40bc7fda70026eec/views/layout.erb">views/layout.erb</a>
+    <a class="diff" href="https://github.com/luontola/web-intro-project/commit/887bfac0ebb3eff948aed1ce40bc7fda70026eec">View changes</a>
 </aside>
 
 
@@ -318,9 +320,9 @@ Go to your pictures page and click some of the pictures there. Notice how the te
 ![Placeholder page for a picture](pages-for-individual-pictures.png)
 
 <aside class="solution">
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/5fb27c7dcb8fdba729838da8316316e63ca181f3/app.rb">app.rb</a>
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/5fb27c7dcb8fdba729838da8316316e63ca181f3/views/pictures.erb">views/pictures.erb</a>
-    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/5fb27c7dcb8fdba729838da8316316e63ca181f3">View changes</a>
+    <a class="file" href="https://github.com/luontola/web-intro-project/blob/5fb27c7dcb8fdba729838da8316316e63ca181f3/app.rb">app.rb</a>
+    <a class="file" href="https://github.com/luontola/web-intro-project/blob/5fb27c7dcb8fdba729838da8316316e63ca181f3/views/pictures.erb">views/pictures.erb</a>
+    <a class="diff" href="https://github.com/luontola/web-intro-project/commit/5fb27c7dcb8fdba729838da8316316e63ca181f3">View changes</a>
 </aside>
 
 
@@ -349,10 +351,10 @@ Visit a few picture pages pictures and check that they show the picture. You'll 
 ![Broken page for a picture](picture-page-template.png)
 
 <aside class="solution">
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/3658f94c8d259733501f3ff3140e8089cbf7c3be/app.rb">app.rb</a>
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/3658f94c8d259733501f3ff3140e8089cbf7c3be/views/picture.erb">views/picture.erb</a>
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/3658f94c8d259733501f3ff3140e8089cbf7c3be/public/style.css">public/style.css</a>
-    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/3658f94c8d259733501f3ff3140e8089cbf7c3be">View changes</a>
+    <a class="file" href="https://github.com/luontola/web-intro-project/blob/3658f94c8d259733501f3ff3140e8089cbf7c3be/app.rb">app.rb</a>
+    <a class="file" href="https://github.com/luontola/web-intro-project/blob/3658f94c8d259733501f3ff3140e8089cbf7c3be/views/picture.erb">views/picture.erb</a>
+    <a class="file" href="https://github.com/luontola/web-intro-project/blob/3658f94c8d259733501f3ff3140e8089cbf7c3be/public/style.css">public/style.css</a>
+    <a class="diff" href="https://github.com/luontola/web-intro-project/commit/3658f94c8d259733501f3ff3140e8089cbf7c3be">View changes</a>
 </aside>
 
 
@@ -367,9 +369,9 @@ Change all relative links in `views/layout.erb` and `views/picture.erb` to start
 ![Working page for a picture](fix-relative-links.png)
 
 <aside class="solution">
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/3456d5ca1bce2dcd60619fdfa057e9eb33af7d17/views/layout.erb">views/layout.erb</a>
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/3456d5ca1bce2dcd60619fdfa057e9eb33af7d17/views/picture.erb">views/picture.erb</a>
-    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/3456d5ca1bce2dcd60619fdfa057e9eb33af7d17">View changes</a>
+    <a class="file" href="https://github.com/luontola/web-intro-project/blob/3456d5ca1bce2dcd60619fdfa057e9eb33af7d17/views/layout.erb">views/layout.erb</a>
+    <a class="file" href="https://github.com/luontola/web-intro-project/blob/3456d5ca1bce2dcd60619fdfa057e9eb33af7d17/views/picture.erb">views/picture.erb</a>
+    <a class="diff" href="https://github.com/luontola/web-intro-project/commit/3456d5ca1bce2dcd60619fdfa057e9eb33af7d17">View changes</a>
 </aside>
 
 
@@ -404,8 +406,8 @@ end
 ```
 
 <aside class="solution">
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/fe8b2f27c46de1efcbcfa3f574a787c729000a6f/app.rb">app.rb</a>
-    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/fe8b2f27c46de1efcbcfa3f574a787c729000a6f">View changes</a>
+    <a class="file" href="https://github.com/luontola/web-intro-project/blob/fe8b2f27c46de1efcbcfa3f574a787c729000a6f/app.rb">app.rb</a>
+    <a class="diff" href="https://github.com/luontola/web-intro-project/commit/fe8b2f27c46de1efcbcfa3f574a787c729000a6f">View changes</a>
 </aside>
 
 
@@ -434,8 +436,8 @@ Check that <http://localhost:4567/pictures/foo.html> shows an error message. Als
 ![Page not found error shown with developer tools](error-page-when-the-picture-is-not-found.png)
 
 <aside class="solution">
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/04abc1bf4206d8e90f5d6d3325de3774e0d584a8/app.rb">app.rb</a>
-    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/04abc1bf4206d8e90f5d6d3325de3774e0d584a8">View changes</a>
+    <a class="file" href="https://github.com/luontola/web-intro-project/blob/04abc1bf4206d8e90f5d6d3325de3774e0d584a8/app.rb">app.rb</a>
+    <a class="diff" href="https://github.com/luontola/web-intro-project/commit/04abc1bf4206d8e90f5d6d3325de3774e0d584a8">View changes</a>
 </aside>
 
 

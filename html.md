@@ -36,8 +36,8 @@ It should look like this:
 ![Minimal HTML page](minimal-html-page.png)
 
 <aside class="solution">
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/f96f5cf249763b65d888827387b227c2c651bdd2/about.html">about.html</a>
-    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/f96f5cf249763b65d888827387b227c2c651bdd2">View changes</a>
+    <a class="file" href="https://github.com/luontola/web-intro-project/blob/f96f5cf249763b65d888827387b227c2c651bdd2/about.html">about.html</a>
+    <a class="diff" href="https://github.com/luontola/web-intro-project/commit/f96f5cf249763b65d888827387b227c2c651bdd2">View changes</a>
 </aside>
 
 
@@ -52,8 +52,8 @@ You can learn more about [`<h1>`][html-h1], [`<p>`][html-p], [`<img>`][html-img]
 ![Basic HTML Elements](basic-html-elements.png)
 
 <aside class="solution">
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/e5466a8e79dcb612be4646f1a291d5760c97dcde/about.html">about.html</a>
-    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/e5466a8e79dcb612be4646f1a291d5760c97dcde">View changes</a>
+    <a class="file" href="https://github.com/luontola/web-intro-project/blob/e5466a8e79dcb612be4646f1a291d5760c97dcde/about.html">about.html</a>
+    <a class="diff" href="https://github.com/luontola/web-intro-project/commit/e5466a8e79dcb612be4646f1a291d5760c97dcde">View changes</a>
 </aside>
 
 

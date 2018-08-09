@@ -59,9 +59,9 @@ Now your web site is safe from the XSS attack.
 ![Secured commenting feature](comments-secured.png)
 
 <aside class="solution">
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/58fd9b4ce8b718e9870169b695b36294f452feaf/app.rb">app.rb</a>
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/58fd9b4ce8b718e9870169b695b36294f452feaf/views/layout.erb">views/layout.erb</a>
-    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/58fd9b4ce8b718e9870169b695b36294f452feaf">View changes</a>
+    <a class="file" href="https://github.com/luontola/web-intro-project/blob/58fd9b4ce8b718e9870169b695b36294f452feaf/app.rb">app.rb</a>
+    <a class="file" href="https://github.com/luontola/web-intro-project/blob/58fd9b4ce8b718e9870169b695b36294f452feaf/views/layout.erb">views/layout.erb</a>
+    <a class="diff" href="https://github.com/luontola/web-intro-project/commit/58fd9b4ce8b718e9870169b695b36294f452feaf">View changes</a>
 </aside>
 
 

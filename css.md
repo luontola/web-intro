@@ -27,8 +27,8 @@ When you reload the page, you should see that the text has a bit nicer font.
 ![Default styles using Pure CSS](prettier-defaults.png)
 
 <aside class="solution">
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/6ba4873b0cc4b1e8c574c8e9dc99dac516bfe03c/about.html">about.html</a>
-    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/6ba4873b0cc4b1e8c574c8e9dc99dac516bfe03c">View changes</a>
+    <a class="file" href="https://github.com/luontola/web-intro-project/blob/6ba4873b0cc4b1e8c574c8e9dc99dac516bfe03c/about.html">about.html</a>
+    <a class="diff" href="https://github.com/luontola/web-intro-project/commit/6ba4873b0cc4b1e8c574c8e9dc99dac516bfe03c">View changes</a>
 </aside>
 
 
@@ -63,9 +63,9 @@ Add the `class="profile-picture"` attribute to your `<img>` tag. The `float: rig
 ![Custom styles](custom-styles.png)
 
 <aside class="solution">
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/7c64178e9ec12310542aa1f7925e1df414451d04/about.html">about.html</a>
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/7c64178e9ec12310542aa1f7925e1df414451d04/style.css">style.css</a>
-    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/7c64178e9ec12310542aa1f7925e1df414451d04">View changes</a>
+    <a class="file" href="https://github.com/luontola/web-intro-project/blob/7c64178e9ec12310542aa1f7925e1df414451d04/about.html">about.html</a>
+    <a class="file" href="https://github.com/luontola/web-intro-project/blob/7c64178e9ec12310542aa1f7925e1df414451d04/style.css">style.css</a>
+    <a class="diff" href="https://github.com/luontola/web-intro-project/commit/7c64178e9ec12310542aa1f7925e1df414451d04">View changes</a>
 </aside>
 
 
@@ -80,7 +80,7 @@ Then we can start converting that into code. We'll start with the structure, the
 
 ### Page structure
 
-Add the following elements to your page's `<body>` and put the page content you wrote earlier inside the content section.
+Here is a basic structure for a layout. Add the following elements to your page's `<body>`. Put the page content you wrote earlier inside the content section where it says "page content goes here."
 
 ```html
 <nav class="navigation">
@@ -102,8 +102,8 @@ The `<nav>` and `<section>` elements are just "boxes" for more content. They are
 ![Page structure](page-structure.png)
 
 <aside class="solution">
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/20efe0cbb514292c31a3d43273be8fc042698540/about.html">about.html</a>
-    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/20efe0cbb514292c31a3d43273be8fc042698540">View changes</a>
+    <a class="file" href="https://github.com/luontola/web-intro-project/blob/20efe0cbb514292c31a3d43273be8fc042698540/about.html">about.html</a>
+    <a class="diff" href="https://github.com/luontola/web-intro-project/commit/20efe0cbb514292c31a3d43273be8fc042698540">View changes</a>
 </aside>
 
 
@@ -126,8 +126,8 @@ To get ready for fiddling with the positioning of layout elements, make the edge
 ![Layout elements highlighted](prepare-for-layout-fiddling.png)
 
 <aside class="solution">
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/779795bc21b66edc64de0cd66d16f07c014a24a4/style.css">style.css</a>
-    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/779795bc21b66edc64de0cd66d16f07c014a24a4">View changes</a>
+    <a class="file" href="https://github.com/luontola/web-intro-project/blob/779795bc21b66edc64de0cd66d16f07c014a24a4/style.css">style.css</a>
+    <a class="diff" href="https://github.com/luontola/web-intro-project/commit/779795bc21b66edc64de0cd66d16f07c014a24a4">View changes</a>
 </aside>
 
 
@@ -135,7 +135,9 @@ To get ready for fiddling with the positioning of layout elements, make the edge
 
 Most CSS frameworks have the concept of a grid for positioning elements. The basic idea is that the page is divided into rows and columns. You can then say that how many columns wide an element is. If an element does not fit to the same row as the previous element, it will go to the next row.
 
-Here is a layout for you. It uses Pure's [grid system][pure-grids] and [vertical menus][pure-menus]. 
+Here is an updated layout using Pure's [grid system][pure-grids] and [vertical menus][pure-menus]. You can still see the familiar navigation menu and content section there, but additionally there are many Pure specific elements and CSS classes.
+
+Replace your old layout code with this new code. Your old page content will go where it says "page content goes here."
 
 ```html
 <div class="pure-g">
@@ -155,7 +157,7 @@ Here is a layout for you. It uses Pure's [grid system][pure-grids] and [vertical
 </div>
 ```
 
-Here is the updated CSS.
+Here is the updated CSS to replace your `.content` and `.navigation` styles.
 
 ```css
 .content {
@@ -174,19 +176,21 @@ Here is the updated CSS.
 }
 ```
 
-![Responsive layout in desktop size](position-the-layout-elements--desktop.png)
+The layout should now look like this.
+
+![Responsive layout in desktop size](position-the-layout-elements--desktop.png)*
 
 <aside class="solution">
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/ae9b6357120b5603b06f45b6c0d421a335181ce5/about.html">about.html</a>
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/ae9b6357120b5603b06f45b6c0d421a335181ce5/style.css">style.css</a>
-    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/ae9b6357120b5603b06f45b6c0d421a335181ce5">View changes</a>
+    <a class="file" href="https://github.com/luontola/web-intro-project/blob/ae9b6357120b5603b06f45b6c0d421a335181ce5/about.html">about.html</a>
+    <a class="file" href="https://github.com/luontola/web-intro-project/blob/ae9b6357120b5603b06f45b6c0d421a335181ce5/style.css">style.css</a>
+    <a class="diff" href="https://github.com/luontola/web-intro-project/commit/ae9b6357120b5603b06f45b6c0d421a335181ce5">View changes</a>
 </aside>
 
 This layout is *responsive*, which means that it will adjust itself to both big and small screens - from desktops to mobile phones. Try making your browser window narrower and see how the navigation menu will move from left to top.
 
 ![Responsive layout in mobile size](position-the-layout-elements--mobile.png)
 
-Try fiddling with the code to figure out which of the CSS classes does what. For example remove the `pure-u-sm-1-5` class and see how the page behaves now when you resize it. Then put that code back and try changing something else until you have a feel for how it works.
+This responsiveness comes from the `pure-u-*` CSS classes. For example the `<div>` element around the navigation has two CSS classes, `pure-u-1` and `pure-u-sm-1-5`. `pure-u-1` makes it by default 1/1 wide (100% wide) and `pure-u-sm-1-5` makes it 1/5 wide (20% wide) on "small" and larger screens. As a result, on mobile phones (which are "extra small") the navigation menu is 100% wide, but on tablets ("small" or "medium") and desktops ("large") it's only 20% wide and fits on the same row with the page content. If you remove `pure-u-sm-1-5`, it will aways be 100% wide.
 
 
 ### Make it pretty
@@ -200,8 +204,8 @@ If you want for example rounded corners, just google "css rounded corners" for s
 ![Finished layout styling](make-it-pretty.png)
 
 <aside class="solution">
-    <a class="file" href="https://github.com/orfjackal/web-intro-project/blob/26b92b4f8945c50ad1e5678863e0790fef48a167/style.css">style.css</a>
-    <a class="diff" href="https://github.com/orfjackal/web-intro-project/commit/26b92b4f8945c50ad1e5678863e0790fef48a167">View changes</a>
+    <a class="file" href="https://github.com/luontola/web-intro-project/blob/26b92b4f8945c50ad1e5678863e0790fef48a167/style.css">style.css</a>
+    <a class="diff" href="https://github.com/luontola/web-intro-project/commit/26b92b4f8945c50ad1e5678863e0790fef48a167">View changes</a>
 </aside>
 
 
